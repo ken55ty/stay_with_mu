@@ -100,3 +100,6 @@ MU作成時に追加した項目と、追加したメモリーの文字数に応
 
 ## ■画面遷移図
 https://www.figma.com/file/BfMTw56e0vPpTX1UYnTlLN/STAY-with-MU?type=design&node-id=0%3A1&mode=design&t=66aJBbzwX4HLdTwI-1
+
+## ■ER図
+![Alt text](ER%E5%9B%B3_STAY_with_MU_2.drawio.png)
