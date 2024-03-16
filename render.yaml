@@ -1,0 +1,21 @@
+databases:
+  - name: stay_with_mu_DB
+    databaseName: stay_with_mu_db
+    user: rails7_sample
+    region: singapore
+
+services:
+  - type: web
+    name: stay_with_mu
+    env: ruby
+    region: singapore
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: stay_with_mu_DB
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
