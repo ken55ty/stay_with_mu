@@ -23,5 +23,11 @@ module StayWithMu
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.skip_routes true   # ルーティングを生成しない
+      g.assets false       # assetsファイルを生成しない
+      g.helper false       # helperを生成しない
+      g.test_framework false  # testファイルを生成しない
+    end
   end
 end
