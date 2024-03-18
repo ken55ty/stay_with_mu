@@ -92,7 +92,7 @@ MU作成時に追加した項目と、追加したメモリーの文字数に応
 | カテゴリ | 技術 |
 | --- | --- |
 | 開発環境 | Docker |
-| フロントエンド | Bootstrap または TailwindCSS, Hotwire |
+| フロントエンド | TailwindCSS, Hotwire |
 | バックエンド | Ruby 3.2.2 / Ruby on Rails 7系 |
 | データベース | PostgreSQL |
 | インフラ | Render |

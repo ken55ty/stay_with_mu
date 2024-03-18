@@ -11,11 +11,11 @@
   </head>
 
   <body >
-    <%# if logged_in? %>
+    <% if logged_in? %>
       <%= render 'shared/header' %>
-    <%# else %>
-      <%#= render 'shared/before_login_header' %>
-    <%# end %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
     <div class="container mx-auto">
       <%= yield %>
     </div>
