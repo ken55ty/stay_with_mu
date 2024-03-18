@@ -27,7 +27,8 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'cssbundling-rails'
-gem 'jsbundling-rails'
+
+gem 'sorcery'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
