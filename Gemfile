@@ -32,6 +32,12 @@ gem 'sorcery'
 
 gem 'rails-i18n'
 
+# Spotify API
+gem 'rspotify'
+
+# environment variables
+gem 'dotenv-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
