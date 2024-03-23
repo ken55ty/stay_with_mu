@@ -1,0 +1,26 @@
+<div class="container mx-auto">
+  <div class="bg-base-300 py-5 px-3">
+    <p class="text-2xl font-bold"><%= @music.user.name%></p>
+    <p class="text-2xl"><%=  @music.title %><%= %></p>
+    <p class="text-lg"><%=  @music.artist %></p>
+    <div class="px-3">
+      <iframe src="https://open.spotify.com/embed/track/<%= @music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+    <div class="p-2">
+      <p class="text-right"><%= @music.created_at %></p>
+    </div>
+  </div>
+</div>
+
+<!-- メモリー&コメント　-->
+<div class="container mx-auto mt-10">
+  <div class="bg-base-300">
+    <div role="tablist" class="tabs tabs-lifted">
+      <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="メモリー" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">メモリー</div>
+
+      <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="コメント" checked />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">コメント</div>
+    </div>
+  </div>
+</div>

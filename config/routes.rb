@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "static_pages#top"
   resources :users, only: %i[new create]
-  resources :musics, only: %i[new create index] do
+  resources :musics do
     collection do
       get :search
     end

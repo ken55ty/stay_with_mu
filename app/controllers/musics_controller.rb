@@ -1,5 +1,5 @@
 class MusicsController < ApplicationController
-  skip_before_action :require_login, only: %i[index]
+  skip_before_action :require_login, only: %i[index show]
 
   def index
     @musics = Music.includes(:user)
@@ -38,6 +38,10 @@ class MusicsController < ApplicationController
         flash.now[:error] = "MUの作成に失敗しました"
         render :new, status: :unprocessable_entity
       end
+  end
+
+  def show
+    @music = Music.find(params[:id])
   end
 
   private
