@@ -1,0 +1,16 @@
+<div class="mt-4">
+  <h2 class="text-center font-bold text-primary mb-2">検索結果</h2>
+  <div class="flex flex-wrap justify-center">
+    <% musics.each do |music| %>
+      <div class="p-1 my-2 border-radius">
+        <iframe src="https://open.spotify.com/embed/track/<%= music[:id] %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
+        <%= form_with url: musics_path, data: {turbo_method: :post, turbo_confirm: "このMUを作成しますか？"} do |form| %>
+          <%= form.hidden_field :spotify_track_id, value: music[:id] %>
+          <%= form.hidden_field :artist, value: music[:artist] %>
+          <%= form.hidden_field :title, value: music[:title] %>
+          <%= form.submit 'MUをつくる！', class: "btn btn-sm btn-outline btn-primary p-3" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

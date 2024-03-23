@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_011054) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_21_230554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "musics", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.string "spotify_track_id"
+    t.string "artist"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_musics_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -25,4 +35,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_011054) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "musics", "users"
 end
