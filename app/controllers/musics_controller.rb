@@ -1,5 +1,10 @@
 class MusicsController < ApplicationController
-  skip_before_action :require_login
+  skip_before_action :require_login, only: %i[index]
+
+  def index
+    @musics = Music.includes(:user)
+  end
+
   def search
     if params[:search].present?
       search_results = RSpotify::Track.search(params[:search])
@@ -28,7 +33,7 @@ class MusicsController < ApplicationController
     @music = current_user.musics.build(music_params)
       if @music.save
         flash[:success] = "MUを作成しました！"
-        redirect_to root_path
+        redirect_to musics_path
       else
         flash.now[:error] = "MUの作成に失敗しました"
         render :new, status: :unprocessable_entity
