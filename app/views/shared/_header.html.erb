@@ -3,8 +3,8 @@
         <%= link_to "ロゴ", root_path, class: "btn btn-primary" %>
     </div>
     <nav class="mr-4">
-        <%= link_to "一覧", "#", class: "btn btn-primary mr-2"%>
-        <%= link_to "作成", "#", class: "btn btn-primary mr-2"%>
+        <%= link_to "一覧", musics_path, class: "btn btn-primary mr-2"%>
+        <%= link_to "作成", new_music_path, class: "btn btn-primary mr-2"%>
         <%= link_to current_user.name, "#", class: "btn btn-secondary"%>
         <%= link_to "LO", logout_path, data: { turbo_method: :delete }%>
     </nav>
