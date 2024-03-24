@@ -3,6 +3,9 @@
     <p class="text-2xl font-bold"><%= @music.user.name%></p>
     <p class="text-2xl"><%=  @music.title %><%= %></p>
     <p class="text-lg"><%=  @music.artist %></p>
+    <% if current_user.own?(@music) %>
+      <%= link_to "削除", music_path(@music), data: { turbo_method: :delete, turbo_confirm: "本当にこのMUを削除しますか？追加したメモリーも削除されます。"}, class: "btn btn-sm btn-error float-right"%>
+    <% end %>
     <div class="px-3">
       <iframe src="https://open.spotify.com/embed/track/<%= @music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
