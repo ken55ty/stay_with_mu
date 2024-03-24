@@ -44,6 +44,13 @@ class MusicsController < ApplicationController
     @music = Music.find(params[:id])
   end
 
+  def destroy
+    music = current_user.musics.find(params[:id])
+    music.destroy!
+    flash[:success] = "MUを削除しました"
+    redirect_to musics_path, status: :see_other
+  end
+
   private
 
   def music_params
