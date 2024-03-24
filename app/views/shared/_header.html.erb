@@ -1,6 +1,8 @@
 <header class=" container mx-auto bg-base-900 py-4 flex items-center justify-between">
     <div class="ml-4">
-        <%= link_to "ロゴ", root_path, class: "btn btn-primary" %>
+        <%= link_to root_path do %>
+            <%= image_tag "logo_col.png", size: "150x150"%>
+        <% end %>
     </div>
     <nav class="mr-4">
         <%= link_to "一覧", musics_path, class: "btn btn-primary mr-2"%>
