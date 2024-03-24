@@ -1,0 +1,7 @@
+<% if object.errors.any? %>
+    <div role="alert" class="alert alert-error flex flex-col">
+      <% object.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </div>
+<% end %>
