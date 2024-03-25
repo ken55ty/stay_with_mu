@@ -1,0 +1,7 @@
+<div class="bg-base-100 mb-4">
+  <div class="bg-base-300 border-bg-100 p-3">
+    <div class="badge badge-primary">タグ</div>
+    <%= simple_format(memory.body) %>
+    <p class="text-right"><%= l memory.created_at, format: :long %></p>
+  </div>
+</div>
