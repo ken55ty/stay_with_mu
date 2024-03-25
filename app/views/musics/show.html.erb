@@ -3,7 +3,7 @@
     <p class="text-2xl font-bold"><%= @music.user.name%></p>
     <p class="text-2xl"><%=  @music.title %><%= %></p>
     <p class="text-lg"><%=  @music.artist %></p>
-    <% if current_user.own?(@music) %>
+    <% if logged_in? && current_user.own?(@music) %>
       <%= link_to "削除", music_path(@music), data: { turbo_method: :delete, turbo_confirm: "本当にこのMUを削除しますか？追加したメモリーも削除されます。"}, class: "btn btn-sm btn-error float-right"%>
     <% end %>
     <div class="px-3">
@@ -21,7 +21,7 @@
 <!-- メモリー　-->
       <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="メモリー" checked/>
       <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box h-auto p-6">
-        <% if current_user.own?(@music) %>
+        <% if logged_in? && current_user.own?(@music) %>
           <details class="dropdown">
             <summary class="btn btn-outline">メモリーを追加する</summary>
             <div class="p-2 w-auto" >
