@@ -42,6 +42,8 @@ class MusicsController < ApplicationController
 
   def show
     @music = Music.find(params[:id])
+    @memory = Memory.new
+    @memories = @music.memories.order(created_at: :desc)
   end
 
   def destroy
