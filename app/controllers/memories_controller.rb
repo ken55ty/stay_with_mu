@@ -25,6 +25,13 @@ class MemoriesController < ApplicationController
     end
   end
 
+  def destroy
+    memory = Memory.find(params[:id])
+    memory.destroy!
+    flash[:success] = "メモリーを削除しました"
+    redirect_to music_path(memory.music)
+  end
+
   private
 
   def memory_params
