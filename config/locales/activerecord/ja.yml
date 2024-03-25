@@ -8,3 +8,7 @@ ja:
         name: ユーザー名
         password: パスワード
         password_confirmation: パスワード確認
+      music:
+        created_at: 作成日時
+      memory:
+        created_at: 作成日時
