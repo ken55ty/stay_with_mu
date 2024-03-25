@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_21_230554) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_24_092701) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "memories", force: :cascade do |t|
+    t.bigint "music_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_id"], name: "index_memories_on_music_id"
+  end
 
   create_table "musics", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -35,5 +43,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_230554) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "memories", "musics"
   add_foreign_key "musics", "users"
 end

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :memories, only: %i[create update destroy]
   end
   get 'login', to: 'user_sessions#new', :as => :login
   post 'login', to: "user_sessions#create"
