@@ -11,5 +11,5 @@ tag_mappings = {
 }
 
 tag_mappings.each do |id, name|
-  Tag.create!(id: id, name: name)
+  Tag.find_or_create_by!(id: id, name: name)
 end

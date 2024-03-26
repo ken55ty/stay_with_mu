@@ -10,4 +10,5 @@ yarn install
 yarn build
 bundle exec rake assets:precompile
 bundle exec rails db:migrate
+bundle exec rails db:seed
 exec "$@"
