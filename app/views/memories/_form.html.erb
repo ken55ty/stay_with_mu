@@ -1,5 +1,11 @@
 <%= form_with model: memory, url: [music, memory], data: { turbo_method: :post } do |form| %>
   <%#= render 'shared/error_messages', object: form.object %><!-- エラーが出るためコメントアウト　-->
+  <% Tag.all.each do |tag| %>
+    <div class="btn btn-sm btn-outline btn-primary">
+      <%= form.check_box :tag_ids, { multiple: true }, tag.id, nil %>
+      <%= tag.name %>
+    </div>
+  <% end %>
   <%= form.text_area :body, class: "w-full h-auto my-2 text-base" %>
   <%= form.submit "追加する", class: "btn btn-primary" %>
 <% end %>
