@@ -35,7 +35,19 @@
 
 <!-- コメント -->
       <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="コメント" />
-      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">コメント</div>
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+        <% if logged_in? %>
+          <details class="dropdown">
+            <summary class="btn btn-sm btn-outline btn-success">コメントを追加する</summary>
+            <div class="p-2 w-auto" >
+              <%= render 'comments/form', { music: @music, comment: @comment } %>
+            </div>
+          </details>
+        <% else %>
+          <div class="btn btn-warning">コメントにはログインが必要です！</div>
+        <% end %>
+        <%= render @comments %>
+      </div>
     </div>
   </div>
 </div>
