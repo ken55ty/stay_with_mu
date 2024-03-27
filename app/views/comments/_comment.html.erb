@@ -4,7 +4,11 @@
       <%= link_to comment.user.name, "#"%>
       </div>
     <%= simple_format(comment.body) %>
-
+    <div class="object-right-top">
+      <% if logged_in? && current_user.own?(comment) %>
+        <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
+      <% end %>
+    </div>
     <p class="text-right"><%= l comment.created_at, format: :long %></p>
   </div>
 </div>
