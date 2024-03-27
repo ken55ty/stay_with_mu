@@ -10,6 +10,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = current_user.comments.find(params[:id])
+    comment.destroy!
+    flash[:success] = "コメントを削除しました"
+    redirect_to music_path(comment.music), status: :see_other
+  end
+
   private
 
   def comment_params
