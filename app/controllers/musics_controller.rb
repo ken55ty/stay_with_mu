@@ -44,6 +44,8 @@ class MusicsController < ApplicationController
     @music = Music.find(params[:id])
     @memory = Memory.new
     @memories = @music.memories.includes(:tags).order(created_at: :desc)
+    @comment = Comment.new
+    @comments = @music.comments.includes(:user).order(created_at: :asc)
   end
 
   def destroy
