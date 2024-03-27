@@ -1,0 +1,10 @@
+<div class="bg-base-100 mb-4">
+  <div class="bg-base-300 border-bg-100 p-3">
+      <div class="btn btn-link btn-sm">
+      <%= link_to comment.user.name, "#"%>
+      </div>
+    <%= simple_format(comment.body) %>
+
+    <p class="text-right"><%= l comment.created_at, format: :long %></p>
+  </div>
+</div>
