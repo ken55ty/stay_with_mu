@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_27_015906) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_28_080242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_015906) do
     t.datetime "updated_at", null: false
     t.index ["music_id"], name: "index_comments_on_music_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "level_settings", force: :cascade do |t|
+    t.integer "level"
+    t.integer "threshold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "memories", force: :cascade do |t|
@@ -48,6 +55,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_27_015906) do
     t.string "artist"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "experience_point", default: 0
+    t.integer "level", default: 1
     t.index ["user_id"], name: "index_musics_on_user_id"
   end
 
