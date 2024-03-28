@@ -2,7 +2,7 @@ class MusicsController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @musics = Music.includes(:user, memories: :tags).order(updated_at: :desc)
+    @musics = Music.includes(:user, memories: :tags).order(updated_at: :desc).page(params[:page])
   end
 
   def search
