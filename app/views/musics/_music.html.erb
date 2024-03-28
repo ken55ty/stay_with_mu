@@ -1,5 +1,5 @@
 
-<div class="p-3">
+<div class="flex p-3">
   <div class="bg-base-100">
     <iframe src="https://open.spotify.com/embed/track/<%= music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
     <div class="p-2 bg-base-300">
@@ -9,9 +9,20 @@
       <% end %>
       <p><%= link_to music.user.name, "#" %></p>
       <div class="justify-end">
-        <p>最新のメモリー</p>
-        <div class="badge badge-secondary">メモリーのタグ</div>
-        <p>てすとてすとてすとてすと</p>
+        <% latest_memory = music.memories.order(created_at: :desc).first %>
+        <% if latest_memory %>
+          <% latest_memory.tags.each do |tag| %>
+            <div class="badge badge-primary">
+              <%= tag.name %>
+            </div>
+          <% end %>
+
+          <% if latest_memory.body.size >= 19 %>
+            <p><%= latest_memory.body.slice(0..19) %>...</p>
+          <% else %>
+            <p><%= latest_memory.body %></p>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>
