@@ -33,7 +33,7 @@ class MusicsController < ApplicationController
     @music = current_user.musics.build(music_params)
       if @music.save
         flash[:success] = "MUを作成しました！"
-        redirect_to musics_path
+        redirect_to @music
       else
         flash.now[:error] = "MUの作成に失敗しました"
         render :new, status: :unprocessable_entity
