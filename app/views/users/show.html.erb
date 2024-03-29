@@ -4,12 +4,15 @@
       <p class="mr-3 rounded-full">
         <%= image_tag "kkrn_icon_user_1.png", size: "80x80"%>
       </p>
-      <p class="p-3 text-2xl">
+      <p class="p-3 text-4xl">
         <%= @user.name%>
       </p>
     </div>
-
+    <div class="p-5">
+      <%= "つくったMUの数: #{@musics.count}" %>
+    </div>
     <div>
+      <p class="text-blue-600">◆自己紹介◆</p>
       <%= @user.profile %>
       <% if logged_in? && current_user == @user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-secondary float-right"%>
@@ -23,7 +26,18 @@
   <div class="bg-base-300">
     <div role="tablist" class="tabs tabs-lifted">
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="つくったMU" checked/>
-    <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">つくったMU</div>
+<!-- つくったMU-->
+    <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+      <div class="flex flex-wrap justify-center">
+        <%= render @musics %>
+      </div>
+
+      <div class="flex justify-center">
+        <%= paginate @musics %>
+      </div>
+    </div>
+
+
 
     <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="いいねしたMU" />
     <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">準備中です。
