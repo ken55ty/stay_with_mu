@@ -15,7 +15,7 @@
     </div>
     <% if logged_in? && current_user.own?(@music) %>
       <div class="text-right twitter link link-secondary">
-        <%= link_to "Xでシェア","https://twitter.com/share?url=#{music_url(@music)}&text=【STAY with MU】%0a#{@music.user.name}が育てた#{@music.title}  Lv. #{@music.level}を見て！&hashtags=STAYwithMU,MU", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
+        <%= link_to "Xでシェア","https://twitter.com/share?url=#{music_url(@music)}&text=【STAY with MU】%0a#{@music.user.name} が育てた「#{@music.title}」  Lv. #{@music.level}を見て！&hashtags=STAYwithMU,MU", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
       </div>
     <% end %>
   </div>

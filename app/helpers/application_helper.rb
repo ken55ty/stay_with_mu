@@ -24,7 +24,7 @@ module ApplicationHelper
       twitter: {
         card: 'summary',
         site: '@',
-        image: image_url('logo_col.png')
+        image: image_url('favicon.svg')
       }
     }
   end
