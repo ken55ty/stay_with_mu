@@ -14,11 +14,11 @@ module ApplicationHelper
       ],
       og: {
         site_name: 'STAY with MU',
-        title: '曲を育てる、思い出記録サービス',
+        title: 'STAY with MU',
         description: '曲を育てる、思い出記録サービス', 
         type: 'website',
         url: request.original_url,
-        image: image_url('logo_col.png'),
+        image: image_url('favicon.svg'),
         locale: 'ja_JP',
       },
       twitter: {
