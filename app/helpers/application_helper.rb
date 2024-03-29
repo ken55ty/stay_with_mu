@@ -3,7 +3,7 @@ module ApplicationHelper
     def default_meta_tags
     {
       site: 'STAY with MU',
-      title: '曲を育てる、思い出記録サービス',
+      title: 'STAY with MU',
       reverse: true,
       separator: '|',   #Webサイト名とページタイトルを区切るために使用されるテキスト
       description: '曲を育てる、思い出記録サービス',
