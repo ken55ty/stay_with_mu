@@ -12,7 +12,7 @@
       <%= "つくったMUの数: #{@musics.count}" %>
     </div>
     <div>
-      <p class="text-blue-600">◆自己紹介◆</p>
+      <p class="text-primary">◆自己紹介◆</p>
       <%= @user.profile %>
       <% if logged_in? && current_user == @user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-secondary float-right"%>
