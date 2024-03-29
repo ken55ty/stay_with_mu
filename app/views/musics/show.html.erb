@@ -3,7 +3,6 @@
     <p class="text-2xl font-bold"><%= @music.user.name%></p>
     <p class="text-2xl"><%=  @music.title %><%= %></p>
     <p class="text-lg"><%=  @music.artist %></p>
-    <%= @music.experience_point%>
     <p class="text-2xl text-right"><%= "Lv. #{@music.level}"%></p>
     <% if logged_in? && current_user.own?(@music) %>
       <%= link_to "削除", music_path(@music), data: { turbo_method: :delete, turbo_confirm: "本当にこのMUを削除しますか？追加したメモリーも削除されます。"}, class: "btn btn-sm btn-error float-right"%>
@@ -14,6 +13,11 @@
     <div class="p-2">
       <p class="text-right"><%= l @music.created_at, format: :long %></p>
     </div>
+    <% if logged_in? && current_user.own?(@music) %>
+      <div class="text-right twitter link link-secondary">
+        <%= link_to "Xでシェア","https://twitter.com/share?url=#{music_url(@music)}&text=【STAY with MU】%0a#{@music.user.name}が育てた#{@music.title}  Lv. #{@music.level}を見て！&hashtags=STAYwithMU,MU", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" %>
+      </div>
+    <% end %>
   </div>
 </div>
 
