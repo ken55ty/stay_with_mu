@@ -8,7 +8,13 @@
         <p><%=  music.artist %></p>
         <p class="text-right"><%= "Lv. #{music.level}"%></p>
       <% end %>
-      <p><%= link_to music.user.name, "#" %></p>
+        <%= link_to user_path(music.user) do %>
+        <div class="flex">
+            <%= image_tag "kkrn_icon_user_1.png", size: "40x40"%>
+          <p class="p-2 link">  <%= music.user.name %> </p>
+            </div>
+        <% end %>
+
       <div class="justify-end">
         <% latest_memory = music.memories.order(created_at: :desc).first %>
         <% if latest_memory %>

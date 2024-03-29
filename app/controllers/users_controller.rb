@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: %i[new create]
+  skip_before_action :require_login, only: %i[new create show]
+  before_action :set_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -17,8 +18,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:success] = "プロフィールを更新しました"
+      redirect_to @user
+    else
+      flash.now[:error] = "プロフィールの更新に失敗しました"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile)
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
   end
 end
