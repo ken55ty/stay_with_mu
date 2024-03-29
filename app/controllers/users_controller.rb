@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create show]
+  before_action :set_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -22,11 +23,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user =User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "プロフィールを更新しました"
       redirect_to @user
@@ -39,5 +38,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile)
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
   end
 end
