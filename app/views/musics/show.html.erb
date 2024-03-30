@@ -1,7 +1,10 @@
 <% content_for(:title, @music.title) %>
 <div class="container mx-auto">
   <div class="bg-base-300 py-5 px-3">
-    <p class="text-2xl font-bold"><%= @music.user.name%></p>
+    <div class="flex">
+      <%= image_tag "kkrn_icon_user_1.png", size: "60x60"%>
+      <p class="text-2xl font-bold p-3 link"><%= link_to @music.user.name, user_path(@music.user) %></p>
+    </div>
     <p class="text-2xl"><%=  @music.title %><%= %></p>
     <p class="text-lg"><%=  @music.artist %></p>
     <p class="text-2xl text-right"><%= "Lv. #{@music.level}"%></p>
@@ -12,7 +15,7 @@
       <iframe src="https://open.spotify.com/embed/track/<%= @music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
     <div class="p-2">
-      <p class="text-right"><%= l @music.created_at, format: :long %></p>
+      <p class="text-right">作成日時: <%= l @music.created_at, format: :long %></p>
     </div>
     <% if logged_in? && current_user.own?(@music) %>
       <div class="text-right twitter link link-secondary">
