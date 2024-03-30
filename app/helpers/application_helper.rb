@@ -18,13 +18,13 @@ module ApplicationHelper
         description: '曲を育てる、思い出記録サービス', 
         type: 'website',
         url: request.original_url,
-        image: image_url('favicon.svg'),
+        image: image_url('Logo.png'),
         locale: 'ja_JP',
       },
       twitter: {
         card: 'summary',
         site: '@',
-        image: image_url('favicon.svg')
+        image: image_url('Logo.png')
       }
     }
   end
