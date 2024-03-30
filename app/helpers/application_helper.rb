@@ -3,7 +3,7 @@ module ApplicationHelper
     def default_meta_tags
     {
       site: 'STAY with MU',
-      title: 'STAY with MU',
+      title: '',
       reverse: true,
       separator: '|',   #Webサイト名とページタイトルを区切るために使用されるテキスト
       description: '曲を育てる、思い出記録サービス',
@@ -27,5 +27,10 @@ module ApplicationHelper
         image: image_url('favicon.svg')
       }
     }
+  end
+
+  def page_title(title = '')
+    base_title = 'STAY with MU'
+    title.present? ? "#{title} | #{base_title}" : base_title
   end
 end
