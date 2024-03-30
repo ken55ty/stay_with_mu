@@ -4,7 +4,7 @@
       <div class="badge badge-primary"><%= tag.name %></div>
     <% end %>
 
-    <%= simple_format(memory.body) %>
+    <%=  raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
     <div class="object-right-top">
       <% if logged_in? && current_user.own?(memory.music) %>
         <%= link_to "削除", memory_path(memory), data: { turbo_method: :delete, turbo_confirm: "本当にこのメモリーを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
