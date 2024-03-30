@@ -7,7 +7,8 @@ tag_mappings = {
   6 => '主題歌',
   7 => 'カラオケ',
   8 => '考察',
-  9 => '演奏'
+  9 => '演奏',
+  10 => '豆知識'
 }
 
 tag_mappings.each do |id, name|
