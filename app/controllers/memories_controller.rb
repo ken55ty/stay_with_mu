@@ -16,7 +16,7 @@ class MemoriesController < ApplicationController
 
   def update
     memory = Memory.find(params[:id])
-    if memory.update(params.require(:memory).permit(:body)) #汚いので改善したい。
+    if memory.update(params.require(:memory).permit(:body, tag_ids: [])) #汚いので改善したい。
       flash[:success] = "メモリーを更新しました"
       redirect_to music_path(memory.music)
     else
