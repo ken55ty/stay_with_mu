@@ -26,6 +26,14 @@
         <p>この曲への愛は誰にも負けない！というところを見せてやりましょう！</p>
         <p></p>
       </div>
+
+      <div class="py-6 space-y-2">
+        <p class="text-2xl font-bold">その他の機能</p>
+        <P class="text-xl">☆コメント機能☆</p>
+        <p>他のユーザーが作ったMUにコメントできます。</p>
+        <p>※自分が作ったMUにもコメントできますが、レベルには影響しません。</p>
+        <p>通知機能がまだないのでコメントされたことは見に行かないとわかりません🙇‍♂️</p>
+      </div>
       <% if logged_in? %>
         <%= link_to "MUをつくる！", new_music_path, class: "btn btn-primary m-2"%>
         <%= link_to "みんなのMU", musics_path, class: "btn btn-secondary m-2"%>

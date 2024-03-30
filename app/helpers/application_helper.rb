@@ -24,7 +24,8 @@ module ApplicationHelper
       twitter: {
         card: 'summary',
         site: '@',
-        image: image_url('Logo.png')
+        url: request.original_url,
+        image: image_url('Logo.png'),
       }
     }
   end
