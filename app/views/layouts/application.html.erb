@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StayWithMu</title>
+    <title><%= page_title(content_for?(:title) ? yield(:title) : '') %></title>
     <%= favicon_link_tag asset_path('favicon.svg') %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>

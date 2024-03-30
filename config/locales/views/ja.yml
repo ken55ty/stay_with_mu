@@ -17,6 +17,8 @@ ja:
     new:
       title: ユーザー登録
       to_login_page: ログインページへ
+    edit:
+      title: プロフィール編集
   header:
     login: ログイン
     logout: ログアウト
@@ -25,3 +27,11 @@ ja:
     create_board: 掲示板作成
     bookmark_index: ブックマーク一覧
     profile: プロフィール
+  musics:
+    index:
+      title: みんなのMU
+    new:
+      title: MU作成
+  memories:
+    edit:
+      title: MU編集
