@@ -10,7 +10,7 @@ module ApplicationHelper
       keywords: 'Spotify,音楽, MU, シェア, 曲を育てる',   #キーワードを「,」区切りで設定する
       canonical: request.original_url,   #優先するurlを指定する
       icon: [                    #favicon、apple用アイコンを指定する
-        { href: image_url('favicon.svg') },
+        { href: image_url('MUfavicon.svg') },
       ],
       og: {
         site_name: 'STAY with MU',
@@ -22,10 +22,10 @@ module ApplicationHelper
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@',
         url: request.original_url,
-        image: image_url('Logo.png'),
+        image: image_url('large_logo.png'),
       }
     }
   end
