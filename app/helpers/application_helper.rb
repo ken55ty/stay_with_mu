@@ -25,7 +25,7 @@ module ApplicationHelper
         card: 'summary_large_image',
         site: '@',
         url: request.original_url,
-        image: image_url('Logo.png'),
+        image: image_url('large_logo.png'),
       }
     }
   end
