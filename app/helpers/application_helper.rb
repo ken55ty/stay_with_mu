@@ -22,7 +22,7 @@ module ApplicationHelper
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary',
+        card: 'summary_large_image',
         site: '@',
         url: request.original_url,
         image: image_url('Logo.png'),
