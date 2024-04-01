@@ -24,4 +24,16 @@ class Memory < ApplicationRecord
     # 合計値をmusicのexpとして保存
     self.music.update(experience_point: total_exp)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["body", "created_at", "id", "id_value", "music_id", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w(music)
+  end
+
+  def self.ransortable_attributes(auth_object = nil)
+    %w(memories_count)
+  end
 end

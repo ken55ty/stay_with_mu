@@ -3,7 +3,8 @@ class MusicsController < ApplicationController
 
   def index
     @q = Music.ransack(params[:q])
-    @musics = @q.result(distinct: true).includes(:user, memories: :tags).order(updated_at: :desc).page(params[:page])
+    @q.sorts = ['updated_at desc'] unless params[:sorts].present?
+    @musics = @q.result(distinct: true).includes(:user, memories: :tags).page(params[:page])
   end
 
   def search
