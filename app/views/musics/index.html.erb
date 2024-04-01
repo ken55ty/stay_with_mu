@@ -1,10 +1,16 @@
 <% content_for(:title, t('.title')) %>
 <h1 class="text-center py-4 text-2xl">みんなのMU</h1>
 <div class="flex justify-center mb-6">
-  <div class="p-10">
+  <div class="mr-4">
     <%= search_form_for @q do |f| %>
       <%= f.search_field :title_or_artist_cont, class: "w-300 py-1 px-3 mr-3", placeholder: "曲名orアーティスト" %>
       <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+  <div>
+    <%= search_form_for @q do |f| %>
+      <%= f.select(:sorts, {'レベル高い順': 'level desc', '更新新しい順': 'updated_at desc', '更新古い順': 'updated_at asc'}, { include_blank: '選択してください' }, class: "w-300 py-1 px-3 mr-3") %>
+      <%= f.submit "並び替え", class: "btn btn-sm btn-primary" %>
     <% end %>
   </div>
 </div>
