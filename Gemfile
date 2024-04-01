@@ -44,6 +44,10 @@ gem 'meta-tags'
 
 gem 'rinku'
 
+gem 'ransack'
+
+gem 'pry-byebug'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
