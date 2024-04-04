@@ -2,6 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :musics, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_musics, through: :favorites, source: :music
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, presence: true, uniqueness: true
@@ -13,4 +15,5 @@ class User < ApplicationRecord
   def own?(object)
     id == object&.user_id
   end
+
 end

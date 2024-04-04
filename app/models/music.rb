@@ -2,6 +2,8 @@ class Music < ApplicationRecord
   belongs_to :user
   has_many :memories, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_musics, through: :favorites, source: :music
 
   validates :title, presence: true
 
