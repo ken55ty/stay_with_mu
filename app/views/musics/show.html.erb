@@ -5,10 +5,11 @@
       <%= image_tag "kkrn_icon_user_1.png", size: "60x60"%>
       <p class="text-2xl font-bold p-3 link"><%= link_to @music.user.name, user_path(@music.user) %></p>
     </div>
-    <p class="text-2xl"><%=  @music.title %><%= %></p>
-    <p class="text-lg"><%=  @music.artist %></p>
-    <p class="text-2xl text-right mx-2"><%= "Lv. #{@music.level}"%></p>
-
+    <div class=<%= levelclass(@music.level) %>>
+      <p class="text-2xl"><%=  @music.title %></p>
+      <p class="text-lg"><%=  @music.artist %></p>
+      <p class="text-2xl text-right mx-2"><%= "Lv. #{@music.level}"%></p>
+    </div>
     <div class="flex justify-end m-2">
       <%= render 'musics/favorite_button', music: @music %>
     </div>
