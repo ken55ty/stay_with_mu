@@ -1,4 +1,4 @@
-<% if current_user.favorite?(music) %>
+<% if logged_in? && current_user.favorite?(music) %>
   <%= render 'musics/unfavorite', music: music %>
 <% else %>
   <%= render 'musics/favorite', music: music  %>
