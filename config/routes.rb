@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :memories, only: %i[create edit update destroy], shallow: true
     resources :comments, only: %i[create update destroy], shallow: true
   end
+  resources :favorites, only: %i[create destroy]
   get 'login', to: 'user_sessions#new', :as => :login
   post 'login', to: "user_sessions#create"
   delete 'logout', to: 'user_sessions#destroy', :as => :logout
