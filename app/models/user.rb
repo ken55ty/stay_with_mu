@@ -16,4 +16,15 @@ class User < ApplicationRecord
     id == object&.user_id
   end
 
+  def favorite(music)
+    favorite_musics << music
+  end
+
+  def unfavorite(music)
+    favorite_musics.destroy(music)
+  end
+
+  def favorite?(music)
+    favorite_musics.include?(music)
+  end
 end
