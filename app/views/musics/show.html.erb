@@ -7,7 +7,12 @@
     </div>
     <p class="text-2xl"><%=  @music.title %><%= %></p>
     <p class="text-lg"><%=  @music.artist %></p>
-    <p class="text-2xl text-right"><%= "Lv. #{@music.level}"%></p>
+    <p class="text-2xl text-right mx-2"><%= "Lv. #{@music.level}"%></p>
+
+    <div class="flex justify-end m-2">
+      <%= render 'musics/favorite_button', music: @music %>
+    </div>
+
     <% if logged_in? && current_user.own?(@music) %>
       <%= link_to "削除", music_path(@music), data: { turbo_method: :delete, turbo_confirm: "本当にこのMUを削除しますか？追加したメモリーも削除されます。"}, class: "btn btn-sm btn-error float-right"%>
     <% end %>
