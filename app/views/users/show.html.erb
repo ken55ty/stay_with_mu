@@ -33,15 +33,23 @@
         <%= render @musics %>
       </div>
 
-      <div class="flex justify-center">
-        <%= paginate @musics %>
+        <div class="flex justify-center">
+          <%= paginate @musics %>
+        </div>
       </div>
-    </div>
 
 
 
-    <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="いいねしたMU" />
-    <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">準備中です。
+      <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="いいねしたMU" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+        <div class="flex flex-wrap justify-center">
+          <%= render @favorite_musics %>
+        </div>
+
+        <div class="flex justify-center">
+          <%= paginate @favorite_musics %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
