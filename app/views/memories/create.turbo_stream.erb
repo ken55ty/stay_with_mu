@@ -1,0 +1,13 @@
+<%= turbo_stream.update "flash_messages", partial: "shared/flash_messages" %>
+<% if @memory.errors.present? %>
+  <%= turbo_stream.replace "memory-form" do %>
+    <%= render 'memories/form', memory: @memory, music: @memory.music %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "memories-list" do %>
+    <%= render 'memories/memory', memory: @memory %>
+  <% end %>
+  <%= turbo_stream.replace "memory-form" do %>
+    <%= render 'memories/form', memory: Memory.new, music: @memory.music %>
+  <% end %>
+<% end %>

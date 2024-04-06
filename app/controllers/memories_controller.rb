@@ -1,12 +1,10 @@
 class MemoriesController < ApplicationController
   def create
-    memory = Memory.new(memory_params)
-    if memory.save
-      flash[:success] = "メモリーを追加しました"
-      redirect_to music_path(memory.music), status: :see_other
+    @memory = Memory.new(memory_params)
+    if @memory.save
+      flash.now[:success] = "メモリーを追加しました"
     else
       flash.now[:erorr] = "メモリーの追加に失敗しました"
-      redirect_to music_path(memory.music), status: :see_other
     end
   end
 
@@ -26,10 +24,9 @@ class MemoriesController < ApplicationController
   end
 
   def destroy
-    memory = Memory.find(params[:id])
-    memory.destroy!
-    flash[:success] = "メモリーを削除しました"
-    redirect_to music_path(memory.music)
+    @memory = Memory.find(params[:id])
+    @memory.destroy!
+    flash.now[:success] = "メモリーを削除しました"
   end
 
   private

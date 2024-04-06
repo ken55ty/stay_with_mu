@@ -1,16 +1,18 @@
-<div class="bg-base-100 my-2">
-  <div class="bg-base-300 border-bg-100 p-3 rounded-lg">
-    <% memory.tags.each do |tag| %>
-      <div class="badge badge-primary"><%= tag.name %></div>
-    <% end %>
-
-    <%=  raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
-    <div class="object-right-top">
-      <% if logged_in? && current_user.own?(memory.music) %>
-        <%= link_to "削除", memory_path(memory), data: { turbo_method: :delete, turbo_confirm: "本当にこのメモリーを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
-        <%= link_to "編集", edit_memory_path(memory), class: "btn btn-sm btn-secondary mx-2 float-right" %>
+<div id="memory-<%= memory.id %>">
+  <div class="bg-base-100 my-2">
+    <div class="bg-base-300 border-bg-100 p-3 rounded-lg">
+      <% memory.tags.each do |tag| %>
+        <div class="badge badge-primary"><%= tag.name %></div>
       <% end %>
+
+      <%=  raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <div class="object-right-top">
+        <% if logged_in? && current_user.own?(memory.music) %>
+          <%= link_to "削除", memory_path(memory), data: { turbo_method: :delete, turbo_confirm: "本当にこのメモリーを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
+          <%= link_to "編集", edit_memory_path(memory), class: "btn btn-sm btn-secondary mx-2 float-right" %>
+        <% end %>
+      </div>
+      <p class="text-right"><%= l memory.created_at, format: :long %></p>
     </div>
-    <p class="text-right"><%= l memory.created_at, format: :long %></p>
   </div>
 </div>
