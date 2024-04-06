@@ -4,7 +4,7 @@ class MemoriesController < ApplicationController
     if @memory.save
       flash.now[:success] = "メモリーを追加しました"
     else
-      flash.now[:erorr] = "メモリーの追加に失敗しました"
+      flash.now[:error] = "メモリーを追加できませんでした"
     end
   end
 
