@@ -64,7 +64,9 @@
         <% else %>
           <div class="btn btn-sm btn-warning">コメントにはログインが必要です！</div>
         <% end %>
-        <%= render @comments %>
+        <div id="comments-list">
+          <%= render @comments %>
+        </div>
       </div>
     </div>
   </div>

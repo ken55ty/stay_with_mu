@@ -1,20 +1,17 @@
 class CommentsController < ApplicationController
   def create
-    comment = current_user.comments.build(comment_params)
-    if comment.save
-      flash[:success] = "コメントを追加しました"
-      redirect_to music_path(comment.music)
+    @comment = current_user.comments.build(comment_params)
+    if @comment.save
+      flash.now[:success] = "コメントを追加しました"
     else
-      flash[:error] = "コメントを追加できませんでした"
-      redirect_to music_path(comment.music)
+      flash.now[:error] = "コメントを追加できませんでした"
     end
   end
 
   def destroy
-    comment = current_user.comments.find(params[:id])
-    comment.destroy!
-    flash[:success] = "コメントを削除しました"
-    redirect_to music_path(comment.music), status: :see_other
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy!
+    flash.now[:success] = "コメントを削除しました"
   end
 
   private

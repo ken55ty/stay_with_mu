@@ -1,14 +1,19 @@
-<div class="bg-base-100 my-2">
-  <div class="bg-base-300 border-bg-100 p-3 rounded-lg">
-      <div class="btn btn-link btn-sm">
-      <%= link_to comment.user.name, "#"%>
+<div id="comment-<%= comment.id %>">
+  <div class="bg-base-100 my-2">
+    <div class="bg-base-300 border-bg-100 p-3 rounded-lg">
+      <%= link_to user_path(comment.user) do %>
+      <div class="flex">
+        <%= image_tag "kkrn_icon_user_1.png", size: "40x40"%>
+        <p class="p-2 link">  <%= comment.user.name %> </p>
       </div>
-    <%= simple_format(comment.body) %>
-    <div class="object-right-top">
-      <% if logged_in? && current_user.own?(comment) %>
-        <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
       <% end %>
+      <%=  raw Rinku.auto_link(simple_format(comment.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <div class="object-right-top">
+        <% if logged_in? && current_user.own?(comment) %>
+          <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
+        <% end %>
+      </div>
+      <p class="text-right"><%= l comment.created_at, format: :long %></p>
     </div>
-    <p class="text-right"><%= l comment.created_at, format: :long %></p>
   </div>
 </div>
