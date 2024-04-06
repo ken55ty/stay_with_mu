@@ -1,0 +1,14 @@
+<%= turbo_stream.update "flash_messages", partial: "shared/flash_messages" %>
+
+<% if @comment.errors.present? %>
+  <%= turbo_stream.replace "comment-form" do %>
+    <%= render 'comments/form', comment: @comment, music: @comment.music %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.prepend "comments-list" do %>
+    <%= render 'comments/comment', comment: @comment %>
+  <% end %>
+  <%= turbo_stream.replace "comment-form" do %>
+    <%= render 'comments/form', comment: Comment.new, music: @comment.music %>
+  <% end %>
+<% end %>
