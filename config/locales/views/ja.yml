@@ -35,3 +35,8 @@ ja:
   memories:
     edit:
       title: MU編集
+  password_resets:
+    new:
+      title: パスワードリセット申請
+    edit:
+      title: パスワード再設定

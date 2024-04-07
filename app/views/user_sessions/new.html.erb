@@ -16,6 +16,7 @@
     </div>
     <div class="flex justify-center flex-col">
       <%= form.submit 'ログイン', class: "btn btn-secondary mb-4" %>
+      <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path, class: "link link-primary mb-4" %>
       <%= link_to "ユーザー登録", new_user_path, class: "btn btn-accent" %>
     </div>
   <% end %>
