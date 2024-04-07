@@ -1,25 +1,23 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex justify-center items-center">
-
-  <%= form_with model: @user, local: true do |form| %>
-      <h1 class="mb-10">プロフィール編集</h1>
-      <%= render 'shared/error_messages', object: form.object %>
+<div class="flex flex-col justify-center items-center">
+  <%= form_with model: @user, local: true do |f| %>
+      <h1 class="mb-10 text-2xl">プロフィール編集</h1>
+      <%= render 'shared/error_messages', object: f.object %>
     <div class= "mb-3">
-      <div class= 'flex flex-row'>
-        <%= form.label :name, class:'ml-2'%>
-      </div>
-      <%= form.text_field :name, class: "w-full bg-card-body text-theme rounded-lg py-2 px-3" %>
+      <%= f.label :name, class:'ml-2'%>
+      <%= f.text_field :name, class: "w-full bg-card-body text-theme rounded-lg py-2 px-3" %>
     </div>
-
     <div class="mb-3">
-      <div class= 'flex flex-row'>
-        <%= form.label :profile, class:'ml-2'%>
-      </div>
-        <%= form.text_area :profile, class: "w-full h-100 bg-card-body text-theme rounded-lg py-2 px-3" %>
+        <%= f.label :profile, class:'ml-2'%>
+        <%= f.text_area :profile, class: "w-full h-200 bg-card-body text-theme rounded-lg py-2 px-3 mb-5" %>
     </div>
-<h1 class="text-center py-4 text-xl">ユーザアイコンは準備中です🙇‍♂️</h1>
+    <div class="flex flex-col mb-2">
+      <%= f.label :avatar, class:'ml-2'%>
+      ※写真の中心で円状に切り抜かれます。
+      <%= f.file_field :avatar, class: "file-input file-input-bordered w-full max-w-xs"%>
+    </div>
     <div class="flex justify-center">
-      <%= form.submit "更新", class: "btn btn-primary" %>
+      <%= f.submit "更新", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>

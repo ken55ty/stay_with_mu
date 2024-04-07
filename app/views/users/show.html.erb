@@ -3,7 +3,15 @@
   <div class="bg-base-300 py-5 px-3 rounded-lg">
     <div class="flex">
       <p class="mr-3 rounded-full">
-        <%= image_tag "kkrn_icon_user_1.png", size: "80x80"%>
+        <% if @user.avatar? %>
+          <div class="avatar">
+            <div class="rounded-full">
+              <%= image_tag @user.avatar.url(:avatar_large) %>
+            </div>
+          </div>
+        <% else %>
+          <%= image_tag "default_avatar.png", size: "80x80" %>
+        <% end %>
       </p>
       <p class="p-3 text-4xl">
         <%= @user.name%>

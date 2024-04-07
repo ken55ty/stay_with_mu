@@ -15,7 +15,15 @@
       </div>
         <%= link_to user_path(music.user) do %>
         <div class="flex">
-          <%= image_tag "kkrn_icon_user_1.png", size: "40x40"%>
+          <% if music.user.avatar? %>
+            <div class="avatar">
+              <div class="rounded-full">
+                <%= image_tag music.user.avatar.url(:avatar) %>
+              </div>
+            </div>
+            <% else %>
+              <%= image_tag "default_avatar.png", size: "40x40" %>
+          <% end %>
           <p class="p-2 link">  <%= music.user.name %> </p>
         </div>
         <% end %>
