@@ -19,6 +19,7 @@ class Memory < ApplicationRecord
   private
 
   def update_music_exp
+    return if music.frozen? #music削除に伴うmemory削除でコールバックした際にエラーにならないため追記
     # musicに紐づくすべてのmemoryのbodyの文字数を合計
     total_exp = self.music.memories.sum { |memory| memory.body.length }
     # 合計値をmusicのexpとして保存
