@@ -10,7 +10,9 @@
               <%= image_tag comment.user.avatar.url(:avatar) %>
             </div>
           </div>
-          <% end %>
+        <% else %>
+          <%= image_tag "default_avatar.png", size: "40x40" %>
+        <% end %>
       </p>
         <p class="p-2 link">  <%= comment.user.name %> </p>
       </div>
