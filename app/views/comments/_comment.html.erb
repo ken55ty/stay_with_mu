@@ -3,7 +3,17 @@
     <div class="bg-base-300 border-bg-100 p-3 rounded-lg">
       <%= link_to user_path(comment.user) do %>
       <div class="flex">
-        <%= image_tag "kkrn_icon_user_1.png", size: "40x40"%>
+              <p class="mr-3 rounded-full">
+        <% if comment.user.avatar? %>
+          <div class="avatar">
+            <div class="rounded-full">
+              <%= image_tag comment.user.avatar.url(:avatar) %>
+            </div>
+          </div>
+        <% else %>
+          <%= image_tag "default_avatar.png", size: "40x40" %>
+        <% end %>
+      </p>
         <p class="p-2 link">  <%= comment.user.name %> </p>
       </div>
       <% end %>
