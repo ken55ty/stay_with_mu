@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   post 'login', to: "user_sessions#create"
   delete 'logout', to: 'user_sessions#destroy', :as => :logout
   get 'terms', to: 'static_pages#terms'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
 end
