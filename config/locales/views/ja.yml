@@ -40,3 +40,8 @@ ja:
       title: パスワードリセット申請
     edit:
       title: パスワード再設定
+  static_pages:
+    privacy_policy:
+      title: プライバシーポリシー
+    terms:
+      title: 利用規約
