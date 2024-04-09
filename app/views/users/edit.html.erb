@@ -13,8 +13,10 @@
     </div>
     <div class="flex flex-col mb-2">
       <%= f.label :avatar, class:'ml-2'%>
-      ※写真の中心で円状に切り抜かれます。
       <%= f.file_field :avatar, class: "file-input file-input-bordered w-full max-w-xs"%>
+      <p>※写真の中心で円状に切り抜かれます。</p>
+      <p>不具合のため、拡張子.HEICの写真のアップロードを制限しております。</p>
+      <p>申し訳ございません🙇‍♂️</p>
     </div>
     <div class="flex justify-center">
       <%= f.submit "更新", class: "btn btn-primary" %>
