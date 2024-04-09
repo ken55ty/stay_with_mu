@@ -33,20 +33,30 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :convert_to_webp
 
   def convert_to_webp
+    manipulate! { |img| img.format('webp') }
+  end
+
+  process :fix_exif_rotation
+
+  def fix_exif_rotation
     manipulate! do |img|
-      img.format 'webp'
+      img.auto_orient
+      img = yield(img) if block_given?
       img
     end
   end
 
   def filename
-    super.chomp(File.extname(super)) + '.webp' if original_filename.present?
+    return unless original_filename.present?
+
+    base_name = File.basename(original_filename, '.*')
+    "#{base_name}.webp"
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w(jpg jpeg gif png webp)
+    %w[jpg jpeg gif png webp]
   end
 
   version :avatar do
