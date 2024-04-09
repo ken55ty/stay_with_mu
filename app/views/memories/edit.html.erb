@@ -1,13 +1,15 @@
 <% content_for(:title, t('.title')) %>
-<h1 class="text-center py-4 text-2xl">メモリー編集</h1>
-<%= form_with model: @memory, local: true do |form| %>
-  <%#= render 'shared/error_messages', object: form.object %><!-- エラーが出るためコメントアウト　-->
-  <% Tag.all.each do |tag| %>
-    <div class="btn btn-sm btn-outline btn-primary">
-      <%= form.check_box :tag_ids, { multiple: true }, tag.id, nil %>
-      <%= tag.name %>
-    </div>
-  <% end %>
-  <%= form.text_area :body, class: "w-full h-auto my-2 text-base p-1 rounded-lg"%>
-  <%= form.submit "編集完了", class: "btn btn-primary" %>
+<div class="h-screen">
+  <h1 class="text-center py-4 text-2xl">メモリー編集</h1>
+  <%= form_with model: @memory, local: true do |form| %>
+    <%#= render 'shared/error_messages', object: form.object %><!-- エラーが出るためコメントアウト　-->
+    <% Tag.all.each do |tag| %>
+      <div class="btn btn-sm btn-outline btn-primary">
+        <%= form.check_box :tag_ids, { multiple: true }, tag.id, nil %>
+        <%= tag.name %>
+      </div>
+    <% end %>
+    <%= form.text_area :body, class: "w-full h-auto my-2 text-base p-1 rounded-lg"%>
+    <%= form.submit "編集完了", class: "btn btn-primary" %>
 <% end %>
+</div>
