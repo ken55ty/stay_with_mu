@@ -1,11 +1,11 @@
-<header class="bg-base-900 py-4 flex items-center justify-between">
-    <div class="ml-4">
-        <%= link_to root_path do %>
-            <%= image_tag "logo_col.png", size: "150x150"%>
-        <% end %>
-    </div>
-    <nav class="mr-4">
-        <%= link_to "一覧", musics_path, class: "btn btn-primary mr-2"%>
-        <%= link_to "ログイン", login_path, class: "btn btn-secondary"%>
-    </nav>
+<header class="py-4 flex items-center justify-between">
+  <div class="ml-4">
+    <%= link_to root_path do %>
+      <%= image_tag "Logo.png", size: "100x100"%>
+    <% end %>
+  </div>
+  <nav class="mr-4">
+    <%= link_to "みんなのMU", musics_path, class: "btn btn-sm btn-primary btn-outline mr-2 sm:btn-md"%>
+    <%= link_to "ログイン", login_path, class: "btn btn-sm btn-secondary btn-outline mr-2 sm:btn-md"%>
+  </nav>
 </header>
