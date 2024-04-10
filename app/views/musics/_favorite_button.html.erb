@@ -1,5 +1,7 @@
 <% if logged_in? && current_user.favorite?(music) %>
   <%= render 'musics/unfavorite', music: music %>
-<% else %>
+<% elsif logged_in? %>
   <%= render 'musics/favorite', music: music  %>
+<% else %>
+  <%= render 'musics/login_to_favorite', music: music %>
 <% end %>
