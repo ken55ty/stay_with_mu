@@ -12,7 +12,7 @@
     <div class="">
       <h1 class="text-4xl font-bold mb-3">使い方</h1>
       <p class="font-bold">
-        MUをつくって、メモリー（思い出や推しポイント）を書いていくことでMUを育てましょう！
+        MU（ミュー）をつくって、メモリー（思い出や推しポイント）を書いていくことでMUを育てましょう！
       </p>
       <div class="py-6 space-y-2">
 
@@ -83,33 +83,26 @@
       </div>
 
       <div class="py-6 space-y-2">
-        <p class="text-2xl font-bold">その他画面の説明</p>
+        <p class="text-2xl font-bold">iPhoneをお使いの方におすすめの設定</p>
         <div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
           <div class="carousel-item flex flex-col">
-            <p class="mb-1">みんなのMU一覧</p>
-            <%= image_tag 'index.png', size: "234x108"%>
-            <p class="text-xs mt-1">検索と並び替えもできます。</p>
-            <p class="text-xs">デフォルトは更新順です。<br>メモリーやコメントを追加して<br>浮上させましょう！</p>
+            <p>safariで開くのがおすすめです。</p>
+            <%= image_tag 'safari.png', size: "234x108"%>
+            <p class="mb-1 text-xs"><br>下のボタンを押すとURLがコピーできるので<br>safariに貼り付けてください！</p>
+            <input id="copyTarget" type="stay-with-mu.com" value="stay-with-mu.com" readonly>
+            <button onclick="copyToClipboard()", class="btn btn-outline btn-sm">URLをコピーする！</button>
           </div>
           <div class="carousel-item flex flex-col">
-            <p class="mb-1">MU詳細画面</p>
-            <%= image_tag 'show.png', size: "234x108"%>
-            <p class="text-xs mt-1">メモリーやコメントを見ることができます。</p>
+            <p class="mb-1">共有ボタンを押して</p>
+            <%= image_tag 'button.png', size: "234x108"%>
           </div>
           <div class="carousel-item flex flex-col">
-            <p class="mb-1">コメント追加</p>
-            <%= image_tag 'comment.png', size: "234x108"%>
-            <p class="text-xs mt-1">MUにコメントできます。</p>
+            <p class="mb-1">ホーム画面に追加</p>
+            <%= image_tag 'addhome.png', size: "234x108"%>
           </div>
           <div class="carousel-item flex flex-col">
-            <p class="mb-1">マイページ（ユーザー詳細）</p>
-            <%= image_tag 'mypage.png', size: "234x108"%>
-            <p class="text-xs mt-1">自己紹介・つくったMUの一覧・<br>いいねしたMUの一覧を見ることができます。</p>
-          </div>
-          <div class="carousel-item flex flex-col">
-            <p class="mb-1">マイページ編集</p>
-            <%= image_tag 'mypage_edit.png', size: "234x108"%>
-            <p class="text-xs mt-1">自己紹介文・プロフィール画像を変更できます。</p>
+            <p class="mb-1">アプリ風になります！<br>ぜひ毎日開いてください！</p>
+            <%= image_tag 'home_icon.png', size: "234x108"%>
           </div>
         </div>
       </div>
@@ -125,3 +118,19 @@
   </div>
 
 </div>
+
+<script>
+  function copyToClipboard() {
+    // コピー対象をJavaScript上で変数として定義する
+    var copyTarget = document.getElementById("copyTarget");
+
+    // コピー対象のテキストを選択する
+    copyTarget.select();
+
+    // 選択しているテキストをクリップボードにコピーする
+    document.execCommand("Copy");
+
+    // コピーをお知らせする
+    alert("コピーできました！ : " + copyTarget.value);
+  }
+</script>
