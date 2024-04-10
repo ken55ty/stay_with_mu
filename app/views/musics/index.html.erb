@@ -2,22 +2,24 @@
 <h1 class="text-center py-4 text-2xl">みんなのMU</h1>
 <div class="flex justify-center mb-6">
   <div class="mr-2">
-    <%= search_form_for @q do |f| %>
+    <%= search_form_for @q, html: { data: { turbo_frame: "musics-list" } } do |f| %>
       <%= f.search_field :title_or_artist_cont, class: "w-300 p-1 mr-1 rounded-lg", placeholder: "曲名orアーティスト" %>
       <%= f.submit "検索", class: "btn btn-sm btn-primary my-2" %>
     <% end %>
   </div>
   <div>
-    <%= search_form_for @q do |f| %>
+    <%= search_form_for @q, html: { data: { turbo_frame: "musics-list" } } do |f| %>
       <%= f.select(:sorts, {'レベル高い順': 'level desc', '更新新しい順': 'updated_at desc', '更新古い順': 'updated_at asc'}, { include_blank: '選択してください' }, class: "w-300 py-1 px-3 mr-1 rounded-lg") %>
       <%= f.submit "並び替え", class: "btn btn-sm btn-primary my-2" %>
     <% end %>
   </div>
 </div>
-<div class="flex flex-wrap justify-center">
-  <%= render @musics %>
-</div>
+<%= turbo_frame_tag "musics-list", autoscroll: true, data: { autoscroll_block: "start" }  do %>
+  <div class="flex flex-wrap justify-center">
+    <%= render @musics %>
+  </div>
 
-<div class="flex justify-center">
-  <%= paginate @musics %>
-</div>
+  <div class="flex justify-center">
+    <%= paginate @musics %>
+  </div>
+<% end %>
