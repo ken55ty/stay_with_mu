@@ -20,7 +20,7 @@
       <%=  raw Rinku.auto_link(simple_format(comment.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
       <div class="object-right-top">
         <% if logged_in? && current_user.own?(comment) %>
-          <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
+          <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "ml-2 btn btn-sm btn-error float-right" %>
         <% end %>
       </div>
       <p class="text-right"><%= l comment.created_at, format: :long %></p>

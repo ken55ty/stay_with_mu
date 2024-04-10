@@ -7,34 +7,34 @@ class Memory < ApplicationRecord
   validate :validate_tag_count
 
   after_commit :update_music_exp
+
   private
 
   def validate_tag_count
     max_tags = 3
-    if tag_ids.count > max_tags
-      errors.add(:base, "選択できるタグは#{max_tags}個までです")
-    end
-  end
+    return unless tag_ids.count > max_tags
 
-  private
+    errors.add(:base, "選択できるタグは#{max_tags}個までです")
+  end
 
   def update_music_exp
-    return if music.frozen? #music削除に伴うmemory削除でコールバックした際にエラーにならないため追記
+    return if music.frozen? # music削除に伴うmemory削除でコールバックした際にエラーにならないため追記
+
     # musicに紐づくすべてのmemoryのbodyの文字数を合計
-    total_exp = self.music.memories.sum { |memory| memory.body.length }
+    total_exp = music.memories.sum { |memory| memory.body.length }
     # 合計値をmusicのexpとして保存
-    self.music.update(experience_point: total_exp)
+    music.update(experience_point: total_exp)
   end
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["body", "created_at", "id", "id_value", "music_id", "updated_at"]
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[body created_at id id_value music_id updated_at]
   end
 
-  def self.ransackable_associations(auth_object = nil)
-    %w(music)
+  def self.ransackable_associations(_auth_object = nil)
+    %w[music]
   end
 
-  def self.ransortable_attributes(auth_object = nil)
-    %w(memories_count)
+  def self.ransortable_attributes(_auth_object = nil)
+    %w[memories_count]
   end
 end

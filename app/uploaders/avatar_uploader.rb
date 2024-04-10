@@ -60,15 +60,15 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :avatar do
-    process resize_to_fill: [40, 40, "Center"]
+    process resize_to_fill: [40, 40, 'Center']
   end
 
   version :avatar_midium do
-    process resize_to_fill: [60, 60, "Center"]
+    process resize_to_fill: [60, 60, 'Center']
   end
 
   version :avatar_large do
-    process resize_to_fill: [80, 80, "Center"]
+    process resize_to_fill: [80, 80, 'Center']
   end
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

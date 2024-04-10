@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
 
   def index
     @q = Music.ransack(params[:q])
-    @q.sorts = ['updated_at desc'] unless params[:sorts].present?
+    @q.sorts = ['updated_at desc'] if params[:sorts].blank?
     @musics = @q.result(distinct: true).includes(:user, memories: :tags).page(params[:page])
   end
 
@@ -14,32 +14,14 @@ class MusicsController < ApplicationController
         {
           id: track.id,
           title: track.name,
-          artist: track.artists.first.name,
+          artist: track.artists.first.name
         }
       end
     else
-      @musics = []  # 検索クエリがない場合は空の結果を返す
+      @musics = [] # 検索クエリがない場合は空の結果を返す
     end
 
     render :new
-  end
-
-
-  # GET /musics/new
-  def new
-    @music = Music.new
-  end
-
-  # POST /musics or /musics.json
-  def create
-    @music = current_user.musics.build(music_params)
-      if @music.save
-        flash[:success] = "MUを作成しました！"
-        redirect_to @music
-      else
-        flash.now[:error] = "MUの作成に失敗しました"
-        render :new, status: :unprocessable_entity
-      end
   end
 
   def show
@@ -50,10 +32,27 @@ class MusicsController < ApplicationController
     @comments = @music.comments.includes(:user).order(created_at: :asc)
   end
 
+  # GET /musics/new
+  def new
+    @music = Music.new
+  end
+
+  # POST /musics or /musics.json
+  def create
+    @music = current_user.musics.build(music_params)
+    if @music.save
+      flash[:success] = 'MUを作成しました！'
+      redirect_to @music
+    else
+      flash.now[:error] = 'MUの作成に失敗しました'
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     music = current_user.musics.find(params[:id])
     music.destroy!
-    flash[:success] = "MUを削除しました"
+    flash[:success] = 'MUを削除しました'
     redirect_to musics_path, status: :see_other
   end
 

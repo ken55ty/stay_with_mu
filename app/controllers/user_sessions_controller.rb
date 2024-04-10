@@ -10,14 +10,14 @@ class UserSessionsController < ApplicationController
       flash[:success] = 'ログインしました'
       redirect_to musics_path
     else
-      flash.now[:error] = "ログインに失敗しました"
+      flash.now[:error] = 'ログインに失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    flash[:success] = "ログアウトしました"
+    flash[:success] = 'ログアウトしました'
     redirect_to root_url, status: :see_other
   end
 end

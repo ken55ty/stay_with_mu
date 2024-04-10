@@ -1,14 +1,14 @@
 <div id="memory-form">
-  <%= form_with model: memory, url: [music, memory], data: { turbo_method: :post } do |form| %>
-    <%= render 'shared/error_messages', object: form.object %>
+  <%= form_with model: memory, url: [music, memory], data: { turbo_method: :post } do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
     <p>タグは3つまで選べます。</p>
     <% Tag.all.each do |tag| %>
       <div class="btn btn-sm btn-outline btn-primary">
-        <%= form.check_box :tag_ids, { multiple: true }, tag.id, nil %>
+        <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
         <%= tag.name %>
       </div>
     <% end %>
-    <%= form.text_area :body, class: "w-full h-24 my-2 text-base p-1 rounded-lg" %>
-    <%= form.submit "追加する", class: "btn btn-primary" %>
+    <%= f.text_area :body, class: "w-full h-24 my-2 text-base p-1 rounded-lg" %>
+    <%= f.submit "追加する", class: "btn btn-primary" %>
   <% end %>
 </div>
