@@ -1,4 +1,4 @@
-<div id="comment-form", class="w-96 flex flex-col">
+<div id="comment-form", class="w-full flex flex-col">
   <%= form_with model: comment, url: [music, comment], data: { turbo_method: :post } do |form| %>
     <%= render 'shared/error_messages', object: form.object %>
     <%= form.text_area :body, class: "w-full h-24 my-2 text-base p-1 rounded-lg" %>
