@@ -1,38 +1,37 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex justify-center items-center h-screen">
+  <%= form_with model: @user, local: true do |f| %>
+    <h1 class="mb-10 text-2xl">ユーザー登録</h1>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class= "mb-3">
+      <div class= 'flex flex-row'>
+        <%= f.label :name, class:'ml-2'%>
+      </div>
+      <%= f.text_field :name, class: "w-full bg-card-body text-theme rounded-lg py-2 px-3" %>
+    </div>
+    <div class= "mb-3">
+      <div class= 'flex flex-row'>
+        <%= f.label :email, class:'ml-2'%>
+      </div>
+      <%= f.email_field :email, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
+    </div>
 
-        <%= form_with model: @user, local: true do |form| %>
-            <h1 class="mb-10 text-2xl">ユーザー登録</h1>
-            <%= render 'shared/error_messages', object: form.object %>
-          <div class= "mb-3">
-            <div class= 'flex flex-row'>
-              <%= form.label :name, class:'ml-2'%>
-            </div>
-            <%= form.text_field :name, class: "w-full bg-card-body text-theme rounded-lg py-2 px-3" %>
-          </div>
-          <div class= "mb-3">
-            <div class= 'flex flex-row'>
-              <%= form.label :email, class:'ml-2'%>
-            </div>
-            <%= form.email_field :email, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
-          </div>
+    <div class= "mb-3">
+      <div class= 'flex flex-row'>
+        <%= f.label :password, class:'ml-2'%>
+      </div>
+      <%= f.password_field :password, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
+    </div>
 
-          <div class= "mb-3">
-            <div class= 'flex flex-row'>
-              <%= form.label :password, class:'ml-2'%>
-            </div>
-            <%= form.password_field :password, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
-          </div>
+    <div class= "mb-8">
+      <div class= 'flex flex-row'>
+        <%= f.label :password_confirmation, class:'ml-2'%>
+      </div>
+      <%= f.password_field :password_confirmation, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
+    </div>
 
-          <div class= "mb-8">
-            <div class= 'flex flex-row'>
-              <%= form.label :password_confirmation, class:'ml-2'%>
-            </div>
-            <%= form.password_field :password_confirmation, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
-          </div>
-
-          <div class="flex justify-center">
-            <%= form.submit '利用規約に同意して登録', class: "btn btn-secondary" %>
-          </div>
-      <% end %>
+    <div class="flex justify-center">
+      <%= f.submit '利用規約に同意して登録', class: "btn btn-secondary" %>
+    </div>
+  <% end %>
 </div>

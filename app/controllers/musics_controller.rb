@@ -3,7 +3,7 @@ class MusicsController < ApplicationController
 
   def index
     @q = Music.ransack(params[:q])
-    @q.sorts = ['updated_at desc'] unless params[:sorts].present?
+    @q.sorts = ['updated_at desc'] if params[:sorts].blank?
     @musics = @q.result(distinct: true).includes(:user, memories: :tags).page(params[:page])
   end
 
@@ -24,6 +24,14 @@ class MusicsController < ApplicationController
     render :new
   end
 
+  def show
+    @music = Music.find(params[:id])
+    @memory = Memory.new
+    @memories = @music.memories.includes(:tags).order(created_at: :desc)
+    @comment = Comment.new
+    @comments = @music.comments.includes(:user).order(created_at: :asc)
+  end
+
   # GET /musics/new
   def new
     @music = Music.new
@@ -39,14 +47,6 @@ class MusicsController < ApplicationController
       flash.now[:error] = 'MUの作成に失敗しました'
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @music = Music.find(params[:id])
-    @memory = Memory.new
-    @memories = @music.memories.includes(:tags).order(created_at: :desc)
-    @comment = Comment.new
-    @comments = @music.comments.includes(:user).order(created_at: :asc)
   end
 
   def destroy

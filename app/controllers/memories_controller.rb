@@ -1,4 +1,8 @@
 class MemoriesController < ApplicationController
+  def edit
+    @memory = Memory.find(params[:id])
+  end
+
   def create
     @memory = Memory.new(memory_params)
     if @memory.save
@@ -6,10 +10,6 @@ class MemoriesController < ApplicationController
     else
       flash.now[:error] = 'メモリーを追加できませんでした'
     end
-  end
-
-  def edit
-    @memory = Memory.find(params[:id])
   end
 
   def update
