@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex flex-col justify-center items-center">
   <%= form_with model: @user, local: true do |f| %>
-      <h1 class="mb-10 text-2xl">プロフィール編集</h1>
+      <h1 class="mb-10 text-2xl">マイページ編集</h1>
       <%= render 'shared/error_messages', object: f.object %>
     <div class= "mb-3">
       <%= f.label :name, class:'ml-2'%>
