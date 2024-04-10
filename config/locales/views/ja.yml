@@ -34,7 +34,10 @@ ja:
       title: MU作成
   memories:
     edit:
-      title: MU編集
+      title: メモリー編集
+  comments:
+    edit:
+      title: コメント編集
   password_resets:
     new:
       title: パスワードリセット申請
