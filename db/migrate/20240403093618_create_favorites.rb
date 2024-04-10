@@ -5,6 +5,6 @@ class CreateFavorites < ActiveRecord::Migration[7.1]
       t.references :music, foreign_key: true
       t.timestamps
     end
-    add_index :favorites, [:user_id, :music_id], unique: :true
+    add_index :favorites, %i[user_id music_id], unique: :true
   end
 end

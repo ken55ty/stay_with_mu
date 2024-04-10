@@ -14,7 +14,7 @@ tag_mappings = {
 }
 
 tag_mappings.each do |id, name|
-  Tag.find_or_create_by!(id: id, name: name)
+  Tag.find_or_create_by!(id:, name:)
 end
 
 LevelSetting.find_or_create_by!(level: 1, threshold: 0)
@@ -24,6 +24,6 @@ prev_threshold = 0
 (2..100).each do |level|
   # 次のレベルに必要なexpを1ずつ上げる
   threshold = prev_threshold + level + 3
-  LevelSetting.find_or_create_by!(level: level, threshold: threshold)
+  LevelSetting.find_or_create_by!(level:, threshold:)
   prev_threshold = threshold
 end
