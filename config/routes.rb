@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get :search
     end
     resources :memories, only: %i[create edit update destroy], shallow: true
-    resources :comments, only: %i[create update destroy], shallow: true
+    resources :comments, only: %i[create edit update destroy], shallow: true
   end
   resources :favorites, only: %i[create destroy]
   resources :password_resets, only: %i[new create edit update]
