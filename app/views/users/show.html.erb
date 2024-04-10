@@ -22,7 +22,7 @@
     </div>
     <div>
       <p class="text-secondary">◆自己紹介◆</p>
-      <%= @user.profile %>
+      <%= raw Rinku.auto_link(simple_format(@user.profile), :urls, 'target="_blank" rel="noopener noreferrer"') %>
       <% if logged_in? && current_user == @user %>
         <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-secondary float-right"%>
       <% end %>

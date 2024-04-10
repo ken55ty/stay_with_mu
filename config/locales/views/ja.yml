@@ -18,7 +18,7 @@ ja:
       title: ユーザー登録
       to_login_page: ログインページへ
     edit:
-      title: プロフィール編集
+      title: マイページ編集
   header:
     login: ログイン
     logout: ログアウト
