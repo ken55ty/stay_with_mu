@@ -6,6 +6,8 @@ class Memory < ApplicationRecord
   validates :body, presence: true, length: { maximum: 65_535 }
   validate :validate_tag_count
 
+  enum privacy: { public: 0, private: 1 }, _prefix: true
+
   after_commit :update_music_exp
 
   private
