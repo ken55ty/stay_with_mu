@@ -23,4 +23,23 @@ module MusicsHelper
       ''
     end
   end
+
+  def display_latest_memory(music)
+    latest_memory = music.memories.order(created_at: :desc).first
+    return unless latest_memory
+
+    content_tag(:div, class: 'justify-end') do
+      latest_memory.tags.each do |tag|
+        concat(content_tag(:div, tag.name, class: 'badge badge-primary mr-1'))
+      end
+
+      if latest_memory.privacy_private? && current_user != music.user
+        concat(content_tag(:p, "非公開のメモリー"))
+      elsif latest_memory.body.size >= 16
+        concat(content_tag(:p, "#{latest_memory.body.slice(0..16)}..."))
+      else
+        concat(content_tag(:p, latest_memory.body))
+      end
+    end
+  end
 end

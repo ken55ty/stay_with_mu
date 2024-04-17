@@ -5,7 +5,15 @@
         <div class="badge badge-primary"><%= tag.name %></div>
       <% end %>
 
-      <%=  raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <% if current_user == memory.music.user && memory.privacy_private? %>
+        <p class="text-error">※公開されていません</p>
+        <%= raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <% elsif memory.privacy_private? %>
+        <p>非公開のメモリー</p>
+      <% else %>
+        <%= raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <% end %>
+
       <div class="object-right-top">
         <% if logged_in? && current_user.own?(memory.music) %>
           <%= link_to "削除", memory_path(memory), data: { turbo_method: :delete, turbo_confirm: "本当にこのメモリーを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>

@@ -9,6 +9,12 @@
       </div>
     <% end %>
     <%= f.text_area :body, class: "w-full h-24 my-2 text-base p-1 rounded-lg" %>
+    <div class="mb-3">
+      <%= f.radio_button :privacy, :public, class: "radio radio-primary" %>
+      <%= f.label :privacy_public, '公開' %>
+      <%= f.radio_button :privacy, :private, class: "radio radio-primary ml-5" %>
+      <%= f.label :privacy_private, '非公開' %>
+    </div>
     <%= f.submit "追加する", class: "btn btn-primary" %>
   <% end %>
 </div>

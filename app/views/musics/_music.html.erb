@@ -28,20 +28,7 @@
         <% end %>
 
       <div class="justify-end">
-        <% latest_memory = music.memories.order(created_at: :desc).first %>
-        <% if latest_memory %>
-          <% latest_memory.tags.each do |tag| %>
-            <div class="badge badge-primary">
-              <%= tag.name %>
-            </div>
-          <% end %>
-
-          <% if latest_memory.body.size >= 16 %>
-            <p><%= latest_memory.body.slice(0..16) %>...</p>
-          <% else %>
-            <p><%= latest_memory.body %></p>
-          <% end %>
-        <% end %>
+        <%= display_latest_memory(music) %>
       </div>
     </div>
   </div>
