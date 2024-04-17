@@ -5,7 +5,10 @@
         <div class="badge badge-primary"><%= tag.name %></div>
       <% end %>
 
-      <% if current_user != memory.music.user && memory.privacy_private? %>
+      <% if current_user == memory.music.user && memory.privacy_private? %>
+        <p class="text-error">※公開されていません</p>
+        <%= raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <% elsif memory.privacy_private? %>
         <p>非公開のメモリー</p>
       <% else %>
         <%= raw Rinku.auto_link(simple_format(memory.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
