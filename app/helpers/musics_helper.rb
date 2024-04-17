@@ -33,7 +33,9 @@ module MusicsHelper
         concat(content_tag(:div, tag.name, class: 'badge badge-primary mr-1'))
       end
 
-      if latest_memory.body.size >= 16
+      if latest_memory.privacy_private? && current_user != music.user
+        concat(content_tag(:p, "非公開のメモリー"))
+      elsif latest_memory.body.size >= 16
         concat(content_tag(:p, "#{latest_memory.body.slice(0..16)}..."))
       else
         concat(content_tag(:p, latest_memory.body))
