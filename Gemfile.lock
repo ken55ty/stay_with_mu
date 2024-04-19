@@ -108,6 +108,9 @@ GEM
     config (5.4.0)
       deep_merge (~> 1.2, >= 1.2.1)
     connection_pool (2.4.1)
+    counter_culture (3.5.3)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
     crass (1.0.6)
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
@@ -416,6 +419,7 @@ DEPENDENCIES
   capybara
   carrierwave
   config
+  counter_culture
   cssbundling-rails
   debug
   dotenv-rails
