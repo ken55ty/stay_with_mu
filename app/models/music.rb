@@ -25,6 +25,6 @@ class Music < ApplicationRecord
   end
 
   def self.ransortable_attributes(_auth_object = nil)
-    %w[level updated_at memories_count favorites_count]
+    %w[level updated_at memories_count favorites_count comments_count]
   end
 end
