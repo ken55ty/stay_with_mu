@@ -56,6 +56,8 @@ gem 'mini_magick'
 
 gem 'fog-aws'
 
+gem 'counter_culture'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
