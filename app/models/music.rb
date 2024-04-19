@@ -9,20 +9,6 @@ class Music < ApplicationRecord
 
   after_update :update_level
 
-  ransacker :memories_count do
-    query = <<-SQL
-    (SELECT
-       COUNT(memories.music_id)
-     FROM
-       memories
-     WHERE
-       memories.music_id = music.id
-     GROUP BY
-       memories.music_id)
-    SQL
-    Arel.sql(query)
-  end
-
   private
 
   def update_level
@@ -35,10 +21,10 @@ class Music < ApplicationRecord
   end
 
   def self.ransackable_associations(_auth_object = nil)
-    %w[memories comments tags users]
+    %w[memories comments tags users favorites]
   end
 
   def self.ransortable_attributes(_auth_object = nil)
-    %w[level updated_at memories_count]
+    %w[level updated_at memories_count favorites_count]
   end
 end

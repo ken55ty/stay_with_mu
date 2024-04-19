@@ -9,7 +9,7 @@
   </div>
   <div>
     <%= search_form_for @q, html: { data: { turbo_frame: "musics-list" } } do |f| %>
-      <%= f.select(:sorts, {'レベル高い順': 'level desc', '更新新しい順': 'updated_at desc', '更新古い順': 'updated_at asc'}, { include_blank: '選択してください' }, class: "w-300 py-1 px-3 mr-1 rounded-lg") %>
+      <%= f.select(:sorts, {'レベル高い順': 'level desc', 'いいね多い順': 'favorites_count desc', '更新新しい順': 'updated_at desc', '更新古い順': 'updated_at asc'}, { include_blank: '選択してください' }, class: "w-300 py-1 px-3 mr-1 rounded-lg") %>
       <%= f.submit "並び替え", class: "btn btn-sm btn-primary my-2" %>
     <% end %>
   </div>

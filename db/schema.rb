@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_17_055309) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_19_084815) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_055309) do
     t.datetime "updated_at", null: false
     t.integer "experience_point", default: 0
     t.integer "level", default: 1
+    t.integer "favorites_count", default: 0, null: false
     t.index ["user_id"], name: "index_musics_on_user_id"
   end
 
