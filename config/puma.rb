@@ -36,4 +36,4 @@ plugin :tmp_restart
 
 preload_app!
 
-workers ENV.fetch('WEB_CONCURRENCY') { 4 }
+workers ENV.fetch('WEB_CONCURRENCY') { 3 }
