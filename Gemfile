@@ -58,6 +58,8 @@ gem 'fog-aws'
 
 gem 'counter_culture'
 
+gem 'puma_worker_killer'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
