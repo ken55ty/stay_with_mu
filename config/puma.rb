@@ -36,7 +36,7 @@ plugin :tmp_restart
 
 preload_app!
 
-workers ENV.fetch('WEB_CONCURRENCY') { 3 }
+workers ENV.fetch('WEB_CONCURRENCY') { 4 }
 
 before_fork do
   PumaWorkerKiller.config do |config|
