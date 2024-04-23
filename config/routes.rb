@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :memories, only: %i[create edit update destroy], shallow: true
     resources :comments, only: %i[create edit update destroy], shallow: true
   end
+  resources :notifications, only: %i[update] do
+    collection do
+      delete :mark_all_as_read
+    end
+  end
   resources :favorites, only: %i[create destroy]
   resources :password_resets, only: %i[new create edit update]
   get 'login', to: 'user_sessions#new', as: :login
