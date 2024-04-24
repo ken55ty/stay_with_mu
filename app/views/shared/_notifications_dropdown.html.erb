@@ -1,0 +1,16 @@
+<ul class="dropdown-menu dropdown-menu-lg-end">
+  <%= turbo_frame_tag 'notifications' do %>
+    <% if @notifications.present? %>
+      <%= link_to '全てを既読する', mark_all_as_read_notifications_path,
+        class: 'btn btn-outline btn-sm mx-auto',
+        method: :delete,
+        remote: true,
+        data: {turbo_method: :delete } %>
+      <% @notifications.each do |notification| %>
+        <%= render 'notifications/notification', { notification: notification } %>
+      <% end %>
+    <% else %>
+      <div class="ml-3">未読のお知らせはありません。</div>
+    <% end %>
+  <% end %>
+</ul>

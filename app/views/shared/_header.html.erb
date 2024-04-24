@@ -7,6 +7,18 @@
   <nav class="mr-2 flex">
     <%= link_to "みんなのMU", musics_path, class: "btn btn-sm btn-primary btn-outline mr-2 sm:btn-md"%>
     <%= link_to "MUをつくる", new_music_path, class: "btn btn-sm btn-secondary btn-outline mr-1 sm:btn-md"%>
+    <div class="dropdown dropdown-end">
+      <div tabindex="0" class="m-1 btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+        </svg>
+          <%= render 'notifications/notification_count' %>
+      </div>
+
+      <div class="dropdown-content z-[1] p-2 bg-neutral rounded-box w-[22rem]">
+        <%= render 'shared/notifications_dropdown' %>
+      </div>
+    </div>
     <%= link_to user_path(current_user), class:"mr-1" do %>
       <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
     <% end %>
