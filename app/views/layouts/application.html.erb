@@ -32,6 +32,9 @@
     <div class="container mx-auto px-4 py-5">
       <%= yield %>
     </div>
-    <%= render 'shared/footer'%>
+    <%= render 'shared/pc_footer'%>
+    <% if logged_in? %>
+      <%= render 'shared/phone_footer' %>
+    <% end %>
   </body>
 </html>
