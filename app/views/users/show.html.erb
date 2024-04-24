@@ -24,7 +24,12 @@
       <p class="text-secondary">◆自己紹介◆</p>
       <%= raw Rinku.auto_link(simple_format(@user.profile), :urls, 'target="_blank" rel="noopener noreferrer"') %>
       <% if logged_in? && current_user == @user %>
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-secondary float-right"%>
+        <div class="flex justify-end">
+          <div class="flex flex-col">
+            <%= link_to "編集", edit_user_path(@user), class: "btn btn-sm btn-secondary"%>
+            <%= link_to "ログアウト", logout_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "btn btn-error btn-sm mt-2" %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

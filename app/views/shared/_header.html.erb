@@ -5,28 +5,47 @@
     <% end %>
   </div>
   <nav class="mr-2 flex">
-    <%= link_to "みんなのMU", musics_path, class: "btn btn-sm btn-primary btn-outline mr-2 sm:btn-md"%>
-    <%= link_to "MUをつくる", new_music_path, class: "btn btn-sm btn-secondary btn-outline mr-1 sm:btn-md"%>
+    <div class="hidden sm:flex">
+      <%= link_to "みんなのMU", musics_path, class: "btn btn-primary btn-outline mr-2 "%>
+      <%= link_to "MUをつくる", new_music_path, class: "btn btn-secondary btn-outline mr-2"%>
+      <%= link_to user_path(current_user), class: "flex flex-col btn btn-outline" do %>
+        <% if current_user.avatar? %>
+          <div class="avatar">
+            <div class="rounded-full">
+              <%= image_tag current_user.avatar.url(:avatar) %>
+            </div>
+          </div>
+          <% else %>
+            <%= image_tag "default_avatar.png", size: "40x40" %>
+          <% end %>
+        <p class="text-xs">マイページ</p>
+      <% end %>
+    </div>
+
+    <div class="sm:hidden dropdown dropdown-end">
+      <div tabindex="0" role="button" class="m-1 btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content z-[1] bg-neutral p-2 shadow bg-base-100 rounded-box w-52">
+        <%= link_to "利用規約", terms_path, class: "btn btn-link btn-sm" %>
+        <%= link_to "プライバシーポリシー", privacy_policy_path, class: "btn btn-link btn-sm" %>
+        <%= link_to "お問い合わせ", "https://forms.gle/ngwcLGRTNanH5ahc7", target: "_blank", class: "btn btn-link btn-sm" %>
+      </ul>
+    </div>
+
     <div class="dropdown dropdown-end">
-      <div tabindex="0" class="m-1 btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+      <div tabindex="0" class="m-1 btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
           <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
         </svg>
           <%= render 'notifications/notification_count' %>
       </div>
-
       <div class="dropdown-content z-[1] p-2 bg-neutral rounded-box w-[22rem]">
         <%= render 'shared/notifications_dropdown' %>
       </div>
     </div>
-    <%= link_to user_path(current_user), class:"mr-1" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-    <% end %>
-    <%= link_to logout_path, data: { turbo_method: :delete, turbo_confirm: "ログアウトしますか？" }, class: "text-rose-600 pt-1" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-      </svg>
-    <% end %>
   </nav>
 </header>
