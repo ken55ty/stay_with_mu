@@ -15,11 +15,11 @@
   </div>
 </div>
 <%= turbo_frame_tag "musics-list", autoscroll: true, data: { autoscroll_block: "start" }  do %>
-  <div class="flex flex-wrap justify-center">
+  <div class="flex flex-wrap justify-center mb-4">
     <%= render @musics %>
   </div>
 
-  <div class="flex justify-center">
+  <div class="flex justify-center mb-8">
     <%= paginate @musics %>
   </div>
 <% end %>

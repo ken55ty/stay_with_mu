@@ -42,10 +42,10 @@
       <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="つくったMU" checked/>
       <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
         <%= turbo_frame_tag "musics-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
-          <div class="flex flex-wrap justify-center">
+          <div class="flex flex-wrap justify-center mb-4">
             <%= render @musics %>
           </div>
-          <div class="flex justify-center">
+          <div class="flex justify-center mb-8">
             <%= paginate @musics %>
           </div>
         <% end %>
@@ -54,11 +54,11 @@
       <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="いいねしたMU" />
       <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
         <%= turbo_frame_tag "favorite-musics-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
-          <div class="flex flex-wrap justify-center">
+          <div class="flex flex-wrap justify-center mb-4">
             <%= render @favorite_musics %>
           </div>
 
-          <div class="flex justify-center">
+          <div class="flex justify-center mb-8">
             <%= paginate @favorite_musics %>
           </div>
         <% end %>
