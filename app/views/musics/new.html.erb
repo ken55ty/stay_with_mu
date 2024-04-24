@@ -1,7 +1,7 @@
 <% content_for(:title, t('.title')) %>
 <div>
   <h1 class="text-center py-4 text-2xl">MU作成</h1>
-  <div class="flex flex-col mx-auto">
+  <div class="flex flex-col mx-auto mb-4">
     <%= render 'search_form' %>
     <% if @musics.present? %>
       <%= render 'search_result', musics: @musics %>
