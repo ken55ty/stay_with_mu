@@ -2,7 +2,7 @@
   <%= form_with model: comment, url: [music, comment], data: { turbo_method: :post } do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div>
-      <%= f.text_area :body, class: "w-[24rem] bg-base-300 textarea textarea-bordered h-24 my-2 p-1 rounded-lg" %>
+      <%= f.text_area :body, class: "w-[18rem] sm:w-[32rem] bg-base-300 textarea textarea-bordered h-24 my-2 p-1 rounded-lg" %>
     </div>
     <%= f.submit "追加する", class: "btn btn-primary" %>
   <% end %>

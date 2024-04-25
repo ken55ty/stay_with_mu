@@ -1,6 +1,6 @@
 <% content_for(:title, t('.title')) %>
 <div class="flex justify-center items-center mb-8">
-  <div class="mt-7 p-7 bg-neutral rounded-xl max-w-lg">
+  <div class="mt-7 p-5 bg-neutral rounded-xl max-w-lg">
     <%= form_with model: @user, local: true do |f| %>
       <h1 class="mb-10 text-center text-2xl font-bold">ユーザー登録</h1>
       <%= render 'shared/error_messages', object: f.object %>
@@ -8,22 +8,22 @@
         <div class= 'flex flex-row'>
           <%= f.label :name, class:'ml-2'%>
         </div>
-        <%= f.text_field :name, class: "input input-bordered bg-base-300 w-[24rem] max-w-xs" %>
+        <%= f.text_field :name, class: "input input-bordered bg-base-300 w-[18rem] max-w-xs" %>
         <div>
           <%= f.label :email, class:'ml-2'%>
         </div>
-          <%= f.email_field :email, class: 'input input-bordered bg-base-300 w-[24rem] max-w-xs'  %>
+          <%= f.email_field :email, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs'  %>
         </div>
       <div class= "mb-6">
         <div>
-          <%= f.label :password_confirmation, class:'ml-2'%>
-        </div>
-        <%= f.password_field :password_confirmation, class: 'w-full input input-bordered bg-base-300 w-[24rem] max-w-xs'  %>
-        <div>
           <%= f.label :password, class:'ml-2'%>
         </div>
-          <%= f.password_field :password, class: 'w-full input input-bordered bg-base-300 w-[24rem] max-w-xs'  %>
-      </div>
+          <%= f.password_field :password, class: 'w-full input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
+        <div>
+          <%= f.label :password_confirmation, class:'ml-2'%>
+        </div>
+          <%= f.password_field :password_confirmation, class: 'w-full input input-bordered bg-base-300 w-[18rem] max-w-xs'  %>
+        </div>
       <div class="flex justify-center">
         <%= f.submit '利用規約に同意して登録', class: "btn btn-secondary" %>
       </div>
