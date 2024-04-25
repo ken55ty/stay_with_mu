@@ -1,9 +1,8 @@
 <div class="mx-auto">
-  <h3>曲名orアーティスト名で検索</h3>
   <div>
   <%= form_with url: search_musics_path, method: :get, local: true do |f| %>
-    <%= f.text_field :search, class: "p-1 mr-1 rounded-lg" %>
-    <%= f.submit '曲名検索', name: nil, class: "btn btn-sm btn-primary" %>
+    <%= f.text_field :search, class: "input input-bordered bg-base-300 w-[24rem] max-w-xs", placeholder: "曲名orアーティストで検索" %>
+    <%= f.submit '曲名検索', name: nil, class: "btn btn-sm btn-primary ml-2" %>
   <% end %>
   </div>
 </div>
