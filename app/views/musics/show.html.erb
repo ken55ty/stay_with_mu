@@ -43,7 +43,7 @@
   <div class="bg-base-300">
     <div role="tablist" class="tabs tabs-bordered tabs-lg">
 <!-- メモリー　-->
-      <input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="メモリー　　　　　　　　" checked/>
+      <input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="メモリー　　　　" checked/>
       <div role="tabpanel" class="tab-content bg-base-100 h-auto p-6">
         <% if logged_in? && current_user.own?(@music) %>
           <details class="dropdown">
@@ -59,7 +59,7 @@
       </div>
 
 <!-- コメント -->
-      <input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="コメント　　　　　　　　" />
+      <input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="コメント　　　　" />
       <div role="tabpanel" class="tab-content bg-base-100 border-base-300 p-6">
         <% if logged_in? %>
           <details class="dropdown">
