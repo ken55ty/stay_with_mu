@@ -1,27 +1,29 @@
 <% content_for(:title, t('.title')) %>
-<div class="flex justify-center items-center h-screen">
-  <%= form_with model: @user, local: true do |f| %>
-    <h1 class="mb-10 text-2xl">ログイン</h1>
-    <div class= "mb-3">
-      <div class= 'flex flex-row'>
-        <%= f.label :email, class:'ml-2'%>
+<div class="flex justify-center items-center">
+  <div class="p-5 bg-neutral rounded-xl max-w-lg">
+    <%= form_with model: @user, local: true do |f| %>
+      <h1 class="mb-10 text-center text-2xl font-bold">ログイン</h1>
+      <div class= "mb-3">
+        <div>
+          <%= f.label :email, class:'ml-2'%>
+        </div>
+          <%= f.email_field :email, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs'  %>
+        </div>
+      <div class= "mb-6">
+        <div>
+          <%= f.label :password, class:'ml-2'%>
+        </div>
+          <%= f.password_field :password, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs'  %>
       </div>
-        <%= f.email_field :email, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
-    </div>
-    <div class= "mb-6">
-      <div class= 'flex flex-row'>
-        <%= f.label :password, class:'ml-2'%>
+      <div class="flex justify-center flex-col">
+        <label class="cursor-pointer label">
+          <span class="label-text">次回から自動ログイン</span>
+          <%= check_box_tag :remember_me, params[:remember_me], true, class: "toggle toggle-primary" %>
+        </label>
+          <%= f.submit 'ログイン', class: "btn btn-secondary mb-2" %>
+          <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path, class: "link link-primary" %>
+          <%= link_to "ユーザー登録", new_user_path, class: "btn btn-accent mt-4" %>
       </div>
-        <%= f.password_field :password, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
-    </div>
-    <div class="flex justify-center flex-col">
-      <label class="cursor-pointer label">
-        <span class="label-text">次回から自動ログイン</span>
-        <%= check_box_tag :remember_me, params[:remember_me], true, class: "toggle toggle-primary" %>
-      </label>
-      <%= f.submit 'ログイン', class: "btn btn-secondary mb-2" %>
-      <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path, class: "link link-primary" %>
-      <%= link_to "ユーザー登録", new_user_path, class: "btn btn-accent mt-4" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

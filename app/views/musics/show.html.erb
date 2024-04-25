@@ -41,10 +41,10 @@
 
 <div class="container mx-auto mt-10">
   <div class="bg-base-300">
-    <div role="tablist" class="tabs tabs-lifted">
+    <div role="tablist" class="tabs tabs-bordered ">
 <!-- メモリー　-->
-      <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="メモリー" checked/>
-      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box h-auto p-6">
+      <input type="radio" name="my_tabs_2" role="tab" class="tab whitespace-nowrap btn mr-1" aria-label="メモリー" checked/>
+      <div role="tabpanel" class="tab-content bg-base-100 h-auto p-6">
         <% if logged_in? && current_user.own?(@music) %>
           <details class="dropdown">
             <summary class="btn btn-outline">メモリーを追加する</summary>
@@ -53,25 +53,25 @@
             </div>
           </details>
         <% end %>
-        <div id="memories-list">
+        <div id="memories-list" class="min-w-[20rem]">
           <%= render @memories %>
         </div>
       </div>
 
 <!-- コメント -->
-      <input type="radio" name="my_tabs_2" role="tab" class="tab" aria-label="コメント" />
-      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+      <input type="radio" name="my_tabs_2" role="tab" class="tab whitespace-nowrap btn" aria-label="コメント" />
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 p-6">
         <% if logged_in? %>
           <details class="dropdown">
             <summary class="btn btn-outline btn-success">コメントを追加する</summary>
-            <div class="p-2 w-auto" >
+            <div class="p-2" >
               <%= render 'comments/form', { music: @music, comment: @comment } %>
             </div>
           </details>
         <% else %>
           <div class="btn btn-sm btn-warning">コメントにはログインが必要です！</div>
         <% end %>
-        <div id="comments-list">
+        <div id="comments-list" class="min-w-[20rem]">
           <%= render @comments %>
         </div>
       </div>
