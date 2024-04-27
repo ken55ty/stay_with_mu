@@ -106,6 +106,13 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.active_job.queue_adapter = :sidekiq
+  # この設定により、ActiveJobがジョブをキューに入れる際にSidekiqを使用するようになる
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  # RailsのキャッシュストアとしてRedisを使用する設定を追加
+  # RedisサーバーのURLを環境変数から取得
+
   config.hosts << 'stay-with-mu.onrender.com'
   config.hosts << 'www.stay-with-mu.com'
 end

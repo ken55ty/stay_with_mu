@@ -60,6 +60,8 @@ gem 'counter_culture'
 
 gem 'puma_worker_killer'
 
+gem 'sidekiq'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
