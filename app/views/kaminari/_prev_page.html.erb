@@ -6,6 +6,4 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="prev btn  btn-sm btn-outline">
-  <%= link_to_unless current_page.first?, "＜", url, rel: 'prev', remote: remote %>
-</span>
+<%= link_to_unless current_page.first?, "＜", url, rel: 'prev', remote: remote, class: "prev btn btn-sm btn-outline" %>

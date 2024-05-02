@@ -4,10 +4,10 @@
   <%= form_with model: @memory, local: true do |f| %>
     <%#= render 'shared/error_messages', object: f.object %><!-- エラーが出るためコメントアウト　-->
     <% Tag.all.each do |tag| %>
-      <div class="btn btn-sm btn-outline btn-primary">
+      <label class="btn btn-sm btn-outline btn-primary">
         <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
         <%= tag.name %>
-      </div>
+      </label>
     <% end %>
     <%= f.text_area :body, class: "w-full h-auto my-2 text-base p-1 rounded-lg"%>
     <div class="mb-3">

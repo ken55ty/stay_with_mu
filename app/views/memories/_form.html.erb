@@ -3,10 +3,10 @@
     <%= render 'shared/error_messages', object: f.object %>
     <p>タグは3つまで選べます。</p>
     <% Tag.all.each do |tag| %>
-      <div class="btn btn-sm btn-outline btn-primary">
+      <label class="btn btn-sm btn-outline btn-primary">
         <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
         <%= tag.name %>
-      </div>
+      </label>
     <% end %>
     <%= f.text_area :body, class: "w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
     <div class="mb-3">
