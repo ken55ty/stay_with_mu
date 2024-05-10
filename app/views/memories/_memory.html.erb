@@ -1,6 +1,9 @@
 <div id="memory-<%= memory.id %>">
   <div class="bg-base-100 my-2">
     <div class="bg-base-300 border-bg-100 p-3 rounded-lg">
+      <% if memory.topic? %>
+        <p class="badge badge-warning">今日のお題</p>
+      <% end %>
       <% memory.tags.each do |tag| %>
         <div class="badge badge-primary"><%= tag.name %></div>
       <% end %>

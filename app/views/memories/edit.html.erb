@@ -3,13 +3,17 @@
   <h1 class="text-center py-4 text-2xl">メモリー編集</h1>
   <%= form_with model: @memory, local: true do |f| %>
     <%#= render 'shared/error_messages', object: f.object %><!-- エラーが出るためコメントアウト　-->
+    <div class="my-2" >
+    <label class="btn btn-sm btn-outline btn-warning my-2">
+      <%= f.check_box :topic %>今日のお題
+    </label>
     <% Tag.all.each do |tag| %>
       <div class="btn btn-sm btn-outline btn-primary">
         <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
         <%= tag.name %>
       </div>
     <% end %>
-    <%= f.text_area :body, class: "w-full h-auto my-2 text-base p-1 rounded-lg"%>
+    <%= f.text_area :body, class: "w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg"%>
     <div class="mb-3">
       <%= f.radio_button :privacy, :public, class: "radio radio-primary" %>
       <%= f.label :privacy_public, '公開' %>

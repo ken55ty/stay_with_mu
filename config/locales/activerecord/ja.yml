@@ -15,5 +15,6 @@ ja:
       memory:
         created_at: 作成日時
         body: メモリー
+        topic: 今日のお題
       comment:
         body: コメント
