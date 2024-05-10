@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_27_095547) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_10_083424) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_27_095547) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "privacy", default: 0, null: false
+    t.boolean "topic", default: false
     t.index ["music_id"], name: "index_memories_on_music_id"
   end
 
