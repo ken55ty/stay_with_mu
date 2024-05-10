@@ -79,4 +79,10 @@ Rails.application.configure do
   config.hosts << 'stay-with-mu.onrender.com'
   config.action_mailer.delivery_method = :letter_opener_web # 送信方法を指定
   config.action_mailer.perform_deliveries = true # メールを実際に送信するかどうかを指定
+
+  config.active_job.queue_adapter = :sidekiq
+  # この設定により、ActiveJobがジョブをキューに入れる際にSidekiqを使用するようになる
+  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  # RailsのキャッシュストアとしてRedisを使用する設定を追加
+  # RedisサーバーのURLを環境変数から取得
 end

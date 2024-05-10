@@ -1,0 +1,2 @@
+class RecommendedTopic < ApplicationRecord
+end
