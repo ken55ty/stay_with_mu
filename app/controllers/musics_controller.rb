@@ -1,5 +1,5 @@
 class MusicsController < ApplicationController
-  skip_before_action :require_login, only: %i[index show]
+  skip_before_action :require_login, only: %i[index show index_autocomplete]
 
   def index
     @q = Music.ransack(params[:q])
@@ -54,6 +54,11 @@ class MusicsController < ApplicationController
     music.destroy!
     flash[:success] = 'MUを削除しました'
     redirect_to musics_path, status: :see_other
+  end
+
+  def index_autocomplete
+    @musics = Music.where('title ILIKE ? OR artist ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").distinct.limit(10)
+    render partial: 'musics/autocompletes/index_autocomplete', locals: { musics: @musics, query: params[:q] }
   end
 
   private

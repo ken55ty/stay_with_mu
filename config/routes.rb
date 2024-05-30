@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :musics do
     collection do
       get :search
+      get :index_autocomplete
     end
     resources :memories, only: %i[create edit update destroy], shallow: true
     resources :comments, only: %i[create edit update destroy], shallow: true
