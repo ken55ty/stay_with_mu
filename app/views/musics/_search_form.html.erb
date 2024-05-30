@@ -1,8 +1,9 @@
 <div class="mx-auto">
-  <div>
-  <%= form_with url: search_musics_path, method: :get, local: true do |f| %>
-    <%= f.text_field :search, class: "input input-bordered input-sm sm:input-md bg-base-300 w-[16rem] sm:w-[32rem]", placeholder: "曲名orアーティストで検索" %>
-    <%= f.submit '検索', name: nil, class: "btn btn-sm btn-primary ml-2" %>
-  <% end %>
+  <div data-controller="autocomplete" data-autocomplete-url-value="/musics/search" role="combobox">
+    <%= form_with url: search_musics_path, method: :get, html: { data:  { turbo_frame: "search_results", turbo_action: :advance }  }  do |f| %>
+      <%= f.text_field :q, data: { autocomplete_target: "input" }, class: "input input-bordered input-sm sm:input-md bg-base-300 w-[16rem] sm:w-[32rem]", placeholder: "曲名orアーティストで検索" %>
+      <ul class="list-group bg-gray-200 rounded-md absolute w-full md:text-sm max-w-max z-50" data-autocomplete-target="results"></ul>
+      <%= f.submit '検索', name: nil, class: "btn btn-sm btn-primary ml-2" %>
+    <% end %>
   </div>
 </div>
