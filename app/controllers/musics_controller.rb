@@ -8,20 +8,23 @@ class MusicsController < ApplicationController
   end
 
   def search
-    if params[:search].present?
-      search_results = RSpotify::Track.search(params[:search])
+    if params[:q].present?
+      search_results = RSpotify::Track.search(params[:q])
       @musics = search_results.first(20).map do |track|
-        {
-          id: track.id,
+        Music.new(
+          spotify_track_id: track.id,
           title: track.name,
           artist: track.artists.first.name
-        }
+        )
       end
     else
       @musics = [] # 検索クエリがない場合は空の結果を返す
     end
 
-    render :new
+    respond_to do |format|
+      format.js { render partial: 'musics/autocompletes/new_autocomplete', locals: { musics: @musics } }
+      format.html { render :new }
+    end
   end
 
   def show
