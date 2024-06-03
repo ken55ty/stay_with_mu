@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   get 'login', to: 'user_sessions#new', as: :login
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy', as: :logout
+  post 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/callback', to: 'oauths#callback'
+  get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
 end
