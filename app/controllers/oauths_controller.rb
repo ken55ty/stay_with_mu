@@ -27,7 +27,7 @@ class OauthsController < ApplicationController
         # 新しいユーザーを作成
         @user = create_from(provider)
         notice_message = "#{provider.titleize}アカウントでログインしました！ユーザー名を設定してください！"
-        after_login_path = user_path(@user)
+        after_login_path = edit_user_path(@user)
       end
 
       reset_session
