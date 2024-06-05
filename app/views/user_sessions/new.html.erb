@@ -1,4 +1,4 @@
-<% content_for(:title, t('.title')) %>
+<% set_meta_tags title: t('.title') %>
 <div class="flex justify-center items-center">
   <%= form_with model: @user, local: true do |f| %>
     <div class="p-5 bg-neutral rounded-xl max-w-lg">
