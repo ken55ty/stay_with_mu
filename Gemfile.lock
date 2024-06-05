@@ -266,6 +266,7 @@ GEM
     parser (3.3.0.5)
       ast (~> 2.4.1)
       racc
+    particles-js-rails (2.0.0)
     pg (1.5.6)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -454,6 +455,7 @@ DEPENDENCIES
   letter_opener_web (~> 2.0)
   meta-tags
   mini_magick
+  particles-js-rails (= 2.0.0)
   pg (~> 1.1)
   pry-byebug
   puma (>= 5.0)
