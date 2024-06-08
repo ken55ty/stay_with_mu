@@ -1,4 +1,4 @@
-<% content_for(:title, t('.title')) %>
+<% set_meta_tags title: t('.title') %>
 <div class="flex justify-center items-center h-full">
   <%= form_with url: password_resets_path do |f| %>
     <h1 class="mb-10 text-2xl">パスワードリセット申請</h1>

@@ -1,4 +1,4 @@
-<% content_for(:title, t('.title')) %>
+<% set_meta_tags title: t('.title') %>
 <div class="flex justify-center items-center h-full">
   <%= form_with model: @user, url: password_reset_path(@token) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>

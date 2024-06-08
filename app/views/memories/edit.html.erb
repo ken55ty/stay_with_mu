@@ -1,4 +1,4 @@
-<% content_for(:title, t('.title')) %>
+<% set_meta_tags title: t('.title') %>
 <div class="h-screen">
   <h1 class="text-center py-4 text-2xl">メモリー編集</h1>
   <%= form_with model: @memory, local: true do |f| %>
