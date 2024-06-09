@@ -24,7 +24,7 @@
     <div data-controller="autocomplete" data-autocomplete-url-value="/musics/index_autocomplete" role="combobox">
       <%= search_form_for @q, html: { data: { turbo_frame: "musics-list", turbo_action: :advance} } do |f| %>
         <%= f.search_field :title_or_artist_cont, class: "input input-bordered input-sm sm:input-md bg-base-300 w-[12rem] sm:w-[24rem] max-w-xs", placeholder: "曲名orアーティスト", data: { autocomplete_target: "input" }  %>
-        <ul class="list-group bg-gray-200 rounded-md absolute w-full md:text-sm max-w-max" data-autocomplete-target="results"></ul>
+        <ul class="list-group bg-gray-200 rounded-md absolute w-full md:text-sm max-w-max z-10" data-autocomplete-target="results"></ul>
         <%= f.submit "検索", class: "btn btn-sm btn-primary my-2 ml-2" %>
       <% end %>
     </div>
