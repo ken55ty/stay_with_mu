@@ -6,9 +6,9 @@
     <div class= "mb-3">
       <div class= 'flex flex-col'>
         <%= f.label :password, class:'ml-2'%>
-        <%= f.password_field :password, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3 mb-5' %>
+        <%= f.password_field :password, required: true, placeholder: '8文字以上',class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs mb-3' %>
         <%= f.label :password_confirmation, class:'ml-2' %>
-        <%= f.password_field :password_confirmation, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3' %>
+        <%= f.password_field :password_confirmation, required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
       </div>
     </div>
       <%= f.submit 'リセット', class: "btn btn-secondary mb-4" %>

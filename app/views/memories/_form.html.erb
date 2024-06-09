@@ -11,7 +11,7 @@
         <%= tag.name %>
       </label>
     <% end %>
-    <%= f.text_area :body, class: "w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
+    <%= f.text_area :body, class: "auto-resize-textarea w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
     <div class="mb-3">
       <%= f.radio_button :privacy, :public, class: "radio radio-primary" %>
       <%= f.label :privacy_public, '公開' %>

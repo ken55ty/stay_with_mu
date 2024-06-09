@@ -6,7 +6,7 @@
       <div class= 'flex flex-row'>
         <%= f.label :email, class:'ml-2'%>
       </div>
-        <%= f.email_field :email, class: 'w-full bg-card-body text-theme rounded-lg py-2 px-3'  %>
+        <%= f.email_field :email, required: true, class: 'input input-bordered bg-base-300 w-[18rem]' %>
     </div>
       <%= f.submit '申請', class: "btn btn-secondary mb-4" %>
     </div>

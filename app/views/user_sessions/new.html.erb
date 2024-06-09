@@ -2,18 +2,18 @@
 <div class="flex justify-center items-center">
   <%= form_with model: @user, local: true do |f| %>
     <div class="p-5 bg-neutral rounded-xl max-w-lg">
-      <h1 class="mb-10 text-center text-2xl font-bold">ログイン</h1>
+      <h1 class="mb-10 mt-5 text-center text-2xl font-bold">ログイン</h1>
       <div class="mb-3">
         <div>
           <%= f.label :email, class:'ml-2' %>
         </div>
-        <%= f.email_field :email, required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
+        <%= f.email_field :email, required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs mb-2' %>
       </div>
       <div class="mb-6">
         <div>
           <%= f.label :password, class:'ml-2' %>
         </div>
-        <%= f.password_field :password, required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
+        <%= f.password_field :password, placeholder: '8文字以上', required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs mb-2' %>
       </div>
       <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path, class: "link link-primary" %>
       <div class="flex justify-center flex-col">
