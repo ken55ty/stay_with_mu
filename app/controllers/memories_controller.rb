@@ -1,6 +1,10 @@
 class MemoriesController < ApplicationController
   def edit
     @memory = Memory.find(params[:id])
+    unless current_user == @memory.music.user
+      flash[:error] = '編集権限がありません'
+      redirect_to root_path
+    end
   end
 
   def create
