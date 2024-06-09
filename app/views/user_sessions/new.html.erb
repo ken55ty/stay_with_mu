@@ -7,13 +7,13 @@
         <div>
           <%= f.label :email, class:'ml-2' %>
         </div>
-        <%= f.email_field :email, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
+        <%= f.email_field :email, required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
       </div>
       <div class="mb-6">
         <div>
           <%= f.label :password, class:'ml-2' %>
         </div>
-        <%= f.password_field :password, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
+        <%= f.password_field :password, required: true, class: 'input input-bordered bg-base-300 w-[18rem] max-w-xs' %>
       </div>
       <%= link_to 'パスワードをお忘れの方はこちら', new_password_reset_path, class: "link link-primary" %>
       <div class="flex justify-center flex-col">
