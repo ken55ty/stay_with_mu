@@ -36,6 +36,6 @@ class MemoriesController < ApplicationController
   private
 
   def memory_params
-    params.require(:memory).permit(:body, :privacy, :topic, tag_ids: []).merge(music_id: params[:music_id])
+    params.require(:memory).permit(:body, :privacy, :recommended_topic_id, tag_ids: []).merge(music_id: params[:music_id])
   end
 end
