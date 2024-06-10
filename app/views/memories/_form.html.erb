@@ -1,9 +1,11 @@
 <div id="memory-form">
   <%= form_with model: memory, url: [music, memory], data: { turbo_method: :post } do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <label class="btn btn-sm btn-outline btn-warning my-2">
-      <%= f.check_box :topic %>今日のお題
-    </label>
+      <p>今日のお題</p>
+      <label class="btn btn-outline btn-warning btn-sm my-2">
+        <%= f.check_box :recommended_topic_id, {}, RecommendedTopic.current.id %>
+        <%= RecommendedTopic.current.topic %>
+      </label>
     <p>タグは3つまで選べます。</p>
     <% Tag.all.each do |tag| %>
       <label class="btn btn-sm btn-outline btn-primary">

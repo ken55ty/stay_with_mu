@@ -28,7 +28,7 @@ module MusicsHelper
     latest_memory = music.memories.order(created_at: :desc).first
     return unless latest_memory
 
-    concat(content_tag(:div, "今日のお題", class: 'badge badge-warning')) if latest_memory.topic?
+    concat(content_tag(:div, latest_memory.recommended_topic.topic, class: 'badge badge-warning')) if latest_memory.recommended_topic
 
     content_tag(:div, class: 'justify-end') do
       latest_memory.tags.each do |tag|
