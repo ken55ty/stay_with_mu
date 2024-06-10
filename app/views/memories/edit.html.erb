@@ -3,10 +3,9 @@
   <h1 class="text-center py-4 text-2xl">メモリー編集</h1>
   <%= form_with model: @memory, local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
-    <div class="my-2" >
-    <label class="btn btn-sm btn-outline btn-warning my-2">
-      <%= f.check_box :topic %>今日のお題
-    </label>
+    <p class="mb-3">
+      <%= f.collection_select :recommended_topic_id, RecommendedTopic.all, :id, :topic, { include_blank: '' }, { class: "select select-warning select-sm w-full max-w-xs" } %>
+    </p>
     <% Tag.all.each do |tag| %>
       <label class="btn btn-sm btn-outline btn-primary">
         <%= f.check_box :tag_ids, { multiple: true }, tag.id, nil %>
@@ -21,5 +20,5 @@
       <%= f.label :privacy_private, '非公開' %>
     </div>
     <%= f.submit "編集完了", class: "btn btn-primary" %>
-<% end %>
+  <% end %>
 </div>
