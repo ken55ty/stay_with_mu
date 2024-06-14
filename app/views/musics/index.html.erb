@@ -41,7 +41,8 @@
     <%= render @musics %>
   </div>
 
-  <div class="flex justify-center mb-8">
+  <div data-controller="modal" class="flex justify-center mb-8">
     <%= paginate @musics %>
+    <%= render 'shared/modal'%>
   </div>
 <% end %>
