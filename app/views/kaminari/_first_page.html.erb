@@ -7,5 +7,5 @@
     remote:        data-remote
 -%>
 
-<%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote, class: "first btn btn-sm btn-outline" %>
+<%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote, data: { action: "click->modal#checkClick" }, class: "first btn btn-sm btn-outline" %>
 

@@ -28,7 +28,9 @@
         <% end %>
 
       <div class="justify-end">
-        <%= display_latest_memory(music) %>
+        <%= link_to music_path(music), data: { turbo: false } do %>
+          <%= display_latest_memory(music) %>
+        <% end %>
       </div>
     </div>
   </div>

@@ -4,8 +4,11 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import ConfirmController from "./confirm_controller"
+application.register("confirm", ConfirmController)
+
+import ModalController from "./modal_controller"
+application.register("modal", ModalController)
 
 import { Autocomplete } from "stimulus-autocomplete"
 application.register("autocomplete", Autocomplete)
