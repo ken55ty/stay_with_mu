@@ -4,12 +4,49 @@
       <%= image_tag "Logo.png", size: "100x100"%>
     <% end %>
   </div>
+
   <nav class="mr-2 flex items-center">
-    <div class="sm:hidden dropdown dropdown">
-      <div tabindex="0" role="button" class="mr-3">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-          <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+    <%= link_to "みんなのMU", musics_path, class: "btn btn-sm btn-primary btn-outline mr-2 sm:btn-md"%>
+    <%= link_to "ログイン", login_path, class: "btn btn-sm btn-secondary btn-outline mr-2 sm:btn-md"%>
+
+    <button class="sm:hidden btn btn-ghost" onclick="my_modal_3.showModal()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-lightbulb" viewBox="0 0 16 16">
+      <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+    </svg>
+    </button>
+    <dialog id="my_modal_3" class="modal">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <div class="py-6 space-y-2">
+          <p class="text-2xl font-bold">iPhoneをお使いの方におすすめの設定</p>
+          <div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
+            <div class="carousel-item flex flex-col">
+              <p>safariで開くのがおすすめです。</p>
+              <%= image_tag 'safari.png', size: "234x108"%>
+            </div>
+            <div class="carousel-item flex flex-col">
+              <p class="mb-1">共有ボタンを押して</p>
+              <%= image_tag 'button.png', size: "234x108"%>
+            </div>
+            <div class="carousel-item flex flex-col">
+              <p class="mb-1">ホーム画面に追加</p>
+              <%= image_tag 'addhome.png', size: "234x108"%>
+            </div>
+            <div class="carousel-item flex flex-col">
+              <p class="mb-1">アプリ風になります！<br>ぜひ毎日開いてください！</p>
+              <%= image_tag 'home_icon.png', size: "234x108"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="sm:hidden dropdown dropdown-end">
+      <div tabindex="0" role="button" class="btn btn-ghost">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
       </div>
       <ul tabindex="0" class="dropdown-content z-[1] bg-neutral p-2 shadow bg-base-100 rounded-box w-52">
@@ -19,7 +56,5 @@
         <p>© 2024 - STAY with MU</p>
       </ul>
     </div>
-    <%= link_to "みんなのMU", musics_path, class: "btn btn-sm btn-primary btn-outline mr-2 sm:btn-md"%>
-    <%= link_to "ログイン", login_path, class: "btn btn-sm btn-secondary btn-outline mr-2 sm:btn-md"%>
   </nav>
 </header>
