@@ -22,21 +22,24 @@
   </head>
 
   <body data-controller="modal">
-    <%= render 'shared/modal'%>
-    <% if logged_in? %>
-      <%= render 'shared/header' %>
-    <% else %>
-      <%= render 'shared/before_login_header' %>
-    <% end %>
-    <div id="flash_messages">
-      <%= render 'shared/flash_messages'%>
+    <div data-controller="particles">
+      <div id="particles-js"></div>
+      <%= render 'shared/modal'%>
+      <% if logged_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
+      <div id="flash_messages">
+        <%= render 'shared/flash_messages'%>
+      </div>
+      <div class="container mx-auto px-4 pb-20 sm:pb-0 min-h-screen">
+        <%= yield %>
+      </div>
+      <%= render 'shared/pc_footer'%>
+      <% if logged_in? %>
+        <%= render 'shared/phone_footer' %>
+      <% end %>
     </div>
-    <div class="container mx-auto px-4 pb-20 sm:pb-0 min-h-screen">
-      <%= yield %>
-    </div>
-    <%= render 'shared/pc_footer'%>
-    <% if logged_in? %>
-      <%= render 'shared/phone_footer' %>
-    <% end %>
   </body>
 </html>
