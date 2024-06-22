@@ -1,123 +1,72 @@
 <div class="container mx-auto mb-8">
-  <div id="particles-js"></div>
-  <div id="wrapper">
-    <div class="hero-content text-center flex flex-col space-y-10">
-    <!--/wrapper-->
-      <div class="max-w-md space-y-2">
-      <h1 class="animate-focus-in-expand text-5xl font-bold">STAY with MU</h1>
-        <%= image_tag "logo_col.png"%>
+  <div class="hero-content text-center flex flex-col space-y-10">
+    <div class="max-w-lg mb-20">
+      <h1 class="animate-focus-in-expand sm:text-6xl text-5xl ">STAY with MU</h1>
+      <%= image_tag "main_logo.png", size: "450" %>
+      <p class="my-4 text-3xl">曲を育てる、思い出記録サービス</p>
+    </div>
 
-      <p class="py-6">自分の好きな曲に対する思いを記録することで曲を「育てていく」サービスです。<br>
-好きな曲に対する思いを追加していくことで、<br>
-曲のレベルが上がり、音楽愛を数値化することができます。「この曲への愛は誰にも負けない！」という動機を提供することで、音楽愛を記録することを促進します。</p>
+    <div class="max-w-lg mb-20">
+      <h2 class="text-xl sm:text-2xl">STAY with MU（ステイウィズミュー）は好きな音楽を「MU（ミュー）」として保存し、思い出や感想を「メモリー」として記録することで「曲を育てていく」サービスです。</h2>
+    </div>
+
+    <h2 class="text-3xl font-bold">使い方</h2>
+    <p class="text-xl">使い方はとってもシンプル！好きな曲を検索してMUを作り、メモリーを追加するだけ！</p>
+
+    <div class="flex flex-wrap">
+      <div class="lg:w-1/2">
+        <p>①好きな曲を検索してMUをつくる！</p>
+        <%= image_tag 'MU_create.webp', size: "500" %>
+      </div>
+      <div class="lg:w-1/2">
+        <p>②好きなタグをつけてメモリーを追加！</p>
+        <p>書いたメモリーの文字数に応じてMUのレベルが上がります！</p>
+        <%= image_tag 'Memory_create.webp', size: "500" %>
+      </div>
+    </div>
+
+    <div class="mx-auto">
+      <h2 class="text-3xl">おすすめの使い方</h2>
+      <p>一つのMUに対して何個でもメモリーを追加できるのが特徴です！</p>
+      <p>思いついたタイミングで好きなタグをつけて思いを積み重ねていきましょう！</p>
+    </div>
+
+    <div class="carousel carousel-end p-4 space-x-6 rounded-box max-w-[22rem] sm:max-w-2xl">
+      <div class="carousel-item flex flex-col w-4/5">
+        <p class="text-xl sm:text-2xl">Scene① ライブの後に曲の感想を書き残す！</p>
+        <%= image_tag "listening_in_train.webp" %>
+        <p>忘れないうちに書き残そう！</p>
       </div>
 
-      <div class="">
-        <h1 class="text-4xl font-bold mb-3">使い方</h1>
-        <p class="font-bold">
-          MU（ミュー）をつくって、メモリー（思い出や推しポイント）を書いていくことでMUを育てましょう！
-        </p>
-        <div class="py-6 space-y-2">
-
-          <div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs mb-1">曲を検索する</p>
-              <%= image_tag 'howto_1.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs mb-1">MUにする曲を選んでください</p>
-              <%= image_tag 'howto_2.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs mb-1">MUがつくれました！</p>
-              <%= image_tag 'howto_3.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs mb-1">MUに関する思い出や推しポイントを<br>メモリーとして追加しましょう！</p>
-              <%= image_tag 'howto_4.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs mb-1">追加したメモリーのイメージ</p>
-              <%= image_tag 'howto_5.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs">書いたメモリーの文字数に応じて<br>MUのレベルが上がります！</p>
-              <p class="text-xs mb-1">※画面を更新すると反映します。</p>
-              <%= image_tag 'howto_6.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="text-xs">メモリーは何個でも追加できます！</p>
-              <p class="text-xs mb-1">思いついたタイミングで好きなタグ<br>をつけて追加しましょう！</p>
-              <%= image_tag 'howto_7.png', size: "234x108"%>
-            </div>
-          </div>
-        </div>
-
-        <div class="py-6 space-y-2">
-          <p class="text-2xl font-bold">その他画面の説明</p>
-          <div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">みんなのMU一覧</p>
-              <%= image_tag 'index.png', size: "234x108"%>
-              <p class="text-xs mt-1">検索と並び替えもできます。</p>
-              <p class="text-xs">デフォルトは更新順です。<br>メモリーやコメントを追加して<br>浮上させましょう！</p>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">MU詳細画面</p>
-              <%= image_tag 'show.png', size: "234x108"%>
-              <p class="text-xs mt-1">メモリーやコメントを見ることができます。</p>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">コメント追加</p>
-              <%= image_tag 'comment.png', size: "234x108"%>
-              <p class="text-xs mt-1">MUにコメントできます。</p>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">マイページ（ユーザー詳細）</p>
-              <%= image_tag 'mypage.png', size: "234x108"%>
-              <p class="text-xs mt-1">自己紹介・つくったMUの一覧・<br>いいねしたMUの一覧を見ることができます。</p>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">マイページ編集</p>
-              <%= image_tag 'mypage_edit.png', size: "234x108"%>
-              <p class="text-xs mt-1">自己紹介文・プロフィール画像を変更できます。</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="py-6 space-y-2">
-          <p class="text-2xl font-bold">iPhoneをお使いの方におすすめの設定</p>
-          <div class="carousel carousel-center max-w-md p-4 space-x-4 bg-neutral rounded-box">
-            <div class="carousel-item flex flex-col">
-              <p>safariで開くのがおすすめです。</p>
-              <%= image_tag 'safari.png', size: "234x108"%>
-              <p class="mb-1 text-xs"><br>下のボタンを押すとURLがコピーできるので<br>safariに貼り付けてください！</p>
-              <input id="copyTarget" type="stay-with-mu.com" value="stay-with-mu.com" readonly>
-              <button onclick="copyToClipboard()", class="btn btn-outline btn-sm">URLをコピーする！</button>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">共有ボタンを押して</p>
-              <%= image_tag 'button.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">ホーム画面に追加</p>
-              <%= image_tag 'addhome.png', size: "234x108"%>
-            </div>
-            <div class="carousel-item flex flex-col">
-              <p class="mb-1">アプリ風になります！<br>ぜひ毎日開いてください！</p>
-              <%= image_tag 'home_icon.png', size: "234x108"%>
-            </div>
-          </div>
-        </div>
-
-        <% if logged_in? %>
-          <%= link_to "MUをつくる！", new_music_path, class: "btn btn-primary m-2"%>
-          <%= link_to "みんなのMU", musics_path, class: "btn btn-secondary m-2"%>
-        <% else%>
-          <%= link_to "ログインして始める", login_path, class: "btn btn-primary m-2"%>
-          <%= link_to "ログインせずにみんなのMUを見てみる", musics_path, class: "btn btn-secondary m-2"%>
-        <% end %>
+      <div class="carousel-item flex flex-col w-4/5">
+        <p class="text-xl sm:text-2xl">Scene② 好きな曲の好きなところをただただ語る</p>
+        <%= image_tag "twitter_girl" %>
+        <p>SNS感覚で気軽につぶやいてみましょう！</p>
+        <p>超個人的な思い入れや細かい推しポイントなど、なんでもOKです！</p>
       </div>
+
+      <div class="carousel-item flex flex-col w-4/5">
+        <p class="text-xl sm:text-2xl">Scene③ お気に入りの曲の歌詞やMVを考察してみる</p>
+        <%= image_tag "thinking_boy.webp" %>
+        <p>じっくり歌詞の意味やMVについてを考えてみる時間を作るのも楽しいですよ！</p>
+        <p>楽曲への愛がより深まります！</p>
+      </div>
+
+      <div class="carousel-item flex flex-col w-4/5">
+        <p class="text-xl sm:text-2xl">DJ.Mya(ミャー）がおすすめしてくれる「今日のお題」に沿ったメモリーを書いてみる</p>
+        <%= image_tag "topic.jpg" %>
+        <p>何を書くか迷ったら毎日0時に更新される「今日のお題」に沿ったメモリーを書いてみましょう！</p>
+      </div>
+    </div>
+
+    <div>
+      <% if logged_in? %>
+        <%= link_to "MUをつくる！", new_music_path, class: "btn btn-primary m-2" %>
+        <%= link_to "みんなのMU", musics_path, class: "btn btn-secondary m-2" %>
+      <% else %>
+        <%= link_to "ログインして始める", login_path, class: "btn btn-primary m-2" %>
+        <%= link_to "ログインせずにみんなのMUを見てみる", musics_path, class: "btn btn-secondary m-2" %>
+      <% end %>
     </div>
   </div>
 </div>
