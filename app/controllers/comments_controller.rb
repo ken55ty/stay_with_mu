@@ -1,6 +1,10 @@
 class CommentsController < ApplicationController
   def edit
     @comment = Comment.find(params[:id])
+    unless current_user == @comment.user
+      flash[:error] = '編集権限がありません'
+      redirect_to root_path
+    end
   end
 
   def create
@@ -14,12 +18,12 @@ class CommentsController < ApplicationController
   end
 
   def update
-    comment = Comment.find(params[:id])
-    if comment.update(params.require(:comment).permit(:body))
+    @comment = Comment.find(params[:id])
+    if @comment.update(params.require(:comment).permit(:body))
       flash[:success] = 'コメントを更新しました'
       redirect_to music_path(comment.music)
     else
-      flash[:error] = 'コメントの更新に失敗しました'
+      flash.now[:error] = 'コメントの更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
