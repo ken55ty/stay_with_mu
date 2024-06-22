@@ -1,5 +1,5 @@
 # サービス名: [STAY with MU（ステイウィズミュー）](https://www.stay-with-mu.com/)
-![alt text](app/assets/images/large_logo.png)
+[![alt text](app/assets/images/large_logo.png)](https://www.stay-with-mu.com/)
 
 ## ■サービス概要
 
@@ -29,12 +29,12 @@
 |みんなのMU| MU作成 |
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/67a961de7e4e27f0e1992eb7672bb1f8.gif)](https://gyazo.com/67a961de7e4e27f0e1992eb7672bb1f8)|[![Image from Gyazo](https://i.gyazo.com/a5151d1d7e5aeb39f9aef2a1d254f406.gif)](https://gyazo.com/a5151d1d7e5aeb39f9aef2a1d254f406)|
-|MUの一覧を見られます。それぞれのMUには最新のメモリーの一部とタグが表示されます。検索機能ではオートコンプリートで曲名とアーティスト名の自動補完を行います。|MUの作成は検索結果から選択するのみでできます。オートコンプリートで|
+|MUの一覧を見られます。それぞれのMUには最新のメモリーの一部とタグが表示されます。検索機能ではオートコンプリートで曲名とアーティスト名を区別して自動補完を行います。|MUの作成は工程を最小化し、検索結果から選択するだけのシンプルなものにしました。|
 
 |MU詳細（メモリー追加）|MU詳細（コメント追加）|
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/896cab890b40528730920434d025d516.gif)](https://gyazo.com/896cab890b40528730920434d025d516)|[![Image from Gyazo](https://i.gyazo.com/6b804e87c8999a05ffc71bd919938dfb.gif)](https://gyazo.com/6b804e87c8999a05ffc71bd919938dfb)|
-|MU詳細画面ではメモリーの追加ができます。メモリーは非公開にできます。|他のユーザーのMUにコメントをすることができます。|
+|MU詳細画面ではメモリーの追加ができます。メモリーは非公開にできます。|他のユーザーのMUにコメントをすることができます。テキストエリアは改行すると自動で伸びるようにしています。|
 
 |マイページ（ユーザーページ）|ページネーション制限|
 |:-:|:-:|

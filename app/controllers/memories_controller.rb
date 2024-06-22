@@ -22,7 +22,7 @@ class MemoriesController < ApplicationController
       flash[:success] = 'メモリーを更新しました'
       redirect_to music_path(@memory.music)
     else
-      flash.now[:erorr] = 'メモリーの更新に失敗しました'
+      flash.now[:error] = 'メモリーの更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
