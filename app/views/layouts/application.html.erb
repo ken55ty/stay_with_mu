@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <%= favicon_link_tag asset_path('MUfavicon.svg') %>
+    <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -24,22 +24,36 @@
   <body data-controller="modal">
     <div data-controller="particles">
       <div id="particles-js"></div>
-      <%= render 'shared/modal'%>
+      <%= render 'shared/modal' %>
       <% if logged_in? %>
         <%= render 'shared/header' %>
       <% else %>
         <%= render 'shared/before_login_header' %>
       <% end %>
       <div id="flash_messages">
-        <%= render 'shared/flash_messages'%>
+        <%= render 'shared/flash_messages' %>
       </div>
       <div class="container mx-auto px-4 pb-20 sm:pb-0 min-h-screen">
         <%= yield %>
       </div>
-      <%= render 'shared/pc_footer'%>
+      <%= render 'shared/pc_footer' %>
       <% if logged_in? %>
         <%= render 'shared/phone_footer' %>
       <% end %>
     </div>
   </body>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service_worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
+  </script>
 </html>
