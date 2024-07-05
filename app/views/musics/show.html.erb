@@ -16,7 +16,7 @@
     <div class=<%= levelclass(@music.level) %>>
       <p class="text-2xl"><%=  @music.title %></p>
       <p class="text-lg"><%=  @music.artist %></p>
-      <p class="text-2xl text-right mx-2"><%= "Lv. #{@music.level}"%></p>
+      <%= render "music_level", music: @music %>
     </div>
     <div class="flex justify-end m-2">
       <%= render 'musics/favorite_button', music: @music %>

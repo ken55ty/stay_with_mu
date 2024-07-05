@@ -1,4 +1,9 @@
 <%= turbo_stream.update "flash_messages", partial: "shared/flash_messages" %>
+
+<%= turbo_stream.replace "music-level-#{@memory.music.id}" do %>
+  <%= render 'musics/music_level', music: @memory.music %>
+<% end %>
+
 <% if @memory.errors.present? %>
   <%= turbo_stream.replace "memory-form" do %>
     <%= render 'memories/form', memory: @memory, music: @memory.music %>
