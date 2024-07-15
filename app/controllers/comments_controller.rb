@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.update(params.require(:comment).permit(:body))
       flash[:success] = 'コメントを更新しました'
-      redirect_to music_path(comment.music)
+      redirect_to music_path(@comment.music)
     else
       flash.now[:error] = 'コメントの更新に失敗しました'
       render :edit, status: :unprocessable_entity
