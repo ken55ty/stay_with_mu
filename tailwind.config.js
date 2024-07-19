@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "focus-in-expand": "focus-in-expand 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both",
-        "slide-out-right": "slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 5s both"
+        "focus-in-expand": "focus-in-expand 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+        "slide-out-top": "slide-out-top 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) 5s both"
       },
       keyframes: {
         "focus-in-expand": {
@@ -23,24 +23,23 @@ module.exports = {
             opacity: "1"
           }
         },
-        "slide-out-right": {
+        "slide-out-top": {
           "0%": {
-            transform: "translateX(0)",
+            transform: "translateY(0)",
             opacity: "1"
           },
           to: {
-            transform: "translateX(1000px)",
+            transform: "translateY(-1000px)",
             opacity: "0"
           }
         }
-      },
+      }
     }
   },
   plugins: [
     require('daisyui')
   ],
   daisyui: {
-    themes: ["night",],
+    themes: ["night"],
   },
-
 }
