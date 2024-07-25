@@ -64,6 +64,18 @@ class MusicsController < ApplicationController
     render partial: 'musics/autocompletes/index_autocomplete', locals: { musics: @musics, query: params[:q] }
   end
 
+  def publish
+    @music = current_user.musics.find(params[:id])
+    @music.update_columns(privacy: 0)
+    flash.now[:success] = '公開に変更しました'
+  end
+
+  def unpublish
+    @music = current_user.musics.find(params[:id])
+    @music.update_columns(privacy: 1)
+    flash.now[:success] = '非公開に変更しました'
+  end
+
   private
 
   def music_params
