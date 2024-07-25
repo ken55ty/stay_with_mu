@@ -1,5 +1,7 @@
 class MusicsController < ApplicationController
   skip_before_action :require_login, only: %i[index show index_autocomplete]
+  before_action :set_music, only: %i[show]
+  before_action :check_music_visibility, only: %i[show]
 
   def index
     @q = Music.ransack(params[:q])
@@ -28,7 +30,6 @@ class MusicsController < ApplicationController
   end
 
   def show
-    @music = Music.find(params[:id])
     @memory = Memory.new
     @memories = @music.memories.includes(:tags).order(created_at: :desc)
     @comment = Comment.new
@@ -79,6 +80,22 @@ class MusicsController < ApplicationController
   private
 
   def music_params
-    params.permit(:artist, :spotify_track_id, :title)
+    params.require(:music).permit(:artist, :spotify_track_id, :title)
+  end
+
+  def set_music
+    @music = Music.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:error] = 'MUは存在しないか、非公開です'
+    redirect_to musics_path
+  end
+
+  def check_music_visibility
+    return if @music.privacy_public?
+
+    unless logged_in? && current_user.own?(@music)
+      flash[:error] = 'MUは存在しないか、非公開です'
+      redirect_to musics_path
+    end
   end
 end
