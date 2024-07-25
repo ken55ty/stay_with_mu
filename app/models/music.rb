@@ -7,6 +7,8 @@ class Music < ApplicationRecord
 
   validates :title, presence: true
 
+  enum privacy: { public: 0, private: 1 }, _prefix: true
+
   after_update :update_level
 
   private
