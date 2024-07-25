@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     collection do
       get :search
       get :index_autocomplete
+      post :publish
+      post :unpublish
     end
     resources :memories, only: %i[create edit update destroy], shallow: true
     resources :comments, only: %i[create edit update destroy], shallow: true
