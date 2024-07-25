@@ -1,0 +1,11 @@
+<%= turbo_stream.update "flash_messages", partial: "shared/flash_messages" %>
+
+<%= turbo_stream.replace "unpublish-music-#{@music.id}" do %>
+  <%= render "musics/publish", music: @music %>
+<% end %>
+
+<%= turbo_stream.prepend "privacy_toggle" do %>
+  <%= render "private_introduction" %>
+<% end %>
+
+<%= turbo_stream.remove "X_share" %>
