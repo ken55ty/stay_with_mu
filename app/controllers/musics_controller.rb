@@ -60,7 +60,7 @@ class MusicsController < ApplicationController
   end
 
   def index_autocomplete
-    @musics = Music.where('title ILIKE ? OR artist ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").distinct.limit(10)
+    @musics = Music.where('title ILIKE ? OR artist ILIKE ?', "%#{params[:q]}%", "%#{params[:q]}%").privacy_public.distinct.limit(10)
     render partial: 'musics/autocompletes/index_autocomplete', locals: { musics: @musics, query: params[:q] }
   end
 
