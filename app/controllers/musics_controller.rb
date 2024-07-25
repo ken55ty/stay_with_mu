@@ -4,7 +4,7 @@ class MusicsController < ApplicationController
   def index
     @q = Music.ransack(params[:q])
     @q.sorts = ['updated_at desc'] if params[:sorts].blank?
-    @musics = @q.result(distinct: true).includes(:user, memories: :tags).page(params[:page])
+    @musics = @q.result(distinct: true).includes(:user, memories: :tags).privacy_public.page(params[:page])
   end
 
   def search
