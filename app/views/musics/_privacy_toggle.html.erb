@@ -1,0 +1,5 @@
+<% if music.privacy_private? %>
+  <%= render "publish", music: music %>
+<% else %>
+  <%= render "musics/unpublish", music: music %>
+<% end %>
