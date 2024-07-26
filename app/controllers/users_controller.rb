@@ -4,9 +4,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @musics = @user.musics.includes(:user, :favorites, memories: :tags).order(updated_at: :desc).page(params[:page])
+    @musics = @user.musics.includes(:user, :favorites, memories: :tags).order(updated_at: :desc).visible_to(current_user).page(params[:page])
     @favorite_musics = @user.favorite_musics.includes(:user, :favorites,
-                                                      memories: :tags).order(updated_at: :desc).page(params[:page])
+                                                      memories: :tags).order(updated_at: :desc).visible_to(current_user).page(params[:page])
   end
 
   def new
