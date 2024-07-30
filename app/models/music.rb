@@ -4,6 +4,8 @@ class Music < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_musics, through: :favorites, source: :music
+  has_many :playlist_musics, dependent: :destroy
+  has_many :playlists, through: :playlist_musics
 
   validates :title, presence: true
 
