@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_25_062448) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_30_061704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_25_062448) do
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
+  create_table "playlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "title", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
   create_table "recommended_topics", force: :cascade do |t|
     t.string "topic"
     t.boolean "current", default: false
@@ -143,4 +152,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_25_062448) do
   add_foreign_key "musics", "users"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "sender_id"
+  add_foreign_key "playlists", "users"
 end
