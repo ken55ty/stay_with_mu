@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_30_062322) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_30_063327) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -83,6 +83,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_30_062322) do
     t.integer "comments_count", default: 0, null: false
     t.integer "memories_count", default: 0, null: false
     t.integer "privacy", default: 0, null: false
+    t.boolean "only_for_playlist", default: false, null: false
     t.index ["user_id"], name: "index_musics_on_user_id"
   end
 
