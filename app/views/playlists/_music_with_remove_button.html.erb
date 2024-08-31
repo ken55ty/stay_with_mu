@@ -2,4 +2,5 @@
   <div class="flex-grow m-1 w-full md:w-1/2 lg:w-2/3">
     <iframe src="https://open.spotify.com/embed/track/<%= music["spotify_track_id"] %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
   </div>
+  <%= link_to '削除', remove_music_from_playlist_playlist_path(id: music["spotify_track_id"]), method: :delete, data: { turbo_method: :delete }, class: "btn btn-outline btn-error btn-sm" %>
 </div>

@@ -58,6 +58,17 @@ class PlaylistsController < ApplicationController
     session[:current_playlist_musics] ||= []
     session[:current_playlist_musics] << @music unless session[:current_playlist_musics].include?(@music.spotify_track_id)
   end
+
+  def remove_music_from_playlist
+    session[:current_playlist_musics].reject! { |music| music["spotify_track_id"] == params[:id] }
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove("playlist-music-#{params[:id]}")
+      end
+    end
+  end
+
   private
 
   def music_params
