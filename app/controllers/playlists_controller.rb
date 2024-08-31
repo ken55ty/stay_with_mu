@@ -1,4 +1,8 @@
 class PlaylistsController < ApplicationController
+  skip_before_action :require_login, only: %i[show]
+  def show
+    @playlist = Playlist.find(params[:id])
+  end
 
   def new
     session[:current_playlist_musics] ||= []

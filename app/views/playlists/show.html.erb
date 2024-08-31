@@ -1,0 +1,37 @@
+<% set_meta_tags title: @playlist.title %>
+<div class="container mx-auto">
+  <div class="bg-base-300 py-5 px-3 rounded-lg">
+    <div class="flex">
+      <% if @playlist.user.avatar? %>
+        <div class="avatar">
+          <div class="rounded-full">
+            <%= image_tag @playlist.user.avatar.url(:avatar_midium) %>
+          </div>
+        </div>
+      <% else %>
+        <%= image_tag "default_avatar.png", size: "60x60" %>
+      <% end %>
+      <p class="text-2xl font-bold p-3 link"><%= link_to @playlist.user.name, user_path(@playlist.user) %></p>
+    </div>
+      <p class="text-2xl"><%=  @playlist.title %></p>
+      <p class="text-lg"><%=  @playlist.body %></p>
+    </div>
+    <div class="p-2">
+      <p class="text-right">作成日時: <%= l @playlist.created_at, format: :long %></p>
+    </div>
+
+    <div class="px-3">
+      <% @playlist.musics.each do |music| %>
+        <div class="flex my-3 items-center">
+          <iframe src="https://open.spotify.com/embed/track/<%= music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
+          <% if music.visible_to_user?(current_user) %>
+            <%= link_to "MUの詳細", music_path(music), class: "btn btn-primary btn-outline ml-2" %>
+          <% elsif logged_in? && current_user.own?(music) && music.privacy_playlist_only? %>
+            <%= link_to "このMUをつくる", convert_to_public_musics_path(id: music.id), data: {turbo_method: :post}, class: "btn btn-secondary btn-outline ml-2" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
