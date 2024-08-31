@@ -9,7 +9,7 @@ class Music < ApplicationRecord
 
   validates :title, presence: true
 
-  enum privacy: { public: 0, private: 1 }, _prefix: true
+  enum privacy: { public: 0, private: 1, playlist_only: 2 }, _prefix: true
 
   scope :visible_to, ->(user) {
     where(privacy: [:public]).or(where(user:, privacy: :private))
