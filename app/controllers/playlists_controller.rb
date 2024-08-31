@@ -39,7 +39,7 @@ class PlaylistsController < ApplicationController
       session[:current_playlist_musics].each do |music_params|
         music = Music.find_or_initialize_by(spotify_track_id: music_params["spotify_track_id"], user_id: current_user.id)
         if music.new_record?
-          music.attributes = music_params
+          music.assign_attributes(music_params.slice("title", "artist", "experience_point", "level", "favorites_count", "comments_count", "memories_count"))
           music.privacy_playlist_only!
           music.save!
         end
@@ -60,6 +60,9 @@ class PlaylistsController < ApplicationController
   def add_music_to_playlist
     @music = current_user.musics.build(music_params)
     session[:current_playlist_musics] ||= []
+    session[:current_playlist_musics].each do |music_params|
+      p music_params["spotify_track_id"]
+    end
     session[:current_playlist_musics] << @music unless session[:current_playlist_musics].include?(@music.spotify_track_id)
   end
 
