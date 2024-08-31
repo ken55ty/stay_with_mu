@@ -1,0 +1,6 @@
+<div id="preview">
+  <p class="text-center font-bold">作成中のプレイリスト</p>
+  <% session[:current_playlist_musics].each do |music| %>
+    <%= render 'playlists/music_with_remove_button', music: music %>
+  <% end %>
+</div>
