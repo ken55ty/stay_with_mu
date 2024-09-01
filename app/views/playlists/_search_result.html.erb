@@ -1,0 +1,25 @@
+<div data-controller="confirm" class="mt-4">
+  <h2 class="text-center mb-2">検索結果</h2>
+  <%= turbo_frame_tag "playlist_search_results" do %>
+    <div class="justify-center">
+      <% musics.each do |music| %>
+        <div class="flex my-3 items-center">
+          <div class="max-w-[70rem]">
+            <iframe src="https://open.spotify.com/embed/track/<%= music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media" loading="lazy"></iframe>
+          </div>
+          <%= form_with url: add_music_to_playlist_playlists_path, model: music, data: { turbo_stream: true, turbo_method: :post } do |form| %>
+            <%= form.hidden_field :spotify_track_id, value: music.spotify_track_id %>
+            <%= form.hidden_field :artist, value: music.artist %>
+            <%= form.hidden_field :title, value: music.title %>
+
+            <% if music.created_by_user?(current_user) %>
+              <%= form.submit 'MUを追加', class: "btn btn-outline btn-warning ml-2" %>
+            <% else %>
+              <%= form.submit '追加', class: "btn btn-outline btn-primary ml-2" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -10,9 +10,20 @@ Rails.application.routes.draw do
       get :index_autocomplete
       post :publish
       post :unpublish
+      post :convert_to_public
     end
     resources :memories, only: %i[create edit update destroy], shallow: true
     resources :comments, only: %i[create edit update destroy], shallow: true
+  end
+  resources :playlists, only: %i[new create show] do
+    collection do
+      post :add_music_to_playlist
+      get :search
+    end
+
+    member do
+      delete :remove_music_from_playlist
+    end
   end
   resources :notifications, only: %i[update] do
     collection do

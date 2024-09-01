@@ -77,6 +77,16 @@ class MusicsController < ApplicationController
     flash.now[:success] = '非公開に変更しました'
   end
 
+  def convert_to_public
+    @music = current_user.musics.find(params[:id])
+    if @music.update(privacy: :public)
+      flash[:success] = 'MUを作成しました！'
+      redirect_to @music
+    else
+      render 'playlists#show(@music)'
+    end
+  end
+
   private
 
   def music_params

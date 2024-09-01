@@ -79,4 +79,4 @@
 
 
 ## ■ER図
-![alt text](app/assets/images/本リリース時ER図.png)
+![alt text](app/assets/images/プレイリスト機能追加後ER図.png)

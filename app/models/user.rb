@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :received_notifications, class_name: 'Notification', foreign_key: 'recipient_id', dependent: :destroy
   has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :authentications, dependent: :destroy
+  has_many :playlists, dependent: :destroy
   accepts_nested_attributes_for :authentications
 
   validates :name, presence: true, length: { maximum: 20 }

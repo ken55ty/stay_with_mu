@@ -38,6 +38,9 @@ ja:
   comments:
     edit:
       title: コメント編集
+  playlists:
+    new:
+      title: プレイリスト作成
   password_resets:
     new:
       title: パスワードリセット申請

@@ -4,16 +4,26 @@ class Music < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_musics, through: :favorites, source: :music
+  has_many :playlist_musics, dependent: :destroy
+  has_many :playlists, through: :playlist_musics
 
   validates :title, presence: true
 
-  enum privacy: { public: 0, private: 1 }, _prefix: true
+  enum privacy: { public: 0, private: 1, playlist_only: 2 }, _prefix: true
 
   scope :visible_to, ->(user) {
     where(privacy: [:public]).or(where(user:, privacy: :private))
   }
 
   after_update :update_level
+
+  def created_by_user?(user)
+    user.musics.privacy_public.exists?(spotify_track_id: self.spotify_track_id)
+  end
+
+  def visible_to_user?(user)
+    Music.visible_to(user).exists?(id:)
+  end
 
   private
 
