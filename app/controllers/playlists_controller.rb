@@ -49,6 +49,7 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       session.delete(:current_playlist_musics)
+      @playlist.musics.each(&:update_music_exp)
       flash[:success] = 'プレイリストを作成しました'
       redirect_to @playlist
     else
