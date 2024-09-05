@@ -10,6 +10,7 @@ class MemoriesController < ApplicationController
   def create
     @memory = Memory.new(memory_params)
     if @memory.save
+      @memory.music.update_music_exp
       flash.now[:success] = 'メモリーを追加しました'
     else
       flash.now[:error] = 'メモリーを追加できませんでした'
@@ -19,6 +20,7 @@ class MemoriesController < ApplicationController
   def update
     @memory = Memory.find(params[:id])
     if @memory.update(params.require(:memory).permit(:body, :privacy, :recommended_topic_id, tag_ids: [])) # 汚いので改善したい。
+      @memory.music.update_music_exp
       flash[:success] = 'メモリーを更新しました'
       redirect_to music_path(@memory.music)
     else
@@ -30,6 +32,7 @@ class MemoriesController < ApplicationController
   def destroy
     @memory = Memory.find(params[:id])
     @memory.destroy!
+    @memory.music.update_music_exp
     flash.now[:success] = 'メモリーを削除しました'
   end
 

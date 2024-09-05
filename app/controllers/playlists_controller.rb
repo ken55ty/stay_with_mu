@@ -49,6 +49,7 @@ class PlaylistsController < ApplicationController
 
     if @playlist.save
       session.delete(:current_playlist_musics)
+      @playlist.musics.each(&:update_music_exp)
       flash[:success] = 'プレイリストを作成しました'
       redirect_to @playlist
     else
@@ -60,10 +61,7 @@ class PlaylistsController < ApplicationController
   def add_music_to_playlist
     @music = current_user.musics.build(music_params)
     session[:current_playlist_musics] ||= []
-    session[:current_playlist_musics].each do |music_params|
-      p music_params["spotify_track_id"]
-    end
-    session[:current_playlist_musics] << @music unless session[:current_playlist_musics].include?(@music.spotify_track_id)
+    session[:current_playlist_musics] << @music unless session[:current_playlist_musics].map { |music| music[:spotify_track_id] }.include?(@music.spotify_track_id)
   end
 
   def remove_music_from_playlist
