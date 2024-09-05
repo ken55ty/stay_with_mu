@@ -8,6 +8,7 @@ class Music < ApplicationRecord
   has_many :playlists, through: :playlist_musics
 
   validates :title, presence: true
+  validates :spotify_track_id, uniqueness: { scope: :user_id }
 
   enum privacy: { public: 0, private: 1, playlist_only: 2 }, _prefix: true
 
