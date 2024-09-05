@@ -16,18 +16,12 @@ class Music < ApplicationRecord
     where(privacy: [:public]).or(where(user:, privacy: :private))
   }
 
+  ADDITIONAL_EXP_PER_PLAYLIST = 100
+
   def update_music_exp
     return if frozen?
 
-    total_exp = memories.sum { |memory| memory.body.length }
-
-    additional_exp_of_playlist = 100
-    total_exp += playlists.count * additional_exp_of_playlist
-
-    playlists.each do |playlist|
-      total_exp += playlist.body.length
-    end
-
+    total_exp = calculate_memory_exp + calculate_playlist_exp
     update(experience_point: total_exp)
     update_level
   end
@@ -42,9 +36,17 @@ class Music < ApplicationRecord
 
   private
 
+  def calculate_memory_exp
+    memories.sum { |memory| memory.body.length }
+  end
+
+  def calculate_playlist_exp
+    playlists.sum { |playlist| playlist.body.length } + (playlists.count * ADDITIONAL_EXP_PER_PLAYLIST)
+  end
+
   def update_level
     current_level = LevelSetting.where('threshold <= ?', experience_point).order(level: :desc).first
-    update_column(:level, current_level.level) if current_level.present?
+    update_column(:level, current_level.level) if current_level
   end
 
   def self.ransackable_attributes(_auth_object = nil)
