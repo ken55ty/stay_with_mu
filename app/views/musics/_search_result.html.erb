@@ -9,7 +9,7 @@
             <%= form.hidden_field :spotify_track_id, value: music.spotify_track_id %>
             <%= form.hidden_field :artist, value: music.artist %>
             <%= form.hidden_field :title, value: music.title %>
-            <% if music.created_for_playlist(current_user) %>
+            <% if music.created_for_playlist?(current_user) %>
               <div class="btn btn-sm btn-success mt-2"><%= link_to_playlist(music) %></div>
             <% elsif music.created_by_user?(current_user) %>
               <div class="btn btn-sm btn-active btn-neutral mt-2">作成済みです</div>
