@@ -19,7 +19,11 @@ class Music < ApplicationRecord
   after_update :update_level
 
   def created_by_user?(user)
-    user.musics.privacy_public.exists?(spotify_track_id: self.spotify_track_id)
+    user.musics.exists?(spotify_track_id: self.spotify_track_id)
+  end
+
+  def created_for_playlist(user)
+    user.musics.privacy_playlist_only.exists?(spotify_track_id: self.spotify_track_id)
   end
 
   def visible_to_user?(user)

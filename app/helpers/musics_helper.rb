@@ -44,4 +44,9 @@ module MusicsHelper
       end
     end
   end
+
+  def link_to_playlist(music)
+    playlist = current_user.musics.find_by(spotify_track_id: music.spotify_track_id).playlists.first
+    link_to "プレイリストへ", playlist_path(playlist)
+  end
 end
