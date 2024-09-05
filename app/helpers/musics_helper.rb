@@ -45,8 +45,13 @@ module MusicsHelper
     end
   end
 
-  def link_to_playlist(music)
-    playlist = current_user.musics.find_by(spotify_track_id: music.spotify_track_id).playlists.first
-    link_to "プレイリストへ", playlist_path(playlist)
+  def display_link_to_music_or_playlist(music)
+    current_music = current_user.musics.find_by(spotify_track_id: music.spotify_track_id)
+    if current_music.privacy_playlist_only?
+      playlist = current_music.playlists.first
+      link_to "プレイリストへ", playlist_path(playlist), class: 'btn btn-sm btn-outline btn-success mt-2'
+    else
+      link_to "作成済みMUへ", music_path(current_music), class: 'btn btn-sm btn-outline btn-warning mt-2'
+    end
   end
 end

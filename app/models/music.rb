@@ -22,10 +22,6 @@ class Music < ApplicationRecord
     user.musics.exists?(spotify_track_id: self.spotify_track_id)
   end
 
-  def created_for_playlist?(user)
-    user.musics.privacy_playlist_only.exists?(spotify_track_id: self.spotify_track_id)
-  end
-
   def visible_to_user?(user)
     Music.visible_to(user).exists?(id:)
   end
