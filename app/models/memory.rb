@@ -10,8 +10,6 @@ class Memory < ApplicationRecord
 
   enum privacy: { public: 0, private: 1 }, _prefix: true
 
-  after_commit :update_music_exp
-
   private
 
   def validate_tag_count
@@ -19,15 +17,6 @@ class Memory < ApplicationRecord
     return unless tag_ids.count > max_tags
 
     errors.add(:base, "選択できるタグは#{max_tags}個までです")
-  end
-
-  def update_music_exp
-    return if music.frozen? # music削除に伴うmemory削除でコールバックした際にエラーにならないため追記
-
-    # musicに紐づくすべてのmemoryのbodyの文字数を合計
-    total_exp = music.memories.sum { |memory| memory.body.length }
-    # 合計値をmusicのexpとして保存
-    music.update(experience_point: total_exp)
   end
 
   def self.ransackable_attributes(_auth_object = nil)

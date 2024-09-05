@@ -16,7 +16,21 @@ class Music < ApplicationRecord
     where(privacy: [:public]).or(where(user:, privacy: :private))
   }
 
-  after_update :update_level
+  def update_music_exp
+    return if frozen?
+
+    total_exp = memories.sum { |memory| memory.body.length }
+
+    additional_exp_of_playlist = 100
+    total_exp += playlists.count * additional_exp_of_playlist
+
+    playlists.each do |playlist|
+      total_exp += playlist.body.length
+    end
+
+    update(experience_point: total_exp)
+    update_level
+  end
 
   def created_by_user?(user)
     user.musics.exists?(spotify_track_id: self.spotify_track_id)
