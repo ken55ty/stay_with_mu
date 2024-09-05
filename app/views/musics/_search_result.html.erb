@@ -9,7 +9,12 @@
             <%= form.hidden_field :spotify_track_id, value: music.spotify_track_id %>
             <%= form.hidden_field :artist, value: music.artist %>
             <%= form.hidden_field :title, value: music.title %>
-            <%= form.submit 'MUをつくる！', class: "btn btn-sm btn-outline btn-primary mt-2" %>
+
+            <% if music.created_by_user?(current_user) %>
+              <%= display_link_to_music_or_playlist(music) %>
+            <% else %>
+              <%= form.submit 'MUをつくる！', class: "btn btn-sm btn-outline btn-primary mt-2" %>
+            <% end %>
           <% end %>
         </div>
       <% end %>
