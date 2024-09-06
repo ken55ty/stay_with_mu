@@ -12,6 +12,10 @@ export default class extends Controller {
       console.log('スマホの場合は制限かけない');
       return;
     }
+    if (window.location.pathname === '/playlists') {
+      console.log('プレイリスト一覧画面は制限かけない')
+      return;
+    }
     const now = new Date().getTime();
 
     if (this.clickTimestamp && (now - this.clickTimestamp) < 5000) {
