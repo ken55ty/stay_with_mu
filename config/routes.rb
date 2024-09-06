@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :memories, only: %i[create edit update destroy], shallow: true
     resources :comments, only: %i[create edit update destroy], shallow: true
   end
-  resources :playlists, only: %i[new create show index destroy] do
+  resources :playlists do
     collection do
       post :add_music_to_playlist
       get :search

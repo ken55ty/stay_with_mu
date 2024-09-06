@@ -13,8 +13,14 @@ class PlaylistsController < ApplicationController
     session[:current_playlist_musics] ||= []
     session[:current_playlist_musics].clear
     @music = Music.new
-    @musics = []
     @playlist = Playlist.new
+  end
+
+  def edit
+    @playlist = current_user.playlists.find(params[:id])
+    session[:current_playlist_musics] ||= []
+    session[:current_playlist_musics].clear
+    @playlist.musics.each { |music| session[:current_playlist_musics] << music }
   end
 
   def search
