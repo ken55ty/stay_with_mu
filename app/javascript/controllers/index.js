@@ -7,9 +7,6 @@ import { application } from "./application"
 import { Autocomplete } from "stimulus-autocomplete"
 application.register("autocomplete", Autocomplete)
 
-import ConfirmController from "./confirm_controller"
-application.register("confirm", ConfirmController)
-
 import ModalController from "./modal_controller"
 application.register("modal", ModalController)
 

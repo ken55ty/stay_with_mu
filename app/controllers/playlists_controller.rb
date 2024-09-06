@@ -58,6 +58,15 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def destroy
+    @playlist = current_user.playlists.find(params[:id])
+    @playlist.destroy!
+
+    @playlist.musics.each(&:update_music_exp)
+    flash.now[:success] = "プレイリストを削除しました"
+    redirect_to playlists_path
+  end
+
   def add_music_to_playlist
     @music = current_user.musics.build(music_params)
     session[:current_playlist_musics] ||= []

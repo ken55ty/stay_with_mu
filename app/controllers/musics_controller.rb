@@ -55,7 +55,14 @@ class MusicsController < ApplicationController
 
   def destroy
     music = current_user.musics.find(params[:id])
-    music.destroy!
+    if music.playlists.present?
+      music.memories.delete_all
+      music.comments.delete_all
+      music.favorites.delete_all
+      music.privacy_playlist_only!
+    else
+      music.destroy!
+    end
     flash[:success] = 'MUを削除しました'
     redirect_to musics_path, status: :see_other
   end
@@ -80,6 +87,7 @@ class MusicsController < ApplicationController
   def convert_to_public
     @music = current_user.musics.find(params[:id])
     if @music.update(privacy: :public)
+      @music.update_music_exp
       flash[:success] = 'MUを作成しました！'
       redirect_to @music
     else
