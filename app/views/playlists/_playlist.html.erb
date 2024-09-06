@@ -2,7 +2,7 @@
   <%= link_to playlist_path(playlist) do %>
     <div class="relative">
       <div class="absolute top-8 left-5">
-        <h1 class="text-neutral font-bold max-w-[12rem]"><%= playlist.title %></h1>
+        <h1 class="text-neutral font-bold max-w-[12rem]"><%= shrunk_title_for_index(playlist) %></h1>
       </div>
       <%= image_tag 'playlist.png', class: 'rounded-lg' %>
     </div>
