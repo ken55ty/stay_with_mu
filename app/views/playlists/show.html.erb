@@ -32,7 +32,7 @@
           <% if music.visible_to_user?(current_user) %>
             <%= link_to "MUの詳細", music_path(music), class: "btn btn-primary btn-outline ml-2" %>
           <% elsif logged_in? && current_user.own?(music) && music.privacy_playlist_only? %>
-            <%= link_to "このMUをつくる", convert_to_public_musics_path(id: music.id), data: {turbo_method: :post}, class: "btn btn-secondary btn-outline ml-2" %>
+            <%= link_to "このMUをつくる", convert_to_public_music_path(music), data: {turbo_method: :post}, class: "btn btn-secondary btn-outline ml-2" %>
           <% end %>
         </div>
       <% end %>

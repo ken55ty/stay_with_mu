@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       get :index_autocomplete
       post :publish
       post :unpublish
+    end
+
+    member do
       post :convert_to_public
     end
     resources :memories, only: %i[create edit update destroy], shallow: true

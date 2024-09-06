@@ -80,6 +80,7 @@ class MusicsController < ApplicationController
   def convert_to_public
     @music = current_user.musics.find(params[:id])
     if @music.update(privacy: :public)
+      @music.update_music_exp
       flash[:success] = 'MUを作成しました！'
       redirect_to @music
     else
