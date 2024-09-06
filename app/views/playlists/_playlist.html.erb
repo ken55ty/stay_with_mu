@@ -1,0 +1,33 @@
+<div class="w-[20rem] p-3">
+  <%= link_to playlist_path(playlist) do %>
+    <div class="relative">
+      <div class="absolute top-8 left-5">
+        <h1 class="text-neutral font-bold max-w-[12rem]"><%= playlist.title %></h1>
+      </div>
+      <%= image_tag 'playlist.png', class: 'rounded-lg' %>
+    </div>
+  <% end %>
+
+  <div class="p-2 bg-base-300 rounded-lg">
+    <%= link_to user_path(playlist.user) do %>
+      <div class="flex">
+        <% if playlist.user.avatar? %>
+          <div class="avatar">
+            <div class="rounded-full">
+              <%= image_tag playlist.user.avatar.url(:avatar) %>
+            </div>
+          </div>
+        <% else %>
+          <%= image_tag "default_avatar.png", size: "40x40" %>
+        <% end %>
+        <p class="p-2 link"> <%= playlist.user.name %></p>
+      </div>
+    <% end %>
+
+    <div class="justify-end">
+      <%= link_to playlist_path(playlist) do %>
+        <%= playlist.body.slice(0..16) %>
+      <% end %>
+    </div>
+  </div>
+</div>

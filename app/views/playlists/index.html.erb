@@ -1,0 +1,10 @@
+<% set_meta_tags title: t('.title') %>
+<h1 class="text-center mb-8 text-3xl">みんなのプレイリスト</h1>
+
+<div class="flex flex-wrap justify-center mb-4">
+  <%= render @playlists %>
+</div>
+
+<div class="flex justify-center mb-8">
+  <%= paginate @playlists %>
+</div>
