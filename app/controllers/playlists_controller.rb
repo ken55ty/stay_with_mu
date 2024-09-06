@@ -13,8 +13,14 @@ class PlaylistsController < ApplicationController
     session[:current_playlist_musics] ||= []
     session[:current_playlist_musics].clear
     @music = Music.new
-    @musics = []
     @playlist = Playlist.new
+  end
+
+  def edit
+    @playlist = current_user.playlists.find(params[:id])
+    session[:current_playlist_musics] ||= []
+    session[:current_playlist_musics].clear
+    @playlist.musics.each { |music| session[:current_playlist_musics] << music }
   end
 
   def search
@@ -59,7 +65,34 @@ class PlaylistsController < ApplicationController
       redirect_to @playlist
     else
       flash.now[:error] = "プレイリストの作成に失敗しました"
-      render :new
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @playlist = current_user.playlists.find(params[:id])
+
+    if session[:current_playlist_musics].present?
+      session[:current_playlist_musics].each do |music_params|
+        music = Music.find_or_initialize_by(spotify_track_id: music_params["spotify_track_id"], user_id: current_user.id)
+        if music.new_record?
+          music.assign_attributes(music_params.slice("title", "artist", "experience_point", "level", "favorites_count", "comments_count", "memories_count"))
+          music.privacy_playlist_only!
+          music.save!
+        end
+
+        @playlist.musics << music unless @playlist.musics.include?(music)
+      end
+    end
+
+    if @playlist.update(playlist_params)
+      session.delete(:current_playlist_musics)
+      @playlist.musics.each(&:update_music_exp)
+      flash[:success] = 'プレイリストを更新しました'
+      redirect_to @playlist
+    else
+      flash.now[:error] = "プレイリストの更新に失敗しました"
+      render :edit, status: :unprocessable_entity
     end
   end
 

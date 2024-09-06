@@ -1,5 +1,5 @@
 <% set_meta_tags title: t('.title') %>
-<h1 class="text-center py-4 text-2xl">プレイリスト作成</h1>
+<h1 class="text-center py-4 text-2xl">プレイリスト編集</h1>
 <div class="flex flex-col sm:flex-row w-full">
   <div class="flex w-full lg:w-1/2 xl:w-1/2 flex-col mx-auto mb-4">
     <%= render 'playlists/search_form' %>
@@ -11,7 +11,7 @@
   <div class="flex flex-col w-full lg:w-1/2 xl:w-1/2">
     <%= render 'playlists/preview', playlist: @playlist %>
 
-    <%= form_with model: @playlist = Playlist.new, url: playlists_path, method: :post, class: "flex flex-col items-center" do |f| %>
+    <%= form_with model: @playlist, class: "flex flex-col items-center" do |f| %>
       <div class="w-full text-center p-2">
         <%= f.label :title, class: "text-lg font-bold text-primary" %>
         <div class="flex justify-center items-center">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="w-full p-2 mt-4 items-center">
-        <%= f.submit "プレイリストをつくる!", class: "btn btn-primary py-2 px-4" %>
+        <%= f.submit "プレイリストを更新", class: "btn btn-primary py-2 px-4" %>
       </div>
     <% end %>
   </div>
