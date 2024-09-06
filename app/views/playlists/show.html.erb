@@ -15,10 +15,15 @@
     </div>
       <p class="text-2xl"><%=  @playlist.title %></p>
       <p class="text-lg"><%=  @playlist.body %></p>
-    </div>
+
+    <% if logged_in? && current_user.own?(@playlist) %>
+      <%= link_to "削除", playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: "本当にこのプレイリストを削除しますか？" }, class: "mb-2 btn btn-sm btn-error float-right"%>
+    <% end %>
+
     <div class="p-2">
       <p class="text-right">作成日時: <%= l @playlist.created_at, format: :long %></p>
     </div>
+</div>
 
     <div class="px-3">
       <% @playlist.musics.each do |music| %>
