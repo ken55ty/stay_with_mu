@@ -1,5 +1,10 @@
 class PlaylistsController < ApplicationController
   skip_before_action :require_login, only: %i[show]
+
+  def index
+    @playlists = Playlist.includes(:user).page(params[:page])
+  end
+
   def show
     @playlist = Playlist.find(params[:id])
   end

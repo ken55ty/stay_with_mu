@@ -39,6 +39,8 @@ ja:
     edit:
       title: コメント編集
   playlists:
+    index:
+      title: みんなのプレイリスト
     new:
       title: プレイリスト作成
   password_resets:
