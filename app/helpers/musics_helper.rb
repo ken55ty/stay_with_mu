@@ -48,13 +48,28 @@ module MusicsHelper
   def display_link_to_music_or_playlist(music)
     current_music = current_user.musics.find_by(spotify_track_id: music.spotify_track_id)
 
-    if current_music.privacy_playlist_only?
-      playlist = current_music.playlists.first
-      return unless playlist
+    return unless current_music
 
-      link_to "プレイリストへ", playlist_path(playlist), class: 'btn btn-sm btn-outline btn-success mt-2'
+    if current_music.playlists.present? && current_music.privacy_playlist_only?
+      link_to_playlist(current_music.playlists.first)
+    elsif current_music.privacy_playlist_only?
+      link_to_convert_to_public(current_music)
     else
-      link_to "作成済みMUへ", music_path(current_music), class: 'btn btn-sm btn-outline btn-warning mt-2'
+      link_to_existing_music(current_music)
     end
+  end
+
+  private
+
+  def link_to_playlist(playlist)
+    link_to "プレイリストへ", playlist_path(playlist), data: { turbo_frame: "_top" }, class: 'btn btn-sm btn-outline btn-success mt-2'
+  end
+
+  def link_to_convert_to_public(current_music)
+    link_to "MUをつくる!", convert_to_public_music_path(current_music), data: { turbo_frame: "_top", turbo_method: :post }, class: "btn btn-sm btn-outline btn-primary mt-2"
+  end
+
+  def link_to_existing_music(current_music)
+    link_to "作成済みMUへ", music_path(current_music), data: { turbo_frame: "_top" }, class: 'btn btn-sm btn-outline btn-warning mt-2'
   end
 end
