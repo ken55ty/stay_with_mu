@@ -17,8 +17,10 @@
       <p class="text-lg"><%=  @playlist.body %></p>
 
     <% if logged_in? && current_user.own?(@playlist) %>
-      <%= link_to "編集", edit_playlist_path(@playlist), class: "mb-2 btn btn-sm btn-secondary float-right" %>
-      <%= link_to "削除", playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: "本当にこのプレイリストを削除しますか？" }, class: "mb-2 btn btn-sm btn-error float-right" %>
+      <div class="flex justify-end">
+          <%= link_to "編集", edit_playlist_path(@playlist), class: "mb-2 btn btn-sm btn-secondary mr-2" %>
+          <%= link_to "削除", playlist_path(@playlist), data: { turbo_method: :delete, turbo_confirm: "本当にこのプレイリストを削除しますか？" }, class: "mb-2 btn btn-sm btn-error" %>
+      </div>
     <% end %>
 
     <div class="p-2">
