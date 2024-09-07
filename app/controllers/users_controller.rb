@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @musics = @user.musics.includes(:user, :favorites, memories: :tags).order(updated_at: :desc).visible_to(current_user).page(params[:page])
     @favorite_musics = @user.favorite_musics.includes(:user, :favorites,
                                                       memories: :tags).order(updated_at: :desc).visible_to(current_user).page(params[:page])
+    @playlists = @user.playlists.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
