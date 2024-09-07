@@ -13,18 +13,18 @@
 
     <%= form_with model: @playlist = Playlist.new, url: playlists_path, method: :post, class: "flex flex-col items-center" do |f| %>
       <div class="w-full text-center p-2">
-        <%= f.label :title, class: "text-lg font-bold text-primary" %>
+        <%= f.label :title, class: "text-lg font-bold" %>
         <div class="flex justify-center items-center">
           <%= f.text_field :title, required: true, placeholder: "タイトルは50文字まで", class: "input input-bordered input-sm sm:input-md bg-base-300 w-[16rem] sm:w-[32rem]", style: "width: 480px;" %>
         </div>
       </div>
 
       <div class="w-full text-center p-2 mt-4">
-        <%= f.label :body, class: "text-lg font-bold text-primary" %>
+        <%= f.label :body, class: "text-lg font-bold" %>
         <%= f.text_area :body, required: true, class: "auto-resize-textarea w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
       </div>
 
-      <div class="w-full p-2 mt-4 items-center">
+      <div class="w-full p-2 mt-4 flex justify-center items-center">
         <%= f.submit "プレイリストをつくる!", class: "btn btn-primary py-2 px-4" %>
       </div>
     <% end %>
