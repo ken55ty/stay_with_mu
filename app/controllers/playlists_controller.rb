@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   skip_before_action :require_login, only: %i[show index]
 
   def index
-    @playlists = Playlist.includes(:user).page(params[:page])
+    @playlists = Playlist.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def show

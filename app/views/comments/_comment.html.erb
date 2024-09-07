@@ -17,7 +17,7 @@
           <p class="p-2 link">  <%= comment.user.name %> </p>
         </div>
       <% end %>
-      <%=  raw Rinku.auto_link(simple_format(comment.body), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+      <%= raw Rinku.auto_link(h(comment.body).gsub(/\n/, '<br>'), :urls, 'target="_blank" rel="noopener noreferrer"') %>
       <div class="object-right-top">
         <% if logged_in? && current_user.own?(comment) %>
           <%= link_to "削除", comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "本当にこのコメントを削除しますか？" }, class: "btn btn-sm btn-error float-right" %>
