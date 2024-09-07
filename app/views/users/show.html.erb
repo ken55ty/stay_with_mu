@@ -18,7 +18,7 @@
       </p>
     </div>
     <div class="p-3">
-      <%= "つくったMUの数: #{@user.musics.count}" %>
+      <%= "つくったMUの数: #{@user.musics.where.not(privacy: :playlist_only).count}" %>
     </div>
     <div>
       <p class="text-secondary">◆自己紹介◆</p>
@@ -51,15 +51,26 @@
         <% end %>
       </div>
 <!-- いいねしたMU-->
-      <input type="radio" name="my_tabs_2" role="tab" class="tab whitespace-nowrap btn" aria-label="いいねしたMU" />
+      <input type="radio" name="my_tabs_2" role="tab" class="tab whitespace-nowrap btn mr-1" aria-label="いいねしたMU" />
       <div role="tabpanel" class="tab-content bg-base-100 border-base-300 p-6 min-w-[24rem]">
         <%= turbo_frame_tag "favorite-musics-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
           <div class="flex flex-wrap justify-center mb-4">
             <%= render @favorite_musics %>
           </div>
-
           <div class="flex justify-center mb-8">
             <%= paginate @favorite_musics %>
+          </div>
+        <% end %>
+      </div>
+<!--つくったプレイリスト-->
+      <input type="radio" name="my_tabs_2" role="tab" class="tab whitespace-nowrap btn mr-1" aria-label="プレイリスト"/>
+      <div role="tabpanel" class="tab-content bg-base-100 border-base-300 p-6">
+        <%= turbo_frame_tag "playlists-list", autoscroll: true, data: { autoscroll_block: "start" } do %>
+          <div class="flex flex-wrap justify-center mb-4">
+            <%= render @playlists %>
+          </div>
+          <div class="flex justify-center mb-8">
+            <%= paginate @playlists %>
           </div>
         <% end %>
       </div>
