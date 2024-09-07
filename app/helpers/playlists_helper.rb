@@ -14,4 +14,12 @@ module PlaylistsHelper
       playlist.title
     end
   end
+
+  def shrunk_body(playlist)
+    if playlist.body.length >= 16
+      "#{playlist.body.slice(0..15)}..."
+    else
+      playlist.body
+    end
+  end
 end
