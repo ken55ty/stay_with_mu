@@ -26,16 +26,22 @@
     <div class="p-2">
       <p class="text-right">作成日時: <%= l @playlist.created_at, format: :long %></p>
     </div>
-</div>
+  </div>
 
-    <div class="px-3">
+    <div>
       <% @playlist.musics.each do |music| %>
         <div class="flex my-3 items-center">
           <iframe src="https://open.spotify.com/embed/track/<%= music.spotify_track_id %>" width="100%" height="80" frameborder="0" style="border-radius:12px" allowtransparency="true" allow="encrypted-media"></iframe>
           <% if music.visible_to_user?(current_user) %>
-            <%= link_to "MUの詳細", music_path(music), class: "btn btn-primary btn-outline ml-2" %>
+            <%= link_to music_path(music), class: "btn btn-outline btn-primary ml-2" do %>
+              <span class="hidden sm:block">MUの詳細</span>
+              <span class="sm:hidden">詳細</span>
+            <% end %>
           <% elsif logged_in? && current_user.own?(music) && music.privacy_playlist_only? %>
-            <%= link_to "このMUをつくる", convert_to_public_music_path(music), data: {turbo_method: :post}, class: "btn btn-secondary btn-outline ml-2" %>
+            <%= link_to convert_to_public_music_path(music), data: {turbo_method: :post}, class: "btn btn-outline btn-secondary ml-2" do %>
+              <span class="hidden sm:block">このMUをつくる</span>
+              <span class="sm:hidden">作成</span>
+            <% end %>
           <% end %>
         </div>
       <% end %>
