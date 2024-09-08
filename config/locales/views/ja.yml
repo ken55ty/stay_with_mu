@@ -43,6 +43,8 @@ ja:
       title: みんなのプレイリスト
     new:
       title: プレイリスト作成
+    edit:
+      title: プレイリスト編集
   password_resets:
     new:
       title: パスワードリセット申請
