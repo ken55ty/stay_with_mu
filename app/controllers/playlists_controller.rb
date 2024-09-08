@@ -24,6 +24,7 @@ class PlaylistsController < ApplicationController
   end
 
   def search
+    @playlist = Playlist.new
     if params[:q].present?
       search_results = RSpotify::Track.search(params[:q])
       @musics = search_results.first(8).map do |track|
@@ -71,6 +72,7 @@ class PlaylistsController < ApplicationController
 
   def update
     @playlist = current_user.playlists.find(params[:id])
+    @playlist.musics.delete_all
 
     if session[:current_playlist_musics].present?
       session[:current_playlist_musics].each do |music_params|
