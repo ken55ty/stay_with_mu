@@ -8,6 +8,13 @@
     <div class="hidden sm:flex">
       <%= link_to "みんなのMU", musics_path, data: { action: "click->modal#checkClick"}, class: "btn btn-primary btn-outline mr-2" %>
       <%= link_to "MUをつくる", new_music_path, class: "btn btn-secondary btn-outline mr-2" %>
+      <div class="dropdown">
+        <div tabindex="0" role="button" class="btn btn-outline btn-success mr-2">プレイリスト ▼</div>
+        <ul tabindex="0" class="dropdown-content menu bg-neutral rounded-box z-[1] w-52 p-2 shadow">
+          <li class="link m-1"><%= link_to "みんなのプレイリスト", playlists_path %></li>
+          <li class="link m-1"><%= link_to "プレイリストをつくる", new_playlist_path %></li>
+        </ul>
+      </div>
       <%= link_to user_path(current_user), class: "flex flex-col btn btn-outline" do %>
         <% if current_user.avatar? %>
           <div class="avatar">

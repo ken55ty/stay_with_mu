@@ -6,7 +6,13 @@
   </div>
 
   <nav class="mr-2 flex items-center">
-    <%= link_to "みんなのMU", musics_path, class: "btn btn-sm btn-primary btn-outline mr-2 sm:btn-md" %>
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="sm:btn-md btn btn-sm btn-outline btn-primary mr-2">みんなのMU ▼</div>
+      <ul tabindex="0" class="dropdown-content menu bg-neutral rounded-box z-[1] w-52 p-2 shadow">
+        <li class="link link-primary m-1"><%= link_to "みんなのMU", musics_path %></li>
+        <li class="link link-success m-1"><%= link_to "みんなのプレイリスト", playlists_path %></li>
+      </ul>
+    </div>
     <%= link_to "ログイン", login_path, class: "btn btn-sm btn-secondary btn-outline mr-2 sm:btn-md" %>
 
     <div class="sm:hidden dropdown dropdown-end">

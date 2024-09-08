@@ -22,7 +22,7 @@ class Music < ApplicationRecord
     return if frozen?
 
     total_exp = calculate_memory_exp + calculate_playlist_exp
-    update(experience_point: total_exp)
+    update_column(:experience_point, total_exp)
     update_level
   end
 

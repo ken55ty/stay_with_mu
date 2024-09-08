@@ -10,11 +10,11 @@
 
       <% if current_user == memory.music.user && memory.privacy_private? %>
         <p class="text-error">※公開されていません</p>
-        <%= raw Rinku.auto_link(h(memory.body).gsub(/\n/, '<br>'), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+        <p><%= raw Rinku.auto_link(h(memory.body).gsub(/\n/, '<br>'), :urls, 'target="_blank" rel="noopener noreferrer"') %></p>
       <% elsif memory.privacy_private? %>
         <p>非公開のメモリー</p>
       <% else %>
-        <%= raw Rinku.auto_link(h(memory.body).gsub(/\n/, '<br>'), :urls, 'target="_blank" rel="noopener noreferrer"') %>
+        <p><%= raw Rinku.auto_link(h(memory.body).gsub(/\n/, '<br>'), :urls, 'target="_blank" rel="noopener noreferrer"') %></p>
       <% end %>
 
       <div class="object-right-top">
