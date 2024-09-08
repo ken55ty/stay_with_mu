@@ -1,10 +1,7 @@
 <div class="sm:hidden navbar bg-neutral shadow-inner fixed bottom-0 flex justify-evenly w-full">
   <%= link_to musics_path, class: "text-primary flex flex-col" do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-      <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-      <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-      <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-      <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-headphones" viewBox="0 0 16 16">
+      <path d="M8 3a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8a6 6 0 1 1 12 0v5a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1V8a5 5 0 0 0-5-5z"/>
     </svg>
     <p class="text-xs mt-2">みんなのMU</p>
   <% end %>
@@ -15,6 +12,23 @@
     </svg>
     <p class="text-xs mt-2">MUをつくる</p>
   <% end %>
+
+  <div class="dropdown dropdown-top dropdown-end">
+    <div tabindex="0" role="button" class="text-success flex flex-col justify-center items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+        <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+        <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+        <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+        <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+      <p class="text-xs mt-2">プレイリスト</p>
+    </div>
+    <ul tabindex="0" class="dropdown-content menu bg-neutral rounded-box z-[1] w-52 p-2 shadow">
+      <li class="link m-1"><%= link_to "みんなのプレイリスト", playlists_path %></li>
+      <li class="link m-1"><%= link_to "プレイリストをつくる", new_playlist_path %></li>
+    </ul>
+  </div>
+
   <%= link_to user_path(current_user), class: "flex flex-col" do %>
     <% if current_user.avatar? %>
       <div class="avatar">
