@@ -12,6 +12,7 @@
     <%= render 'playlists/preview', playlist: @playlist %>
 
     <%= form_with model: @playlist, class: "flex flex-col items-center" do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <div class="w-full text-center p-2">
         <%= f.label :title, class: "text-lg font-bold" %>
         <div class="flex justify-center items-center">
