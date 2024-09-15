@@ -6,8 +6,8 @@ class NotificationsController < ApplicationController
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [
-              turbo_stream.remove(@notification),
-              turbo_stream.replace('notification_count', partial: 'notifications/notification_count', locals: { notifications: current_user.notifications.unread })
+            turbo_stream.remove(@notification),
+            turbo_stream.replace('notification_count', partial: 'notifications/notification_count', locals: { notifications: current_user.notifications.unread })
           ]
         end
         format.html
@@ -16,7 +16,7 @@ class NotificationsController < ApplicationController
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: [
-              turbo_stream.replace('notifications', '')
+            turbo_stream.replace('notifications', '')
           ]
         end
       end

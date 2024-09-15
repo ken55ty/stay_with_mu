@@ -12,7 +12,7 @@ class Music < ApplicationRecord
 
   enum privacy: { public: 0, private: 1, playlist_only: 2 }, _prefix: true
 
-  scope :visible_to, ->(user) {
+  scope :visible_to, lambda { |user|
     where(privacy: [:public]).or(where(user:, privacy: :private))
   }
 
@@ -27,7 +27,7 @@ class Music < ApplicationRecord
   end
 
   def created_by_user?(user)
-    user.musics.exists?(spotify_track_id: self.spotify_track_id)
+    user.musics.exists?(spotify_track_id:)
   end
 
   def visible_to_user?(user)
