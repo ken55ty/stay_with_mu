@@ -1,6 +1,6 @@
 class Playlist < ApplicationRecord
   belongs_to :user
-  has_many :playlist_musics, dependent: :destroy
+  has_many :playlist_musics, -> { rank(:row_order) }, dependent: :destroy, inverse_of: :playlist
   has_many :musics, through: :playlist_musics
 
   validates :title, presence: true, length: { maximum: 100 }
