@@ -70,6 +70,8 @@ gem 'particles-js-rails', '2.0.0'
 
 gem 'activerecord-session_store'
 
+gem 'ranked-model'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
