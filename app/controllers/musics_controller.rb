@@ -72,13 +72,13 @@ class MusicsController < ApplicationController
 
   def publish
     @music = current_user.musics.find(params[:id])
-    @music.update_columns(privacy: :public)
+    @music.update_columns(privacy: :public) # rubocop:disable Rails/SkipsModelValidations #updated_atが更新され、最上位に表示されるのを防ぐため。
     flash.now[:success] = '公開に変更しました'
   end
 
   def unpublish
     @music = current_user.musics.find(params[:id])
-    @music.update_columns(privacy: :private)
+    @music.update_columns(privacy: :private) # rubocop:disable Rails/SkipsModelValidations #updated_atが更新され、最上位に表示されるのを防ぐため。
     flash.now[:success] = '非公開に変更しました'
   end
 
