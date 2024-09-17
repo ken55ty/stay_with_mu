@@ -5,7 +5,7 @@ class SetCurrentTopicJob < ApplicationJob
     ActiveRecord::Base.transaction do
       # 前回のトピックを無効化
       previous_topic = RecommendedTopic.find_by(current: true)
-      previous_topic.update(current: false) if previous_topic
+      previous_topic&.update(current: false)
 
       # 前回のトピックを除外してランダムにトピックを選択
       todays_topic = if previous_topic
@@ -15,7 +15,7 @@ class SetCurrentTopicJob < ApplicationJob
                      end
 
       # 新しいトピックを有効化
-      todays_topic.update(current: true) if todays_topic
+      todays_topic&.update(current: true)
     end
   end
 end

@@ -20,7 +20,7 @@ class MusicsController < ApplicationController
         )
       end
     else
-      @musics = [] # 検索クエリがない場合は空の結果を返す
+      @musics = []
     end
 
     respond_to do |format|
@@ -36,12 +36,10 @@ class MusicsController < ApplicationController
     @comments = @music.comments.includes(:user).order(created_at: :asc)
   end
 
-  # GET /musics/new
   def new
     @music = Music.new
   end
 
-  # POST /musics or /musics.json
   def create
     @music = current_user.musics.build(music_params)
     if @music.save
@@ -74,13 +72,13 @@ class MusicsController < ApplicationController
 
   def publish
     @music = current_user.musics.find(params[:id])
-    @music.update_columns(privacy: 0)
+    @music.update_columns(privacy: :public) # rubocop:disable Rails/SkipsModelValidations #updated_atが更新され、最上位に表示されるのを防ぐため。
     flash.now[:success] = '公開に変更しました'
   end
 
   def unpublish
     @music = current_user.musics.find(params[:id])
-    @music.update_columns(privacy: 1)
+    @music.update_columns(privacy: :private) # rubocop:disable Rails/SkipsModelValidations #updated_atが更新され、最上位に表示されるのを防ぐため。
     flash.now[:success] = '非公開に変更しました'
   end
 

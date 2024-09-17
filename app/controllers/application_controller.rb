@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_norification_object
-    if current_user
-      @notifications = current_user.received_notifications.unread.limit(10)
-    else
-      @notifications = []
-    end
+    @notifications = if current_user
+                       current_user.received_notifications.unread.limit(10)
+                     else
+                       []
+                     end
   end
 end

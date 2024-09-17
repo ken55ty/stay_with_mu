@@ -4,9 +4,9 @@ module NotificationsHelper
 
     case notification.notifiable_type
     when 'Comment'
-      "#{notification.sender.name}が#{generate_music_link(notification.notifiable.music)}にコメントしました".html_safe
+      "#{notification.sender.name}が#{generate_music_link(notification.notifiable.music)}にコメントしました".html_safe # rubocop:disable Rails/OutputSafety
     when 'Favorite'
-      "#{notification.sender.name}が#{generate_music_link(notification.notifiable.music)}にいいね！しました".html_safe
+      "#{notification.sender.name}が#{generate_music_link(notification.notifiable.music)}にいいね！しました".html_safe # rubocop:disable Rails/OutputSafety
     else
       "新着通知がありました"
     end

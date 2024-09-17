@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :favorite_musics, through: :favorites, source: :music
-  has_many :sent_notifications, class_name: 'Notification', foreign_key: 'sender_id', dependent: :destroy
-  has_many :received_notifications, class_name: 'Notification', foreign_key: 'recipient_id', dependent: :destroy
+  has_many :sent_notifications, class_name: 'Notification', foreign_key: 'sender_id', dependent: :destroy, inverse_of: :sender
+  has_many :received_notifications, class_name: 'Notification', foreign_key: 'recipient_id', dependent: :destroy, inverse_of: :recipient
   has_many :notifications, as: :notifiable, dependent: :destroy
   has_many :authentications, dependent: :destroy
   has_many :playlists, dependent: :destroy

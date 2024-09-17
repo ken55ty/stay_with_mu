@@ -10,11 +10,11 @@ class Favorite < ApplicationRecord
   private
 
   def create_favorite_notification
-    return if self.user_id == self.music.user_id
+    return if user_id == music.user_id
 
     Notification.create(
-      sender_id: self.user_id,
-      recipient_id: self.music.user_id,
+      sender_id: user_id,
+      recipient_id: music.user_id,
       notifiable: self
     )
   end
