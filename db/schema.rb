@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_02_090145) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_17_090321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,6 +105,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_02_090145) do
     t.bigint "music_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "row_order"
     t.index ["music_id"], name: "index_playlist_musics_on_music_id"
     t.index ["playlist_id", "music_id"], name: "index_playlist_musics_on_playlist_id_and_music_id", unique: true
     t.index ["playlist_id"], name: "index_playlist_musics_on_playlist_id"
