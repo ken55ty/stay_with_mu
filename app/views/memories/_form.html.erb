@@ -1,4 +1,4 @@
-<div id="memory-form">
+<div id="memory-form" data-controller="textarea">
   <%= form_with model: memory, url: [music, memory], data: { turbo_method: :post } do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
       <p>今日のお題</p>
@@ -13,7 +13,7 @@
         <%= tag.name %>
       </label>
     <% end %>
-    <%= f.text_area :body, class: "auto-resize-textarea w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
+    <%= f.text_area :body, data: { textarea_target: "textarea" }, class: "w-full min-h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
     <div class="mb-3">
       <%= f.radio_button :privacy, :public, class: "radio radio-primary" %>
       <%= f.label :privacy_public, '公開' %>
