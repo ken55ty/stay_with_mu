@@ -24,9 +24,9 @@
         </div>
       </div>
 
-      <div class="w-full text-center p-2 mt-4">
+      <div class="w-full text-center p-2 mt-4" data-controller="textarea">
         <%= f.label :body, class: "text-lg font-bold" %>
-        <%= f.text_area :body, required: true, class: "auto-resize-textarea w-full h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
+        <%= f.text_area :body, data: { textarea_target: "textarea" }, required: true, class: "w-full min-h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
       </div>
 
       <div class="w-full p-2 mt-4 flex justify-center items-center">

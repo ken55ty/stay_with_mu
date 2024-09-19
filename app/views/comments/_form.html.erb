@@ -1,8 +1,8 @@
-<div id="comment-form", class="w-full flex flex-col">
+<div id="comment-form", data-controller="textarea", class="w-full flex flex-col">
   <%= form_with model: comment, url: [music, comment], data: { turbo_method: :post } do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div>
-      <%= f.text_area :body, class: "auto-resize-textarea w-[18rem] sm:w-[32rem] bg-base-300 textarea textarea-bordered h-24 my-2 p-1 rounded-lg" %>
+      <%= f.text_area :body, data: { textarea_target: "textarea" }, class: "w-[18rem] sm:w-[32rem] min-h-24 bg-base-300 textarea textarea-bordered my-2 p-1 rounded-lg" %>
     </div>
     <%= f.submit "追加する", class: "btn btn-primary" %>
   <% end %>

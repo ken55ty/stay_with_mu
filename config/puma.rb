@@ -41,7 +41,7 @@ workers ENV.fetch('WEB_CONCURRENCY') { 4 }
 before_fork do
   PumaWorkerKiller.config do |config|
     config.ram           = 512
-    config.frequency     = 50000
+    config.frequency     = 5
     config.percent_usage = 0.65
     config.rolling_restart_frequency = 12 * 3600
     config.reaper_status_logs = true

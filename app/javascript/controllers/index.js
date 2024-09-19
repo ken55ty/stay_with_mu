@@ -12,3 +12,6 @@ application.register("modal", ModalController)
 
 import ParticlesController from "./particles_controller"
 application.register("particles", ParticlesController)
+
+import TextareaController from "./textarea_controller"
+application.register("textarea", TextareaController)
