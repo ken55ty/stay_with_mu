@@ -20,8 +20,6 @@ services:
     sync: false
   - key: SPOTIFY_CLIENT_ID
     sync: false
-  - key: REDIS_URL
-    sync: false
   - key: RAILS_MASTER_KEY
     sync: false
   - key: RAILS_ENV
@@ -49,8 +47,6 @@ services:
   repo: https://github.com/ken55ty/stay_with_mu
   plan: starter
   envVars:
-  - key: REDIS_URL
-    sync: false
   - key: AWS_SECRET_ACCESS_KEY
     sync: false
   - key: AWS_ACCESS_KEY_ID
