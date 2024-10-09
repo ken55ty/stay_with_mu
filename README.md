@@ -72,7 +72,7 @@
 | データベース | PostgreSQL |
 | インフラ | Render |
 | Web API | Spotify Web API（gem 'RSpotify'）, Google Sign-In |
-|その他|Amazon S3 / Sidekiq / Redis / ActiveJob / stimulus-autocomplete / particles.js
+|その他|Amazon S3 / Cronjob / ActiveJob / stimulus-autocomplete / particles.js
 
 ## ■画面遷移図
 [画面遷移図（企画時）](https://www.figma.com/file/BfMTw56e0vPpTX1UYnTlLN/STAY-with-MU?type=design&node-id=0%3A1&mode=design&t=66aJBbzwX4HLdTwI-1)
