@@ -1,21 +1,75 @@
 databases:
-  - name: stay_with_mu_DB
-    databaseName: stay_with_mu_db
-    user: rails7_sample
-    region: singapore
-
+- name: stay_with_mu_DB
+  databaseName: stay_with_mu_db
+  user: stay_with_mu_db_user
+  plan: starter
+  region: singapore
+  ipAllowList:
+  - source: 0.0.0.0/0
+    description: everywhere
+  postgresMajorVersion: "16"
 services:
-  - type: web
-    name: stay_with_mu
-    env: ruby
-    region: singapore
-    plan: free
-    buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: stay_with_mu_DB
-          property: connectionString
-      - key: RAILS_MASTER_KEY
-        sync: false
+- type: web
+  name: stay_with_mu
+  runtime: docker
+  repo: https://github.com/ken55ty/stay_with_mu
+  branch: main
+  plan: starter
+  envVars:
+  - key: SPOTIFY_SECRET_ID
+    sync: false
+  - key: SPOTIFY_CLIENT_ID
+    sync: false
+  - key: REDIS_URL
+    sync: false
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: RAILS_ENV
+    sync: false
+  - key: GMAIL_USERNAME
+    sync: false
+  - key: GMAIL_PASSWORD
+    sync: false
+  - key: DATABASE_URL
+    sync: false
+  - key: AWS_SECRET_ACCESS_KEY
+    sync: false
+  - key: AWS_ACCESS_KEY_ID
+    sync: false
+  region: singapore
+  dockerContext: .
+  dockerfilePath: ./Dockerfile
+  domains:
+  - stay-with-mu.com
+  - www.stay-with-mu.com
+  autoDeploy: false
+- type: cron
+  name: set_current_topic_job
+  runtime: ruby
+  repo: https://github.com/ken55ty/stay_with_mu
+  plan: starter
+  envVars:
+  - key: REDIS_URL
+    sync: false
+  - key: AWS_SECRET_ACCESS_KEY
+    sync: false
+  - key: AWS_ACCESS_KEY_ID
+    sync: false
+  - key: GMAIL_PASSWORD
+    sync: false
+  - key: GMAIL_USERNAME
+    sync: false
+  - key: SPOTIFY_SECRET_ID
+    sync: false
+  - key: SPOTIFY_CLIENT_ID
+    sync: false
+  - key: RAILS_MASTER_KEY
+    sync: false
+  - key: WEB_CONCURRENCY
+    sync: false
+  region: singapore
+  buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake
+    assets:clean;
+  startCommand: bundle exec rails runner "SetCurrentTopicJob.perform_later'"
+  schedule: 0 15 * * *
+version: "1"
