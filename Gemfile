@@ -60,6 +60,8 @@ gem 'counter_culture'
 
 gem 'puma_worker_killer'
 
+gem 'redis'
+
 gem 'particles-js-rails', '2.0.0'
 
 gem 'activerecord-session_store'
