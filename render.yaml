@@ -66,6 +66,6 @@ services:
   region: singapore
   buildCommand: bundle install; bundle exec rake assets:precompile; bundle exec rake
     assets:clean;
-  startCommand: bundle exec rails runner "SetCurrentTopicJob.perform_later'"
+  startCommand: bundle exec rails runner "SetCurrentTopicJob.perform_later"
   schedule: 0 15 * * *
 version: "1"

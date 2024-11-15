@@ -29,12 +29,12 @@
 |みんなのMU| MU作成 |
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/67a961de7e4e27f0e1992eb7672bb1f8.gif)](https://gyazo.com/67a961de7e4e27f0e1992eb7672bb1f8)|[![Image from Gyazo](https://i.gyazo.com/a5151d1d7e5aeb39f9aef2a1d254f406.gif)](https://gyazo.com/a5151d1d7e5aeb39f9aef2a1d254f406)|
-|MUの一覧を見られます。それぞれのMUには最新のメモリーの一部とタグが表示されます。検索機能ではオートコンプリートで曲名とアーティスト名を区別して自動補完を行います。|MUの作成は工程を最小化し、検索結果から選択するだけのシンプルなものにしました。|
+|MUの一覧を見られます。それぞれのMUには最新のメモリーの一部とタグが表示されます。検索機能ではオートコンプリートで曲名とアーティスト名を区別して自動補完を行います。|MUの作成は工程を最小化し、検索結果から選択するだけのシンプルなものにしました。投稿に必要な初期入力項目をなくし、投稿へのハードルを下げています。|
 
 |MU詳細（メモリー追加）|MU詳細（コメント追加）|
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/896cab890b40528730920434d025d516.gif)](https://gyazo.com/896cab890b40528730920434d025d516)|[![Image from Gyazo](https://i.gyazo.com/6b804e87c8999a05ffc71bd919938dfb.gif)](https://gyazo.com/6b804e87c8999a05ffc71bd919938dfb)|
-|MU詳細画面ではメモリーの追加ができます。メモリーは非公開にできます。|他のユーザーのMUにコメントをすることができます。テキストエリアは改行すると自動で伸びるようにしています。|
+|MU詳細画面ではメモリーの追加ができます。メモリーは非公開にできます。追加したメモリーの文字数に応じてMUのレベルが上がります。|他のユーザーのMUにコメントをすることができます。テキストエリアは改行すると自動で伸びるようにしています。|
 
 |マイページ（ユーザーページ）|ページネーション制限|
 |:-:|:-:|
@@ -46,6 +46,15 @@
 |[![Image from Gyazo](https://i.gyazo.com/b1f9cb99d6cddd1ba155a4776b59054e.gif)](https://gyazo.com/b1f9cb99d6cddd1ba155a4776b59054e)|[![Image from Gyazo](https://i.gyazo.com/7a6d96339c62bab44b420cedd9e544b6.gif)](https://gyazo.com/7a6d96339c62bab44b420cedd9e544b6)|
 |アプリ内通知で、自分のMUにいいねされた時、自分のMUにコメントされた時、自分がコメントした先のMUにコメントされた時に通知が来るようにしました。|スマホからの利用を想定し、画面が小さい場合は固定フッターにして親指での操作が楽になるようにしました。|
 
+|MU非表示機能|プレイリスト作成機能|
+|:-:|:-:|
+|[![Image from Gyazo](https://i.gyazo.com/0b116499d40a6b1f8d0e53887af7df08.gif)](https://gyazo.com/0b116499d40a6b1f8d0e53887af7df08)|[![Image from Gyazo](https://i.gyazo.com/0d922d9b9dc32c080e94964cc834f660.gif)](https://gyazo.com/0d922d9b9dc32c080e94964cc834f660)|
+|MUの公開⇔非公開を非同期でスムーズに行うことができます。非公開のMUは鍵マークが表示され、自分以外のユーザーから見えないようになります。|プレイリストを作成することができます。曲の追加は非同期で行うことができます。追加した曲はセッションに保存され、プレイリスト作成時にレコードが作成されます。|
+
+|プレイリスト画面からのMU作成|プレイリスト画面からのMU詳細ページへの遷移|
+|:-:|:-:|
+|[![Image from Gyazo](https://i.gyazo.com/53240bffac32e15ccf2f25d7f09a9b0e.gif)](https://gyazo.com/53240bffac32e15ccf2f25d7f09a9b0e)|[![Image from Gyazo](https://i.gyazo.com/c3473911b7f17a6de5aa9f9a0916fd07.gif)](https://gyazo.com/c3473911b7f17a6de5aa9f9a0916fd07)|
+|ライブのセットリストからMUを作成する用途を想定し、プレイリストからMUを作成する動線を用意しました。プレイリスト内のMUは一定のレベルが加算されるようにしています。|プレイリスト画面からMU詳細ページへの動線、MU詳細ページからプレイリストへの動線を用意しました。|
 
 ## ■ サービスの差別化ポイント・推しポイント
 
@@ -71,7 +80,7 @@
 | バックエンド | Ruby 3.2.2 / Ruby on Rails 7.1.3 |
 | データベース | PostgreSQL |
 | インフラ | Render |
-| Web API | Spotify Web API（gem 'RSpotify'）, Google Sign-In |
+| Web API | Spotify Web API（gem 'RSpotify'）/ Google Sign-In |
 |その他|Amazon S3 / Cronjob / ActiveJob / stimulus-autocomplete / particles.js
 
 ## ■画面遷移図
@@ -79,4 +88,4 @@
 
 
 ## ■ER図
-![alt text](app/assets/images/プレイリスト機能追加後ER図.png)
+[![Image from Gyazo](https://i.gyazo.com/cdfedb433ee0446a24062cab8fa6e3a1.png)](https://gyazo.com/cdfedb433ee0446a24062cab8fa6e3a1)
