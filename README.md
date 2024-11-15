@@ -29,12 +29,12 @@
 |みんなのMU| MU作成 |
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/67a961de7e4e27f0e1992eb7672bb1f8.gif)](https://gyazo.com/67a961de7e4e27f0e1992eb7672bb1f8)|[![Image from Gyazo](https://i.gyazo.com/a5151d1d7e5aeb39f9aef2a1d254f406.gif)](https://gyazo.com/a5151d1d7e5aeb39f9aef2a1d254f406)|
-|MUの一覧を見られます。それぞれのMUには最新のメモリーの一部とタグが表示されます。検索機能ではオートコンプリートで曲名とアーティスト名を区別して自動補完を行います。|MUの作成は工程を最小化し、検索結果から選択するだけのシンプルなものにしました。|
+|MUの一覧を見られます。それぞれのMUには最新のメモリーの一部とタグが表示されます。検索機能ではオートコンプリートで曲名とアーティスト名を区別して自動補完を行います。|MUの作成は工程を最小化し、検索結果から選択するだけのシンプルなものにしました。投稿に必要な初期入力項目をなくし、投稿へのハードルを下げています。|
 
 |MU詳細（メモリー追加）|MU詳細（コメント追加）|
 |:-:|:-:|
 |[![Image from Gyazo](https://i.gyazo.com/896cab890b40528730920434d025d516.gif)](https://gyazo.com/896cab890b40528730920434d025d516)|[![Image from Gyazo](https://i.gyazo.com/6b804e87c8999a05ffc71bd919938dfb.gif)](https://gyazo.com/6b804e87c8999a05ffc71bd919938dfb)|
-|MU詳細画面ではメモリーの追加ができます。メモリーは非公開にできます。|他のユーザーのMUにコメントをすることができます。テキストエリアは改行すると自動で伸びるようにしています。|
+|MU詳細画面ではメモリーの追加ができます。メモリーは非公開にできます。追加したメモリーの文字数に応じてMUのレベルが上がります。|他のユーザーのMUにコメントをすることができます。テキストエリアは改行すると自動で伸びるようにしています。|
 
 |マイページ（ユーザーページ）|ページネーション制限|
 |:-:|:-:|
@@ -80,7 +80,7 @@
 | バックエンド | Ruby 3.2.2 / Ruby on Rails 7.1.3 |
 | データベース | PostgreSQL |
 | インフラ | Render |
-| Web API | Spotify Web API（gem 'RSpotify'）, Google Sign-In |
+| Web API | Spotify Web API（gem 'RSpotify'）/ Google Sign-In |
 |その他|Amazon S3 / Cronjob / ActiveJob / stimulus-autocomplete / particles.js
 
 ## ■画面遷移図
@@ -88,4 +88,4 @@
 
 
 ## ■ER図
-![alt text](app/assets/images/プレイリスト機能追加後ER図.png)
+[![Image from Gyazo](https://i.gyazo.com/cdfedb433ee0446a24062cab8fa6e3a1.png)](https://gyazo.com/cdfedb433ee0446a24062cab8fa6e3a1)
