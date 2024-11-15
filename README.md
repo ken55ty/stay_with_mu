@@ -46,6 +46,15 @@
 |[![Image from Gyazo](https://i.gyazo.com/b1f9cb99d6cddd1ba155a4776b59054e.gif)](https://gyazo.com/b1f9cb99d6cddd1ba155a4776b59054e)|[![Image from Gyazo](https://i.gyazo.com/7a6d96339c62bab44b420cedd9e544b6.gif)](https://gyazo.com/7a6d96339c62bab44b420cedd9e544b6)|
 |アプリ内通知で、自分のMUにいいねされた時、自分のMUにコメントされた時、自分がコメントした先のMUにコメントされた時に通知が来るようにしました。|スマホからの利用を想定し、画面が小さい場合は固定フッターにして親指での操作が楽になるようにしました。|
 
+|MU非表示機能|プレイリスト作成機能|
+|:-:|:-:|
+|[![Image from Gyazo](https://i.gyazo.com/0b116499d40a6b1f8d0e53887af7df08.gif)](https://gyazo.com/0b116499d40a6b1f8d0e53887af7df08)|[![Image from Gyazo](https://i.gyazo.com/0d922d9b9dc32c080e94964cc834f660.gif)](https://gyazo.com/0d922d9b9dc32c080e94964cc834f660)|
+|MUの公開⇔非公開を非同期でスムーズに行うことができます。非公開のMUは鍵マークが表示され、自分以外のユーザーから見えないようになります。|プレイリストを作成することができます。曲の追加は非同期で行うことができます。追加した曲はセッションに保存され、プレイリスト作成時にレコードが作成されます。|
+
+|プレイリスト画面からのMU作成|プレイリスト画面からのMU詳細ページへの遷移|
+|:-:|:-:|
+|[![Image from Gyazo](https://i.gyazo.com/53240bffac32e15ccf2f25d7f09a9b0e.gif)](https://gyazo.com/53240bffac32e15ccf2f25d7f09a9b0e)|[![Image from Gyazo](https://i.gyazo.com/c3473911b7f17a6de5aa9f9a0916fd07.gif)](https://gyazo.com/c3473911b7f17a6de5aa9f9a0916fd07)|
+|ライブのセットリストからMUを作成する用途を想定し、プレイリストからMUを作成する動線を用意しました。プレイリスト内のMUは一定のレベルが加算されるようにしています。|プレイリスト画面からMU詳細ページへの動線、MU詳細ページからプレイリストへの動線を用意しました。|
 
 ## ■ サービスの差別化ポイント・推しポイント
 

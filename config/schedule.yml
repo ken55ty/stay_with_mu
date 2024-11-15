@@ -1,4 +1,0 @@
-set_current_topic_job:
-  cron: '0 0 * * *'
-  class: 'SetCurrentTopicJob'
-  
