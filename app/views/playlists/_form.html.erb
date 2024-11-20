@@ -1,0 +1,18 @@
+<%= form_with model: playlist, url: form_url, method: form_method, scope: :playlist, class: "flex flex-col items-center" do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="w-full text-center p-2">
+    <%= f.label :title, class: "text-lg font-bold" %>
+    <div class="flex justify-center items-center">
+      <%= f.text_field :title, required: true, placeholder: "タイトルは100文字まで", class: "input input-bordered input-sm sm:input-md bg-base-300 w-[16rem] sm:w-[32rem]", style: "width: 480px;" %>
+    </div>
+  </div>
+
+  <div class="w-full text-center p-2 mt-4" data-controller="textarea">
+    <%= f.label :body, class: "text-lg font-bold" %>
+    <%= f.text_area :body, data: { textarea_target: "textarea" }, required: true, class: "w-full min-h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
+  </div>
+
+  <div class="w-full p-2 mt-4 flex justify-center items-center">
+    <%= f.submit submit_text, class: "btn btn-primary py-2 px-4" %>
+  </div>
+<% end %>

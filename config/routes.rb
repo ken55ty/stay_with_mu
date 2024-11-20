@@ -19,10 +19,11 @@ Rails.application.routes.draw do
   resources :playlists do
     collection do
       post :add_music_to_playlist
-      get :search
+      get :search_for_new
     end
 
     member do
+      get :search_for_edit
       delete :remove_music_from_playlist
     end
   end
