@@ -23,7 +23,7 @@ class PlaylistsController < ApplicationController
     @playlist.musics.each { |music| session[:current_playlist_musics] << music }
   end
 
-  def search
+  def search_for_new
     @playlist = Playlist.new
     if params[:q].present?
       search_results = RSpotify::Track.search(params[:q])
@@ -41,6 +41,27 @@ class PlaylistsController < ApplicationController
     respond_to do |format|
       format.js { render partial: 'musics/autocompletes/new_autocomplete', locals: { musics: @musics } }
       format.html { render :new }
+    end
+  end
+
+  def search_for_edit
+    @playlist = current_user.playlists.find(params[:id])
+    if params[:q].present?
+      search_results = RSpotify::Track.search(params[:q])
+      @musics = search_results.first(8).map do |track|
+        Music.new(
+          spotify_track_id: track.id,
+          title: track.name,
+          artist: track.artists.first.name
+        )
+      end
+    else
+      @musics = []
+    end
+
+    respond_to do |format|
+      format.js { render partial: 'musics/autocompletes/new_autocomplete', locals: { musics: @musics } }
+      format.html { render :edit }
     end
   end
 

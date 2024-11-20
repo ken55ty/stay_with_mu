@@ -6,7 +6,15 @@
 </div>
 <div class="flex flex-col sm:flex-row w-full">
   <div class="flex w-full lg:w-1/2 xl:w-1/2 flex-col mx-auto mb-4">
-    <%= render 'playlists/search_form' %>
+    <div class="mx-auto">
+      <div data-controller="autocomplete" data-autocomplete-url-value="/musics/search" role="combobox">
+        <%= form_with url: search_for_edit_playlist_path(@playlist), method: :get, html: { data: { turbo_frame: "playlist_search_results", turbo_action: :advance } }  do |f| %>
+          <%= f.search_field :q, data: { autocomplete_target: "input" }, value: params[:q], class: "input input-bordered input-sm sm:input-md bg-base-300 w-[18rem] sm:w-[22rem]", placeholder: "曲名orアーティストで検索" %>
+          <ul class="list-group bg-gray-200 rounded-md absolute w-full md:text-sm max-w-max z-50" data-autocomplete-target="results"></ul>
+          <%= f.submit '検索', data: { action: "click->modal#checkClick" }, class: "btn btn-sm btn-primary ml-2" %>
+        <% end %>
+      </div>
+    </div>
     <% if @musics.present? %>
       <%= render 'playlists/search_result', musics: @musics %>
     <% end %>
