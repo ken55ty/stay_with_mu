@@ -25,18 +25,7 @@ class PlaylistsController < ApplicationController
 
   def search_for_new
     @playlist = Playlist.new
-    if params[:q].present?
-      search_results = RSpotify::Track.search(params[:q])
-      @musics = search_results.first(8).map do |track|
-        Music.new(
-          spotify_track_id: track.id,
-          title: track.name,
-          artist: track.artists.first.name
-        )
-      end
-    else
-      @musics = []
-    end
+    @musics = search_tracks(params[:q])
 
     respond_to do |format|
       format.js { render partial: 'musics/autocompletes/new_autocomplete', locals: { musics: @musics } }
@@ -46,18 +35,7 @@ class PlaylistsController < ApplicationController
 
   def search_for_edit
     @playlist = current_user.playlists.find(params[:id])
-    if params[:q].present?
-      search_results = RSpotify::Track.search(params[:q])
-      @musics = search_results.first(8).map do |track|
-        Music.new(
-          spotify_track_id: track.id,
-          title: track.name,
-          artist: track.artists.first.name
-        )
-      end
-    else
-      @musics = []
-    end
+    @musics = search_tracks(params[:q])
 
     respond_to do |format|
       format.js { render partial: 'musics/autocompletes/new_autocomplete', locals: { musics: @musics } }
@@ -152,5 +130,17 @@ class PlaylistsController < ApplicationController
 
   def playlist_params
     params.require(:playlist).permit(:title, :body)
+  end
+
+  def search_tracks(query)
+    return [] if query.blank?
+
+    RSpotify::Track.search(query).first(8).map do |track|
+      Music.new(
+        spotify_track_id: track.id,
+        title: track.name,
+        artist: track.artists.first.name
+      )
+    end
   end
 end

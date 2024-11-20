@@ -6,15 +6,7 @@
 </div>
 <div class="flex flex-col sm:flex-row w-full">
   <div class="flex w-full lg:w-1/2 xl:w-1/2 flex-col mx-auto mb-4">
-    <div class="mx-auto">
-      <div data-controller="autocomplete" data-autocomplete-url-value="/musics/search" role="combobox">
-        <%= form_with url: search_for_edit_playlist_path(@playlist), method: :get, html: { data: { turbo_frame: "playlist_search_results", turbo_action: :advance } }  do |f| %>
-          <%= f.search_field :q, data: { autocomplete_target: "input" }, value: params[:q], class: "input input-bordered input-sm sm:input-md bg-base-300 w-[18rem] sm:w-[22rem]", placeholder: "曲名orアーティストで検索" %>
-          <ul class="list-group bg-gray-200 rounded-md absolute w-full md:text-sm max-w-max z-50" data-autocomplete-target="results"></ul>
-          <%= f.submit '検索', data: { action: "click->modal#checkClick" }, class: "btn btn-sm btn-primary ml-2" %>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'playlists/search_form', url: search_for_edit_playlist_path(@playlist) %>
     <% if @musics.present? %>
       <%= render 'playlists/search_result', musics: @musics %>
     <% end %>
@@ -22,24 +14,6 @@
 
   <div class="flex flex-col w-full lg:w-1/2 xl:w-1/2">
     <%= render 'playlists/preview', playlist: @playlist %>
-
-    <%= form_with model: @playlist, class: "flex flex-col items-center" do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <div class="w-full text-center p-2">
-        <%= f.label :title, class: "text-lg font-bold" %>
-        <div class="flex justify-center items-center">
-          <%= f.text_field :title, required: true, placeholder: "タイトルは50文字まで", class: "input input-bordered input-sm sm:input-md bg-base-300 w-[16rem] sm:w-[32rem]", style: "width: 480px;" %>
-        </div>
-      </div>
-
-      <div class="w-full text-center p-2 mt-4" data-controller="textarea">
-        <%= f.label :body, class: "text-lg font-bold" %>
-        <%= f.text_area :body, data: { textarea_target: "textarea" }, required: true, class: "w-full min-h-24 my-2 bg-base-300 textarea textarea-bordered p-1 rounded-lg" %>
-      </div>
-
-      <div class="w-full p-2 mt-4 flex justify-center items-center">
-        <%= f.submit "プレイリストを更新", class: "btn btn-primary py-2 px-4" %>
-      </div>
-    <% end %>
+    <%= render 'playlists/form', playlist: @playlist, form_url: playlist_path(@playlist), form_method: :patch, submit_text: "プレイリストを更新" %>
   </div>
 </div>
