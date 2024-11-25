@@ -1,32 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it '名前、メールがあり、パスワードは3文字以上であれば有効であること' do
-    user = build(:user)
-    expect(user).to be_valid
-  end
+  describe 'バリデーション' do
+    context 'すべての属性が正しい場合' do
+      it '有効であること' do
+        user = build(:user)
+        expect(user).to be_valid
+      end
+    end
 
-  it 'メールはユニークであること' do
-    user1 = create(:user)
-    user2 = build(:user)
-    user2.email = user1.email
-    user2.valid?
-    expect(user2.errors[:email]).to include('はすでに存在します')
-  end
+    context 'メールアドレスのバリデーション' do
+      it 'メールはユニークであること' do
+        user1 = create(:user)
+        user2 = build(:user)
+        user2.email = user1.email
+        user2.valid?
+        expect(user2.errors[:email]).to include('はすでに存在します')
+      end
 
-  it 'メールアドレス名前は必須項目であること' do
-    user = build(:user)
-    user.email = nil
-    user.name = nil
-    user.valid?
-    expect(user.errors[:email]).to include('を入力してください')
-    expect(user.errors[:name]).to include('を入力してください')
-  end
+      it 'メールアドレスが空の場合、無効であること' do
+        user = build(:user)
+        user.email = nil
+        user.valid?
+        expect(user.errors[:email]).to include('を入力してください')
+      end
+    end
 
-  it '名前は255文字以下であること' do
-    user = build(:user)
-    user.name = 'a' * 256
-    user.valid?
-    expect(user.errors[:name]).to include('は20文字以内で入力してください')
+    context '名前のバリデーション' do
+      it '名前が空の場合、無効であること' do
+        user = build(:user)
+        user.name = nil
+        user.valid?
+        expect(user.errors[:name]).to include('を入力してください')
+      end
+
+      it '名前が20文字を超える場合、無効であること' do
+        user = build(:user)
+        user.name = 'a' * 256
+        user.valid?
+        expect(user.errors[:name]).to include('は20文字以内で入力してください')
+      end
+    end
   end
 end
